@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private PlayerScriptableObject stats;
     public float moveSpeed;
+    public float attackDmg;
 
     private Vector2 moveDirection;
     // Start is called before the first frame update
@@ -15,6 +16,7 @@ public class PlayerController : MonoBehaviour
     {
         stats.Reset();
         moveSpeed = stats.speed;
+        attackDmg = stats.damage;
         rb = gameObject.GetComponent<Rigidbody2D>();   
     }
 
