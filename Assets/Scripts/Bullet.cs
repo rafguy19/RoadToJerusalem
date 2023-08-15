@@ -8,12 +8,12 @@ public class Bullet : MonoBehaviour
     private Camera mainCam;
     private Rigidbody2D rb;
     public float force;
-    private PlayerController player;
+    private PlayerAttackController player;
     public float lifetime;
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerAttackController>();
         mainCam = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         rb = GetComponent<Rigidbody2D>();
         mousePos = mainCam.ScreenToWorldPoint(Input.mousePosition);

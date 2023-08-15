@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField]
     private PlayerScriptableObject stats;
+    private PlayerAttackController playerAttackController;
 
     //player stats
     private float moveSpeed;
@@ -15,53 +15,20 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 moveDirection;
 
-    // For arrow
-    public GameObject bullet;
-    [SerializeField]
-    float BowPower;
-    [SerializeField]
-    float MaxBowCharge;
-    [SerializeField]
-    float bowCharge;
-    bool canFire = true;
-    public float arrowSpeed;
-    [SerializeField]
-    Slider bowPowerSlider;
 
     // Start is called before the first frame update
     void Start()
     {
         stats.Reset();
         moveSpeed = stats.speed;
-        rb = gameObject.GetComponent<Rigidbody2D>();   
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        playerAttackController = gameObject.GetComponent<PlayerAttackController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Inputs();
-
-        if (Input.GetMouseButton(0) && canFire)
-        {
-            ChargeBow();
-        }
-        else if(Input.GetMouseButtonUp(0) && canFire)
-        {
-            FireBow();
-        }
-        else // Not firing bow
-        {
-            if(bowCharge > 0f)
-            {
-                bowCharge -= 5 * Time.deltaTime;
-            }
-            else
-            {
-                bowCharge = 0f;
-                canFire = true;
-            }
-            bowPowerSlider.value = bowCharge / 20;
-        }
     }
 
     private void FixedUpdate()
@@ -75,37 +42,22 @@ public class PlayerController : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
 
         moveDirection = new Vector2(moveX, moveY).normalized;
+
+        if (Input.GetMouseButton(0)) // Attacking
+        {
+            playerAttackController.AttackSelector(1);
+        }
     }
     void applyMovement()
     {
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
 
-    void ChargeBow()
-    {
-        bowCharge += 6.6f * Time.deltaTime;
-
-        bowPowerSlider.value = bowCharge / 20;
-
-        if(bowCharge > MaxBowCharge)
-        {
-            bowPowerSlider.value = 1;
-            bowCharge = MaxBowCharge;
-        }
-    }
-
-    void FireBow()
-    {
-        arrowSpeed = bowCharge * 1.5f;
-
-        Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
-
-        canFire = false;
-    }
 
     //player modifier
     public void UpdateDamage(int newDmgValue)
     {
         atkDmg = newDmgValue;
     }
+
 }
