@@ -1,16 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
     [SerializeField]
     private PlayerScriptableObject stats;
-    public float moveSpeed;
+    private float moveSpeed;
 
     private Vector2 moveDirection;
     private Vector2 direction;
+
+    // For arrow
+    public GameObject bullet;
+    [SerializeField]
+    float BowPower;
+    [SerializeField]
+    float MaxBowCharge;
+    float bowCharge;
+    bool canFire = true;
+    public float arrowSpeed;
+    [SerializeField]
+    Slider bowPowerSlider;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,6 +37,28 @@ public class PlayerController : MonoBehaviour
     {
         Inputs();
         faceMouse();
+
+        if (Input.GetMouseButton(0) && canFire)
+        {
+            ChargeBow();
+        }
+        else if(Input.GetMouseButtonUp(0) && canFire)
+        {
+            FireBow();
+        }
+        else
+        {
+            if(bowCharge > 0f)
+            {
+                bowCharge -= 1f * Time.deltaTime;
+            }
+            else
+            {
+                bowCharge = 0f;
+                canFire = true;
+            }
+            bowPowerSlider.value = bowCharge;
+        }
     }
 
     private void FixedUpdate()
@@ -51,5 +86,28 @@ public class PlayerController : MonoBehaviour
         direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
 
         transform.up = direction;
+    }
+
+    void ChargeBow()
+    {
+        bowCharge += Time.deltaTime;
+
+        bowPowerSlider.value = bowCharge;
+
+        if(bowCharge > MaxBowCharge)
+        {
+            bowPowerSlider.value = MaxBowCharge;
+        }
+    }
+
+    void FireBow()
+    {
+        if (bowCharge > MaxBowCharge) bowCharge = MaxBowCharge;
+
+        arrowSpeed = bowCharge + BowPower;
+
+        Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
+
+        canFire = false;
     }
 }
