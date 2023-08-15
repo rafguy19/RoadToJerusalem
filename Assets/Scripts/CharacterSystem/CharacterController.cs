@@ -45,7 +45,7 @@ public class CharacterController : MonoBehaviour
         isAttacking= false;
         animator = GetComponent<Animator>();
         healthSystem = new HealthSystem(Starting_Health);
-        healthBar.Setup(healthSystem);
+        //healthBar.Setup(healthSystem);
         isDead = false;
 
     }
