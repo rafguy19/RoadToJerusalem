@@ -8,7 +8,10 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField]
     private PlayerScriptableObject stats;
+
+    //player stats
     private float moveSpeed;
+    private float atkDmg;
 
     private Vector2 moveDirection;
     private Vector2 direction;
@@ -110,5 +113,11 @@ public class PlayerController : MonoBehaviour
         Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
 
         canFire = false;
+    }
+
+    //player modifier
+    public void UpdateDamage(int newDmgValue)
+    {
+        atkDmg = newDmgValue;
     }
 }

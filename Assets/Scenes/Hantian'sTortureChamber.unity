@@ -419,7 +419,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34bfbd9e065891d428b312e05f63d25f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <InventoryItem>k__BackingField: {fileID: 11400000, guid: 9d4e44ab94c4b144b818fdb89d5a7d62, type: 2}
+  <InventoryItem>k__BackingField: {fileID: 11400000, guid: a61b780bcaa566b47bf5e11e3f9a2548, type: 2}
   <Quantity>k__BackingField: 1
   audioSource: {fileID: 0}
   duration: 0.3
@@ -431,7 +431,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1326248250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.0390253, y: 0.12, z: 3.0861087}
+  m_LocalPosition: {x: 1.51, y: -1.29, z: 3.0861087}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4619,10 +4619,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5100830838574868298, guid: 638eb935fecc43a4294349cb89272229, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: -1900
       objectReference: {fileID: 0}
     - target: {fileID: 5100830838574868298, guid: 638eb935fecc43a4294349cb89272229, type: 3}
       propertyPath: m_SizeDelta.y
+      value: -1060
+      objectReference: {fileID: 0}
+    - target: {fileID: 5100830838574868299, guid: 638eb935fecc43a4294349cb89272229, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5100830839030088822, guid: 638eb935fecc43a4294349cb89272229, type: 3}
