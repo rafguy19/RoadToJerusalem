@@ -4,13 +4,17 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed;
     private Rigidbody2D rb;
+    [SerializeField]
+    private PlayerScriptableObject stats;
+    public float moveSpeed;
 
     private Vector2 moveDirection;
     // Start is called before the first frame update
     void Start()
     {
+        stats.Reset();
+        moveSpeed = stats.speed;
         rb = gameObject.GetComponent<Rigidbody2D>();   
     }
 
