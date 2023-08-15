@@ -53,14 +53,14 @@ public class PlayerController : MonoBehaviour
         {
             if(bowCharge > 0f)
             {
-                bowCharge -= Time.deltaTime;
+                bowCharge -= 5 * Time.deltaTime;
             }
             else
             {
                 bowCharge = 0f;
                 canFire = true;
             }
-            bowPowerSlider.value = bowCharge * 0.2f;
+            bowPowerSlider.value = bowCharge / 20;
         }
     }
 
@@ -83,9 +83,9 @@ public class PlayerController : MonoBehaviour
 
     void ChargeBow()
     {
-        bowCharge += 3 * Time.deltaTime;
+        bowCharge += 6.6f * Time.deltaTime;
 
-        bowPowerSlider.value = bowCharge * 0.2f;
+        bowPowerSlider.value = bowCharge / 20;
 
         if(bowCharge > MaxBowCharge)
         {
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
     void FireBow()
     {
-        arrowSpeed = bowCharge;
+        arrowSpeed = bowCharge * 1.5f;
 
         Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
 
