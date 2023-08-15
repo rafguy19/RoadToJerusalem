@@ -9,11 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f34299d04fba06b4d9e6859032e48841, type: 3}
-  m_Name: Player
+  m_Script: {fileID: 11500000, guid: 9c9b2ddee026fb94a8d51f376167907e, type: 3}
+  m_Name: Food Health Modifier
   m_EditorClassIdentifier: 
-  maxHp: 0
-  currentHp: 0
-  speed: 3
-  atkSpeed: 0
-  damage: 0
