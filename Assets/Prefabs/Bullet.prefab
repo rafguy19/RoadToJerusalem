@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 4
-  player: {fileID: 0}
+  player: {fileID: 7285343805483786752, guid: 347a40b5245760e40a282c9238803e57, type: 3}
   lifetime: 4
 --- !u!50 &6616246098808529605
 Rigidbody2D:

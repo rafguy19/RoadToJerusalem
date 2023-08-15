@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public float arrowSpeed;
     [SerializeField]
     Slider bowPowerSlider;
+
     // Start is called before the first frame update
     void Start()
     {
