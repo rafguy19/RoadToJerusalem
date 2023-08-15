@@ -9,11 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f34299d04fba06b4d9e6859032e48841, type: 3}
-  m_Name: Player
+  m_Script: {fileID: 11500000, guid: 5e6b1a0f8bd5f094fa8084046519107d, type: 3}
+  m_Name: Durability
   m_EditorClassIdentifier: 
-  maxHp: 0
-  currentHp: 0
-  speed: 3
-  atkSpeed: 0
-  damage: 0
+  <ParameterName>k__BackingField: Durability
