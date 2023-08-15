@@ -20,7 +20,5 @@ MonoBehaviour:
     Restores: 20 HP'
   <ItemImage>k__BackingField: {fileID: 21300000, guid: d24304854fc7f8a479ae20e864fa77c9, type: 3}
   <DefaultParameterList>k__BackingField: []
-  modifierData:
-  - statModifier: {fileID: 11400000, guid: 060d792da86f901448cec8a848d32323, type: 2}
-    value: 20
+  modifierData: []
   <actionSFX>k__BackingField: {fileID: 8300000, guid: 4c3cebc29c7a0cc45b31cda41853eabd, type: 3}

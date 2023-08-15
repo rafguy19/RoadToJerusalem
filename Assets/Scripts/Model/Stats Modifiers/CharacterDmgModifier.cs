@@ -13,5 +13,4 @@ public class CharacterDmgModifier : CharacterStatModifier
         player.UpdateDamage((int)val);
     }
 
-
 }
