@@ -8,10 +8,9 @@ public class CharacterDmgModifier : CharacterStatModifier
     //health bar system
     public override void AffectCharacter(GameObject character, float val)
     {
-        CharacterController player = character.GetComponent<CharacterController>();
+        PlayerController player = character.GetComponent<PlayerController>();
 
         player.UpdateDamage((int)val);
     }
-
 
 }
