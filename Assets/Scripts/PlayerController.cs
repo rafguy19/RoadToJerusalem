@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed;
 
     private Vector2 moveDirection;
-    private Vector2 direction;
 
     // For arrow
     public GameObject bullet;
@@ -19,6 +18,7 @@ public class PlayerController : MonoBehaviour
     float BowPower;
     [SerializeField]
     float MaxBowCharge;
+    [SerializeField]
     float bowCharge;
     bool canFire = true;
     public float arrowSpeed;
@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Inputs();
-        faceMouse();
 
         if (Input.GetMouseButton(0) && canFire)
         {
@@ -47,18 +46,18 @@ public class PlayerController : MonoBehaviour
         {
             FireBow();
         }
-        else
+        else // Not firing bow
         {
             if(bowCharge > 0f)
             {
-                bowCharge -= 1f * Time.deltaTime;
+                bowCharge -= Time.deltaTime;
             }
             else
             {
                 bowCharge = 0f;
                 canFire = true;
             }
-            bowPowerSlider.value = bowCharge;
+            bowPowerSlider.value = bowCharge * 0.2f;
         }
     }
 
@@ -79,33 +78,22 @@ public class PlayerController : MonoBehaviour
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
 
-    void faceMouse()
-    {
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-        direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
-
-        transform.up = direction;
-    }
-
     void ChargeBow()
     {
-        bowCharge += Time.deltaTime;
+        bowCharge += 3 * Time.deltaTime;
 
-        bowPowerSlider.value = bowCharge;
+        bowPowerSlider.value = bowCharge * 0.2f;
 
         if(bowCharge > MaxBowCharge)
         {
-            bowPowerSlider.value = MaxBowCharge;
+            bowPowerSlider.value = 1;
+            bowCharge = MaxBowCharge;
         }
     }
 
     void FireBow()
     {
-        if (bowCharge > MaxBowCharge) bowCharge = MaxBowCharge;
-
-        arrowSpeed = bowCharge + BowPower;
+        arrowSpeed = bowCharge;
 
         Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
 

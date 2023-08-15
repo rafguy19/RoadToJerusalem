@@ -134,6 +134,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7285343805483786752, guid: 347a40b5245760e40a282c9238803e57, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 7285343805483786756, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -184,11 +188,11 @@ PrefabInstance:
       objectReference: {fileID: 3075802436597653893, guid: 366b4f684e162814489661444f945481, type: 3}
     - target: {fileID: 7285343805483786759, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: BowPower
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7285343805483786759, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: MaxBowCharge
-      value: 1
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7285343805483786759, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: bowPowerSlider
