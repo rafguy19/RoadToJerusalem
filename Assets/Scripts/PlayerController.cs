@@ -1,73 +1,47 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Animator ar;
+    private SpriteRenderer sr;
     [SerializeField]
     private PlayerScriptableObject stats;
+    private PlayerAttackController playerAttackController;
 
     //player stats
     private float moveSpeed;
     private float atkDmg;
 
     private Vector2 moveDirection;
-    private Vector2 direction;
 
-    // For arrow
-    public GameObject bullet;
-    [SerializeField]
-    float BowPower;
-    [SerializeField]
-    float MaxBowCharge;
-    float bowCharge;
-    bool canFire = true;
-    public float arrowSpeed;
-    [SerializeField]
-    Slider bowPowerSlider;
+    int type;
+
 
     // Start is called before the first frame update
     void Start()
     {
         stats.Reset();
         moveSpeed = stats.speed;
-        rb = gameObject.GetComponent<Rigidbody2D>();   
+        rb = gameObject.GetComponent<Rigidbody2D>();
+        ar = gameObject.GetComponent<Animator>();
+        sr = gameObject.GetComponent<SpriteRenderer>();
+        playerAttackController = gameObject.GetComponent<PlayerAttackController>();
     }
 
     // Update is called once per frame
     void Update()
     {
         Inputs();
-        faceMouse();
-
-        if (Input.GetMouseButton(0) && canFire)
-        {
-            ChargeBow();
-        }
-        else if(Input.GetMouseButtonUp(0) && canFire)
-        {
-            FireBow();
-        }
-        else
-        {
-            if(bowCharge > 0f)
-            {
-                bowCharge -= 1f * Time.deltaTime;
-            }
-            else
-            {
-                bowCharge = 0f;
-                canFire = true;
-            }
-            bowPowerSlider.value = bowCharge;
-        }
+        ApplyAnimation();
+        UpdateDirection();
     }
 
     private void FixedUpdate()
     {
-        applyMovement();
+        ApplyMovement();
     }
 
     void Inputs()
@@ -76,43 +50,48 @@ public class PlayerController : MonoBehaviour
         float moveY = Input.GetAxisRaw("Vertical");
 
         moveDirection = new Vector2(moveX, moveY).normalized;
-    }
-    void applyMovement()
-    {
-        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
-    }
 
-    void faceMouse()
-    {
-        Vector3 mousePosition = Input.mousePosition;
-        mousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-        direction = new Vector2(mousePosition.x - transform.position.x, mousePosition.y - transform.position.y);
-
-        transform.up = direction;
-    }
-
-    void ChargeBow()
-    {
-        bowCharge += Time.deltaTime;
-
-        bowPowerSlider.value = bowCharge;
-
-        if(bowCharge > MaxBowCharge)
+        if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            bowPowerSlider.value = MaxBowCharge;
+            type = 1;
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            type = 2;
+        }
+        if (Input.GetMouseButton(0)) // Attacking
+        {
+            playerAttackController.AttackSelector(type);
         }
     }
 
-    void FireBow()
+    void ApplyAnimation()
     {
-        if (bowCharge > MaxBowCharge) bowCharge = MaxBowCharge;
+        if (rb.velocity != new Vector2(0,0))
+        {
+            ar.SetBool("Run", true);
+        }
+        else
+        {
+            ar.SetBool("Run", false);
+        }
+    }
+    void ApplyMovement()
+    {
+        rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
+    }
+    void UpdateDirection()
+    {
+        var dirH = Input.GetAxis("Horizontal");
 
-        arrowSpeed = bowCharge + BowPower;
-
-        Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
-
-        canFire = false;
+        if (dirH > 0f)
+        {
+            sr.flipX = false;
+        }
+        else if (dirH < 0f)
+        {
+            sr.flipX = true;
+        }
     }
 
     //player modifier
@@ -120,4 +99,5 @@ public class PlayerController : MonoBehaviour
     {
         atkDmg = newDmgValue;
     }
+
 }
