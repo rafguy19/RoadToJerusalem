@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 moveDirection;
 
+    int type;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,9 +45,17 @@ public class PlayerController : MonoBehaviour
 
         moveDirection = new Vector2(moveX, moveY).normalized;
 
+        if(Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            type = 1;
+        }
+        else if(Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            type = 2;
+        }
         if (Input.GetMouseButton(0)) // Attacking
         {
-            playerAttackController.AttackSelector(1);
+            playerAttackController.AttackSelector(type);
         }
     }
     void applyMovement()
