@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
+
 public class WeaponSystem : MonoBehaviour
 {
     [SerializeField]
@@ -15,25 +14,7 @@ public class WeaponSystem : MonoBehaviour
     [SerializeField]
     private List<ItemParameter> parametersToModify, itemCurrentState;
 
-    [SerializeField]
-    private Image currentEquiped;
 
-    private void Update()
-    {
-        updateCurrentEquippedItem();
-    }
-    void updateCurrentEquippedItem()
-    {
-        if (weapon != null)
-        {
-            currentEquiped.enabled= true;
-            currentEquiped.sprite = weapon.ItemImage;
-        }
-        else
-        {
-            currentEquiped.enabled = false;
-        }
-    }
     public void SetWeapon(EquipableItem weaponItemSO, List<ItemParameter> itemState)
     {
         if (weapon != null)
