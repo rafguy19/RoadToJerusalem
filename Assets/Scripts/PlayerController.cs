@@ -5,6 +5,8 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Animator ar;
+    private SpriteRenderer sr;
     [SerializeField]
     private PlayerScriptableObject stats;
     private PlayerAttackController playerAttackController;
@@ -22,6 +24,8 @@ public class PlayerController : MonoBehaviour
         stats.Reset();
         moveSpeed = stats.speed;
         rb = gameObject.GetComponent<Rigidbody2D>();
+        ar = gameObject.GetComponent<Animator>();
+        sr = gameObject.GetComponent<SpriteRenderer>();
         playerAttackController = gameObject.GetComponent<PlayerAttackController>();
     }
 
@@ -29,11 +33,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Inputs();
+        ApplyAnimation();
+        UpdateDirection();
     }
 
     private void FixedUpdate()
     {
-        applyMovement();
+        ApplyMovement();
     }
 
     void Inputs()
@@ -48,11 +54,35 @@ public class PlayerController : MonoBehaviour
             playerAttackController.AttackSelector(1);
         }
     }
-    void applyMovement()
+
+    void ApplyAnimation()
+    {
+        if (rb.velocity != new Vector2(0,0))
+        {
+            ar.SetBool("Run", true);
+        }
+        else
+        {
+            ar.SetBool("Run", false);
+        }
+    }
+    void ApplyMovement()
     {
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
     }
+    void UpdateDirection()
+    {
+        var dirH = Input.GetAxis("Horizontal");
 
+        if (dirH > 0f)
+        {
+            sr.flipX = false;
+        }
+        else if (dirH < 0f)
+        {
+            sr.flipX = true;
+        }
+    }
 
     //player modifier
     public void UpdateDamage(int newDmgValue)
