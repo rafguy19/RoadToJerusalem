@@ -4,12 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private Animator ar;
     private SpriteRenderer sr;
     [SerializeField]
     private PlayerScriptableObject stats;
     private PlayerAttackController playerAttackController;
+    private HunterZombieMovement hunterZombieMovement;
+    public bool Jumped;
 
     //player stats
     private float moveSpeed;
@@ -29,6 +31,7 @@ public class PlayerController : MonoBehaviour
         ar = gameObject.GetComponent<Animator>();
         sr = gameObject.GetComponent<SpriteRenderer>();
         playerAttackController = gameObject.GetComponent<PlayerAttackController>();
+
     }
 
     // Update is called once per frame
@@ -46,35 +49,38 @@ public class PlayerController : MonoBehaviour
 
     void Inputs()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        if (!Jumped)
+        {
+            float moveX = Input.GetAxisRaw("Horizontal");
+            float moveY = Input.GetAxisRaw("Vertical");
 
-        moveDirection = new Vector2(moveX, moveY).normalized;
+            moveDirection = new Vector2(moveX, moveY).normalized;
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            type = 1;
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            type = 2;
-        }
-        if (Input.GetMouseButton(0)) // Attacking
-        {
-            playerAttackController.AttackSelector(type);
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                type = 1;
+            }
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                type = 2;
+            }
+            if (Input.GetMouseButton(0)) // Attacking
+            {
+                playerAttackController.AttackSelector(type);
+            }
         }
     }
 
     void ApplyAnimation()
     {
-        if (rb.velocity != new Vector2(0,0))
-        {
-            ar.SetBool("Run", true);
-        }
-        else
-        {
-            ar.SetBool("Run", false);
-        }
+        //if (rb.velocity != new Vector2(0,0))
+        //{
+        //    ar.SetBool("Run", true);
+        //}
+        //else
+        //{
+        //    ar.SetBool("Run", false);
+        //}
     }
     void ApplyMovement()
     {

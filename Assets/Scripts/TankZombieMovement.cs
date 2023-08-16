@@ -2,26 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HunterZombieMovement : MonoBehaviour
+public class TankZombieMovement : MonoBehaviour
 {
     public enum State
     {
-        IDLE,
         PATROL,
         CHASE,
-        POUNCE,
+        ATTACK,
+        GUARD,
     }
-
     [SerializeField]
     public State currentState;
     [SerializeField]
     public List<GameObject> waypoints = new List<GameObject>();
-    private HunterZombieAI HunterZombieAI;
-    private PlayerController playerController;
-    [SerializeField]
-    private QT_Event qt_Event;
-    public GameObject QTE;
-    private float pounceDist = 4f;
+    private float attackDist = 1.87f;
     private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
@@ -29,18 +23,15 @@ public class HunterZombieMovement : MonoBehaviour
     private bool isAttacking = false;
     private float attackTimer;
     private float attackTimerCountdown;
-    private float idleTime;
+    private float prevHealth;
 
     public Transform target;
 
     // Start is called before the first frame update
     void Start()
     {
-        QTE.SetActive(false);
         attackTimer = 1;
         zombieAttack = GetComponentInChildren<ZombieAttack>();
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        HunterZombieAI = GetComponent<HunterZombieAI>();
         rb = GetComponentInParent<Rigidbody2D>();
         ChangeState(currentState);
     }
@@ -48,11 +39,8 @@ public class HunterZombieMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentState == State.IDLE)
-        {
-            Idle();
-        }
-        else if (currentState == State.PATROL)
+        prevHealth = zombieAttack.enemyCurrentHealth;
+        if (currentState == State.PATROL)
         {
             Patrol();
         }
@@ -60,42 +48,36 @@ public class HunterZombieMovement : MonoBehaviour
         {
             Chase();
         }
-        else if (currentState == State.POUNCE)
+        else if (currentState == State.ATTACK)
         {
-            Pounce();
+            Attack();
+        }
+        else if (currentState == State.GUARD)
+        {
+            Guard();
         }
     }
 
     private void ChangeState(State next)
     {
-        if (next == State.IDLE)
+
+        if (next == State.PATROL)
         {
-            idleTime = 0.0f;
-            GetComponent<HunterZombieAI>().enabled = false;
-        }
-        else if (next == State.PATROL)
-        {
-            GetComponent<HunterZombieAI>().enabled = true;
+            GetComponent<TankZombieAI>().enabled = true;
         }
         else if (next == State.CHASE)
         {
-            GetComponent<HunterZombieAI>().enabled = true;
+            GetComponent<TankZombieAI>().enabled = true;
         }
-        else if (next == State.POUNCE)
+        else if (next == State.ATTACK)
         {
-            GetComponent<HunterZombieAI>().enabled = true;
+            GetComponent<TankZombieAI>().enabled = false;
+        }
+        else if (next == State.GUARD)
+        {
+            GetComponent<TankZombieAI>().enabled = true;
         }
         currentState = next;
-    }
-
-    private void Idle()
-    {
-        idleTime += Time.deltaTime;
-
-        if (idleTime >= 1.5f)
-        {
-            ChangeState(State.PATROL);
-        }
     }
 
     private void Patrol()
@@ -111,6 +93,10 @@ public class HunterZombieMovement : MonoBehaviour
 
             ChangeState(State.CHASE);
         }
+        else if (zombieAttack.enemyCurrentHealth != prevHealth)
+        {
+            ChangeState(State.GUARD);
+        }
     }
 
     private void Chase()
@@ -121,46 +107,70 @@ public class HunterZombieMovement : MonoBehaviour
             ChangeState(State.PATROL);
         }
 
-        if (Vector3.Distance(transform.position, target.transform.position) <= pounceDist)
+        if (Vector3.Distance(transform.position, target.transform.position) <= attackDist)
         {
-            HunterZombieAI.EnemySpeed = 600;
             attackTimerCountdown = attackTimer;
-            ChangeState(State.POUNCE);
+            ChangeState(State.ATTACK);
+        }
+        else if (zombieAttack.enemyCurrentHealth != prevHealth)
+        {
+            ChangeState(State.GUARD);
         }
     }
 
-    private void Pounce()
+    private void Attack()
     {
         isAttacking = false;
         if (!isAttacking)
         {
             attackTimerCountdown -= Time.deltaTime;
+            Debug.Log(attackTimerCountdown);
             if (attackTimerCountdown <= 0)
             {
-                playerController.Jumped = true;
-                playerController.rb.velocity = Vector2.zero;
                 zombieAttack.DealDamage();
-                QTE.SetActive(true);
                 attackTimerCountdown = attackTimer;
+                isAttacking = true;
             }
-
-            if(qt_Event.fillAmount >= 1)
-            {
-                qt_Event.enabled = false;
-                QTE.SetActive(false);
-                playerController.Jumped = false;
-            }
-            isAttacking = true;
         }
-        if (Vector3.Distance(transform.position, target.transform.position) > pounceDist)
+        if (Vector3.Distance(transform.position, target.transform.position) > attackDist)
         {
-            HunterZombieAI.EnemySpeed = 150;
             ChangeState(State.CHASE);
         }
         else if (Vector3.Distance(transform.position, target.transform.position) > 7.0f)
         {
-            HunterZombieAI.EnemySpeed = 150;
             ChangeState(State.PATROL);
         }
+        else if (zombieAttack.enemyCurrentHealth != prevHealth)
+        {
+            ChangeState(State.GUARD);
+        }
+    }
+
+    private bool isDamageReduced = false;
+    private float damageReductionDuration = 3.0f;
+    private float damageMultiplier = 0.4f;
+    private void Guard()
+    {
+        if (!isDamageReduced)
+        {
+            prevHealth = zombieAttack.enemyCurrentHealth;
+            isDamageReduced = true;
+            StartCoroutine(ReduceDamage());
+        }
+
+        if(zombieAttack.enemyCurrentHealth != prevHealth)
+        {
+            int reducedDamage = (int)(10 * damageMultiplier);
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                zombieAttack.ReceiveDamage(reducedDamage);
+            }
+        }
+    }
+
+    IEnumerator ReduceDamage()
+    {
+        yield return new WaitForSeconds(damageReductionDuration);
+        isDamageReduced = false;
     }
 }
