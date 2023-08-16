@@ -4,15 +4,33 @@ using UnityEngine;
 
 public class ZombieAttack : MonoBehaviour
 {
+    public int enemyMaxHealth = 20;
+    public int enemyCurrentHealth;
+    public GameObject entireZombie;
+
     public Transform enemyattackPoint;
     public float enemyattackRange;
     public LayerMask playerLayers;
     public int enemyattackDmg;
 
+    private void Start()
+    {
+        enemyCurrentHealth = enemyMaxHealth;
+    }
+
     private void Update()
     {
-
+        if (enemyCurrentHealth <= 0)
+        {
+            Destroy(entireZombie);
+        }
     }
+
+    public void ReceiveDamage(int playerDamage)
+    {
+        enemyCurrentHealth -= playerDamage;
+    }
+
     public void DealDamage()
     {
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(enemyattackPoint.position, enemyattackRange, playerLayers);
