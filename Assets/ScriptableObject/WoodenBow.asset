@@ -16,7 +16,7 @@ MonoBehaviour:
   <MaxStackSize>k__BackingField: 1
   <Name>k__BackingField: 
   <Description>k__BackingField: 
-  <ItemImage>k__BackingField: {fileID: 0}
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: 979da882264dfb34f8afa32f89ac32d2, type: 3}
   <DefaultParameterList>k__BackingField: []
   <weaponType>k__BackingField: 0
   modifierData: []
