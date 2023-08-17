@@ -12,6 +12,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private PlayerScriptableObject stats;
     private PlayerAttackController playerAttackController;
+    [SerializeField]
+    private GameObject attackpoint;
     public VisualEffect vfxRenderer;
 
     //player stats
@@ -45,6 +47,13 @@ public class PlayerController : MonoBehaviour
         UpdateDirection();
         UpdateFogClear();
 
+        if(playerCurrentWeapon.getWeapon() != null)
+        {
+            if (playerCurrentWeapon.getWeapon().weaponType != EquipableItem.WeaponType.MELEE)
+            {
+                attackpoint.transform.localPosition = new Vector3(0.2f, 0, 0);
+            }
+        }
     }
 
     private void FixedUpdate()
@@ -96,6 +105,7 @@ public class PlayerController : MonoBehaviour
         {
             ar.SetBool("Run", false);
         }
+
     }
     void ApplyMovement()
     {

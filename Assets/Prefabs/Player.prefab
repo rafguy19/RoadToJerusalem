@@ -240,11 +240,13 @@ GameObject:
   - component: {fileID: 7285343805483786756}
   - component: {fileID: 7285343805483786757}
   - component: {fileID: 7285343805483786758}
-  - component: {fileID: 2133874468}
   - component: {fileID: 2133874462}
   - component: {fileID: 2133874463}
   - component: {fileID: 1188738957}
-  - component: {fileID: 1517528581}
+  - component: {fileID: 1743157260}
+  - component: {fileID: 1743157252}
+  - component: {fileID: 1743157261}
+  - component: {fileID: 1743157262}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -341,32 +343,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &2133874468
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7285343805483786752}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.005685553, y: -0.013135225}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.21, y: 0.38}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.2210809, y: 0.4062873}
-  m_EdgeRadius: 0
 --- !u!114 &2133874462
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -374,7 +350,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7285343805483786752}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47a312070b99aff4192f793fde696e94, type: 3}
   m_Name: 
@@ -395,6 +371,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 11400000, guid: 7393a188340287b4eb25e3aa023e1912, type: 2}
+  vfxRenderer: {fileID: 0}
 --- !u!114 &1188738957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -410,11 +387,37 @@ MonoBehaviour:
   bullet: {fileID: 3075802436597653893, guid: 366b4f684e162814489661444f945481, type: 3}
   BowPower: 10
   MaxBowCharge: 20
-  bowCharge: 10
+  bowCharge: 0
   arrowSpeed: 10
   bowPowerSlider: {fileID: 0}
   playerMeleeController: {fileID: 449232382}
---- !u!95 &1517528581
+--- !u!61 &1743157260
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7285343805483786752}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.21, y: 0.38}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.21, y: 0.38}
+  m_EdgeRadius: 0
+--- !u!95 &1743157252
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -435,3 +438,35 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1743157261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7285343805483786752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d50075429a342548a946b36a1f99c61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventoryData: {fileID: 11400000, guid: 5776a03df2f900e409b990b81675d099, type: 2}
+--- !u!114 &1743157262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7285343805483786752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7dbee33d9f8205d489fe7329a02298e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: b52d863f9fc20bc46874815084e482d1, type: 2}
+  inventoryData: {fileID: 11400000, guid: 5776a03df2f900e409b990b81675d099, type: 2}
+  parametersToModify: []
+  itemCurrentState: []
+  currentEquip: {fileID: 0}
+  weaponName: {fileID: 0}
+  weaponStats: {fileID: 0}
