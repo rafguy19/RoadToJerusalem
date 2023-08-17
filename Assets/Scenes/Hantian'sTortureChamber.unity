@@ -931,6 +931,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1188738957, guid: 347a40b5245760e40a282c9238803e57, type: 3}
+      propertyPath: bowPowerSlider
+      value: 
+      objectReference: {fileID: 1569403923}
     - target: {fileID: 1743157262, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: weaponName
       value: 
@@ -947,6 +951,10 @@ PrefabInstance:
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 724776227}
+    - target: {fileID: 2133874463, guid: 347a40b5245760e40a282c9238803e57, type: 3}
+      propertyPath: slider
+      value: 
+      objectReference: {fileID: 1569403922}
     - target: {fileID: 7285343805483786752, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: m_Name
       value: Player
@@ -5194,6 +5202,22 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1569403922 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1948900647050330501, guid: 1f099b62916fd2a4482e48573cf30046, type: 3}
+  m_PrefabInstance: {fileID: 1349189416}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1569403923 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7842396593720813003, guid: 1f099b62916fd2a4482e48573cf30046, type: 3}
+  m_PrefabInstance: {fileID: 1349189416}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569403922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &2015139772

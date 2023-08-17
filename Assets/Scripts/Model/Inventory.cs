@@ -123,7 +123,10 @@ public class Inventory : ScriptableObject
         }
         return returnValue;
     }
-
+    public int GetInvSize()
+    {
+        return Size;
+    }
     public InventoryItem GetItemAt(int itemIndex)
     {
         return inventoryItems[itemIndex];
