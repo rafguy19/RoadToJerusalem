@@ -24,6 +24,8 @@ public class WeaponSystem : MonoBehaviour
     private TMP_Text weaponName;
     [SerializeField]
     private TMP_Text weaponStats;
+    [SerializeField]
+    private SpriteRenderer weaponSprite;
     private void Update()
     {
         updateCurrentWeapon();
@@ -68,6 +70,7 @@ public class WeaponSystem : MonoBehaviour
 
         this.weapon = weaponItemSO;
         this.itemCurrentState = new List<ItemParameter>(itemState);
+        weaponSprite.sprite = weapon.ItemImage;
         ModifyParameters();
     }
 
