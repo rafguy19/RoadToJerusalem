@@ -22,6 +22,8 @@ public class PlayerAttackController : MonoBehaviour
     [SerializeField]
     Slider bowPowerSlider;
 
+
+
     //For normal melee
     [SerializeField]
     private PlayerMeleeController playerMeleeController;
@@ -91,6 +93,7 @@ public class PlayerAttackController : MonoBehaviour
 
     void meleeAttack()
     {
+
         if (Input.GetMouseButtonDown(0) && canHit)
         {
             Debug.Log("SHING");

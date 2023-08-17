@@ -6,7 +6,17 @@ using UnityEngine;
 [CreateAssetMenu]
 public class EquipableItem : Item, IDestroyableItem, IItemAction
 {
-    
+    public enum WeaponType
+    {
+        BOW,
+        MELEE,
+        CROSSBOW,
+    }
+
+
+    [field: SerializeField]
+    public WeaponType weaponType { get; private set; }
+
     [SerializeField]
     private List<ModifierData> modifierData = new List<ModifierData>();
     public string ActionName => "Equip";
