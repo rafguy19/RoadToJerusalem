@@ -50,7 +50,7 @@ public class PlayerAttackController : MonoBehaviour
         {
             ChargeBow();
         }
-        else if (Input.GetMouseButtonUp(0) && canFire)
+        else if (Input.GetMouseButtonUp(0) && canFire && bowCharge > 2)
         {
             FireBow();
         }
