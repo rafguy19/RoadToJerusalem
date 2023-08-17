@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private PlayerScriptableObject stats;
     private PlayerAttackController playerAttackController;
+    public VisualEffect vfxRenderer;
 
     //player stats
     private float moveSpeed;
@@ -18,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 moveDirection;
 
     int type;
-
+  
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +39,7 @@ public class PlayerController : MonoBehaviour
         Inputs();
         ApplyAnimation();
         UpdateDirection();
+        UpdateFogClear();
     }
 
     private void FixedUpdate()
@@ -92,6 +95,7 @@ public class PlayerController : MonoBehaviour
         {
             sr.flipX = true;
         }
+        
     }
 
     //player modifier
@@ -99,5 +103,11 @@ public class PlayerController : MonoBehaviour
     {
         atkDmg = newDmgValue;
     }
-
+    void UpdateFogClear()
+    {
+        vfxRenderer.SetVector3("PlayerPosition", transform.localPosition);
+    }
+    
+        
+    
 }
