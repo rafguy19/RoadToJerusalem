@@ -64,7 +64,7 @@ public class InventoryController : MonoBehaviour
         inventoryUI.ResetAllItems();
         foreach (var item in inventoryState)
         {
-            inventoryUI.UpdateData(item.Key,item.Value.item.ItemImage, item.Value.quantity);
+            inventoryUI.UpdateData(item.Key,item.Value.item.ItemImage, item.Value.quantity, item.Value.item.IsStackable);
         }
     }
 
@@ -178,7 +178,7 @@ public class InventoryController : MonoBehaviour
         {
             return;
         }
-        inventoryUI.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity);
+        inventoryUI.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity,inventoryItem.item.IsStackable);
     }
 
     private void HandleSwapItems(int itemIndex_1, int itemIndex_2)
@@ -230,7 +230,7 @@ public class InventoryController : MonoBehaviour
                     inventoryUI.Show();
                     foreach (var item in inventoryData.GetCurrentInventoryState())
                     {
-                        inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
+                        inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity,item.Value.item.IsStackable);
                     }
                 }
                 else

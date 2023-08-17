@@ -24,9 +24,9 @@ public class MouseFollower : MonoBehaviour
         //set the canvas's postion = mosue position - canvas position[off set] (updates every frame)
         transform.position = canvas.transform.TransformPoint(Input.mousePosition - canvas.transform.position);
     }
-    public void SetData(Sprite sprite, int quantity)
+    public void SetData(Sprite sprite, int quantity,bool isStackable)
     {
-        item.SetData(sprite, quantity);
+        item.SetData(sprite, quantity,isStackable);
     }
     public void Toggle(bool val)
     {
