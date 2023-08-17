@@ -20,6 +20,7 @@ MonoBehaviour:
   <DefaultParameterList>k__BackingField:
   - itemParameter: {fileID: 11400000, guid: 483d1034571157e4dac526c81cdc023f, type: 2}
     value: 100
+  <weaponType>k__BackingField: 1
   modifierData:
   - statModifier: {fileID: 11400000, guid: c815b19ba42ec384fb62aa307494ce84, type: 2}
     value: 60

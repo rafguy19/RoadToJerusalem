@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,6 +12,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private PlayerScriptableObject stats;
     private PlayerAttackController playerAttackController;
+    public VisualEffect vfxRenderer;
 
     //player stats
     private float moveSpeed;
@@ -19,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     int type;
 
+    //checking of weapon type
+    private WeaponSystem playerCurrentWeapon;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +34,7 @@ public class PlayerController : MonoBehaviour
         ar = gameObject.GetComponent<Animator>();
         sr = gameObject.GetComponent<SpriteRenderer>();
         playerAttackController = gameObject.GetComponent<PlayerAttackController>();
+        playerCurrentWeapon = gameObject.GetComponent<WeaponSystem>();
     }
 
     // Update is called once per frame
@@ -37,6 +43,8 @@ public class PlayerController : MonoBehaviour
         Inputs();
         ApplyAnimation();
         UpdateDirection();
+        UpdateFogClear();
+
     }
 
     private void FixedUpdate()
@@ -51,17 +59,30 @@ public class PlayerController : MonoBehaviour
 
         moveDirection = new Vector2(moveX, moveY).normalized;
 
-        if(Input.GetKeyDown(KeyCode.Alpha1))
-        {
-            type = 1;
-        }
-        else if(Input.GetKeyDown(KeyCode.Alpha2))
-        {
-            type = 2;
-        }
+
         if (Input.GetMouseButton(0)) // Attacking
         {
-            playerAttackController.AttackSelector(type);
+            //if nothing is equiped (fist)
+            if(playerCurrentWeapon.getWeapon() == null)
+            {
+                playerAttackController.AttackSelector(2);
+            }
+            else
+            {
+                switch (playerCurrentWeapon.getWeapon().weaponType)
+                {
+                    case EquipableItem.WeaponType.BOW:
+                        playerAttackController.AttackSelector(1);
+                        break;
+                    case EquipableItem.WeaponType.MELEE:
+                        playerAttackController.AttackSelector(2);
+                        break;
+                    case EquipableItem.WeaponType.CROSSBOW:
+                        playerAttackController.AttackSelector(3);
+                        break;
+                }
+            }
+
         }
     }
 
@@ -92,6 +113,7 @@ public class PlayerController : MonoBehaviour
         {
             sr.flipX = true;
         }
+        
     }
 
     //player modifier
@@ -99,5 +121,13 @@ public class PlayerController : MonoBehaviour
     {
         atkDmg = newDmgValue;
     }
-
+    void UpdateFogClear()
+    {
+        if(vfxRenderer != null)
+        {
+            vfxRenderer.SetVector3("PlayerPosition", transform.localPosition);
+        }
+   
+    }
+    
 }
