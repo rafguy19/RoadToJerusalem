@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerMeleeController : MonoBehaviour
 {
+    [HideInInspector]
     public bool isOut;
+    [HideInInspector]
     public bool isAttack;
     float speed = 4;
     // Update is called once per frame
