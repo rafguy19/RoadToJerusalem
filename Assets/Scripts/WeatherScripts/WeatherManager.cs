@@ -8,6 +8,7 @@ public class WeatherManager : MonoBehaviour
     private bool RainActive;
     private bool FogActive;
     public GameObject RainDrops;
+        
     public GameObject RainSplash;
     public GameObject Fog;
     private float x;

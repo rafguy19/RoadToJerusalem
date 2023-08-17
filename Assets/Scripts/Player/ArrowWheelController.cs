@@ -15,14 +15,9 @@ public class ArrowWheelController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            arrowwheelelected = !arrowwheelelected;
-        }
-
-        if (arrowwheelelected)
-        {
             ar.SetBool("OpenArrowWheel", true);
         }
-        else
+        else if (Input.GetKeyUp(KeyCode.Q))
         {
             ar.SetBool("OpenArrowWheel", false);
         }
