@@ -56,10 +56,10 @@ public class PlayerController : MonoBehaviour
                 attackpoint.transform.localPosition = new Vector3(0.2f, 0, 0);
                 slider.SetActive(true);
             }
-            else
-            {
-                slider.SetActive(false);
-            }
+        }
+        else
+        {
+            slider.SetActive(false);
         }
     }
 
