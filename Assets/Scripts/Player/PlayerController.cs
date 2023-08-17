@@ -15,6 +15,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private GameObject attackpoint;
     public VisualEffect vfxRenderer;
+    [SerializeField]
+    GameObject slider;
 
     //player stats
     private float moveSpeed;
@@ -52,6 +54,11 @@ public class PlayerController : MonoBehaviour
             if (playerCurrentWeapon.getWeapon().weaponType != EquipableItem.WeaponType.MELEE)
             {
                 attackpoint.transform.localPosition = new Vector3(0.2f, 0, 0);
+                slider.SetActive(true);
+            }
+            else
+            {
+                slider.SetActive(false);
             }
         }
     }
