@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponSystem : MonoBehaviour
 {
@@ -14,7 +16,38 @@ public class WeaponSystem : MonoBehaviour
     [SerializeField]
     private List<ItemParameter> parametersToModify, itemCurrentState;
 
+    [SerializeField]
+    private Image currentEquip;
 
+    [SerializeField]
+    private TMP_Text weaponName;
+    [SerializeField]
+    private TMP_Text weaponStats;
+    private void Update()
+    {
+        updateCurrentWeapon();
+    }
+
+    void updateCurrentWeapon()
+    {
+        if(weapon == null)
+        {
+            currentEquip.enabled = false;
+            weaponName.enabled= false;
+        }
+        else
+        {
+            currentEquip.enabled = true;
+            weaponName.enabled = true;
+            currentEquip.sprite = weapon.ItemImage;
+            foreach(ItemParameter parameter in weapon.DefaultParameterList)
+            {
+                weaponStats.SetText(parameter.itemParameter.name + ":"+ parameter.value);
+            }
+            weaponName.SetText(weapon.name);
+        }
+  
+    }
     public void SetWeapon(EquipableItem weaponItemSO, List<ItemParameter> itemState)
     {
         if (weapon != null)
