@@ -66,7 +66,12 @@ public class PlayerController : MonoBehaviour
                 slider.SetActive(false);
             }
         }
+        else
+        {
+            slider.SetActive(false);
+        }
     }
+
 
     private void FixedUpdate()
     {
@@ -113,20 +118,26 @@ public class PlayerController : MonoBehaviour
             qt_Event.SetActive(true);
         }
     }
-
     void ApplyAnimation()
     {
-
         if (rb.velocity != new Vector2(0, 0))
         {
-            ar.SetBool("Run", true);
-        }
-        else
-        {
-            ar.SetBool("Run", false);
-        }
 
+            if (rb.velocity != new Vector2(0, 0))
+            {
+                ar.SetBool("Run", true);
+            }
+            else
+            {
+                ar.SetBool("Run", false);
+            }
+
+        }
     }
+
+
+
+
     void ApplyMovement()
     {
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);

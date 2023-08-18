@@ -6,6 +6,7 @@ public class WeatherManager : MonoBehaviour
 {
 
     public GameObject RainDrops;
+        
     public GameObject RainSplash;
     public GameObject Fog;
     public GameObject Night;
@@ -13,7 +14,7 @@ public class WeatherManager : MonoBehaviour
 
     void Start()
     {
-         x = Random.Range(0, 5);
+         x = Random.Range(0, 8);
         RainSplash.SetActive(false);
         RainDrops.SetActive(false);
         Fog.SetActive(false);
@@ -29,7 +30,7 @@ public class WeatherManager : MonoBehaviour
         if(Input.GetKeyDown("p"))
         {
             x++;
-            if(x>=5)
+            if(x>7)
             {
                 x = 0;
             }
@@ -43,26 +44,57 @@ public class WeatherManager : MonoBehaviour
         {
             //random weather generation for each stage 
             case 0:
+                //Just rain
             RainDrops.SetActive(true);
             RainSplash.SetActive(true);
             break;
             case 1:
+                //just fog
+            RainDrops.SetActive(false);
+            RainSplash.SetActive(false);
             Fog.SetActive(true);
             break;
             case 2:
+                //both rain and fog in the day
             RainDrops.SetActive(true);
             RainSplash.SetActive(true);
             Fog.SetActive(true);
             break;
             case 3:
+                //only night
+            RainSplash.SetActive(false);
+            RainDrops.SetActive(false);
+            Fog.SetActive(false);
             Night.SetActive(true);
             break;
             case 4:
+                //rain and night
+            RainDrops.SetActive(true);
+            RainSplash.SetActive(true);
+            Night.SetActive(true);
+            break;
+            case 5:
+                //fog and night
+            RainSplash.SetActive(false);
+            RainDrops.SetActive(false);
+            Fog.SetActive(true);
+            Night.SetActive(true);
+            break;
+            case 6:
+                //everything at night
+            RainDrops.SetActive(true);
+            RainSplash.SetActive(true);
+            Fog.SetActive(true);
+            Night.SetActive(true);
+            break;
+            case 7:
+                //nothing at all
             RainSplash.SetActive(false);
             RainDrops.SetActive(false);
             Fog.SetActive(false);
             Night.SetActive(false);
             break;
+           
 
         }
     }

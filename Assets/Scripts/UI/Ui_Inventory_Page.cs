@@ -56,12 +56,12 @@ public class Ui_Inventory_Page : MonoBehaviour
     }
 
 
-    public void UpdateData(int itemIndex, Sprite itemImage, int itemQuanitity)
+    public void UpdateData(int itemIndex, Sprite itemImage, int itemQuanitity, bool isStackable)
     {
         //check if item exist
         if(listOfUiItems.Count > itemIndex)
         {
-            listOfUiItems[itemIndex].SetData(itemImage, itemQuanitity);
+            listOfUiItems[itemIndex].SetData(itemImage, itemQuanitity,isStackable);
         }
     }
     private void HandleShowItemActions(Ui_Inventory_Item inventory_item_ui)
@@ -76,10 +76,10 @@ public class Ui_Inventory_Page : MonoBehaviour
         OnItemActionRequested?.Invoke(index);
     }
 
-    public void CreateDraggedItem(Sprite sprtie, int quantity)
+    public void CreateDraggedItem(Sprite sprtie, int quantity, bool isStackable)
     {
         mousefollower.Toggle(true);
-        mousefollower.SetData(sprtie, quantity);
+        mousefollower.SetData(sprtie, quantity,isStackable);
     }
     private void HandleBeginDrag(Ui_Inventory_Item inventory_item_ui)
     {

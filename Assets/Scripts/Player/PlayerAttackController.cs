@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,11 +24,21 @@ public class PlayerAttackController : MonoBehaviour
     Slider bowPowerSlider;
 
 
+    [SerializeField]
+    public Inventory inventoryData;
 
     //For normal melee
     [SerializeField]
     private PlayerMeleeController playerMeleeController;
 
+    //to check selected arrow
+    private ArrowWheelController arrowWheelController;
+
+    int arrowLoctionInInv = 0;
+    private void Start()
+    {
+        arrowWheelController = GameObject.FindGameObjectWithTag("ArrowWheel").GetComponent<ArrowWheelController>();
+    }
     public void AttackSelector(int type)
     {
         switch (type)
@@ -46,12 +57,97 @@ public class PlayerAttackController : MonoBehaviour
 
     private void bowAttack()
     {
+
+
         if (Input.GetMouseButton(0) && canFire)
         {
-            ChargeBow();
+            int arrowAmt = 0;
+            bool arrowRemoved = false;
+            //check if selected arrow exists
+            for (int x = 0; x < inventoryData.GetInvSize(); x++)
+            {
+                if (inventoryData.GetItemAt(x).item == null)
+                {
+                    continue;
+                }
+
+                else
+                {
+                    switch (arrowWheelController.selectedArrow)
+                    {
+                        case 1://normal arrow
+                            if (inventoryData.GetItemAt(x).item.name == "NormalArrow")
+                            {
+                                arrowLoctionInInv = x;
+                                arrowAmt += inventoryData.GetItemAt(x).quantity;
+                                if(arrowRemoved == false)
+                                {
+
+ 
+                                    arrowRemoved = true;
+                                }
+                            }
+                            break;
+                        case 2: //fire arrow
+                            if (inventoryData.GetItemAt(x).item.name == "FireArrow")
+                            {
+                                arrowLoctionInInv = x;
+                                arrowAmt += inventoryData.GetItemAt(x).quantity;
+                                if (arrowRemoved == false)
+                                {
+
+
+                                    arrowRemoved = true;
+                                }
+                            }
+                            break;
+                        case 3: //holy arrow
+                            if (inventoryData.GetItemAt(x).item.name == "HolyArrow")
+                            {
+                                arrowLoctionInInv = x;
+                                arrowAmt += inventoryData.GetItemAt(x).quantity;
+                                if (arrowRemoved == false)
+                                {
+
+
+                                    arrowRemoved = true;
+                                }
+                            }
+                            break;
+                        case 4: //unholy arrow
+                            if (inventoryData.GetItemAt(x).item.name == "UnholyArrow")
+                            {
+                                arrowLoctionInInv = x;
+                                arrowAmt += inventoryData.GetItemAt(x).quantity;
+                                if (arrowRemoved == false)
+                                {
+
+
+                                    arrowRemoved = true;
+                                }
+                            }
+                            break;
+                    }
+
+                }
+            }
+
+            if(arrowAmt > 0)
+            {
+                ChargeBow();
+
+            }
+            else
+            {
+                Debug.Log("NO arrows");
+            }
         }
+
         else if (Input.GetMouseButtonUp(0) && canFire && bowCharge > 2)
-        {
+        {   
+
+            inventoryData.RemoveItem(arrowLoctionInInv, 1);
+            Debug.Log(inventoryData.GetItemAt(arrowLoctionInInv).quantity);
             FireBow();
         }
         else // Not firing bow
@@ -88,6 +184,8 @@ public class PlayerAttackController : MonoBehaviour
 
         Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
 
+        //remove one selected arrow
+
         canFire = false;
     }
 
@@ -96,7 +194,6 @@ public class PlayerAttackController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && canHit)
         {
-            Debug.Log("SHING");
             playerMeleeController.Melee();
         }
     }
