@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
 public class SmokerZombie : MonoBehaviour
 {
     public enum State
@@ -16,9 +15,6 @@ public class SmokerZombie : MonoBehaviour
     public List<GameObject> waypoints = new List<GameObject>();
     private HunterZombieAI HunterZombieAI;
     private PlayerController playerController;
-    [SerializeField]
-    private QT_Event qt_Event;
-    public GameObject QTE;
     private float pounceDist = 4f;
     private SpriteRenderer sr;
     public int targetIndex;
@@ -29,6 +25,7 @@ public class SmokerZombie : MonoBehaviour
     private float attackTimerCountdown;
     private float idleTime;
     private float fogTime;
+    public GameObject smoke;
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +73,7 @@ public class SmokerZombie : MonoBehaviour
         if (idleTime >= 15.0f)
         {
             ChangeState(State.FOG);
+            smoke.SetActive(true);
             idleTime -= Time.deltaTime;
         }
     }
@@ -86,6 +84,7 @@ public class SmokerZombie : MonoBehaviour
 
         if (fogTime >= 10.0f)
         {
+            smoke.SetActive(false);
             ChangeState(State.IDLE);
         }
     }
