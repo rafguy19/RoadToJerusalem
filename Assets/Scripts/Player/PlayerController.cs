@@ -108,16 +108,10 @@ public class PlayerController : MonoBehaviour
                 }
             }
         }
-<<<<<<< HEAD
-
-        void ApplyAnimation()
-=======
     }
     void ApplyAnimation()
     {
-
         if (rb.velocity != new Vector2(0, 0))
->>>>>>> main
         {
 
             if (rb.velocity != new Vector2(0, 0))
@@ -130,42 +124,11 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-        void ApplyMovement()
-        {
-            rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
-        }
-        void UpdateDirection()
-        {
-            var dirH = Input.GetAxis("Horizontal");
-
-            if (dirH > 0f)
-            {
-                sr.flipX = false;
-            }
-            else if (dirH < 0f)
-            {
-                sr.flipX = true;
-            }
-
-        }
-
-        //player modifier
-        public void UpdateDamage(int newDmgValue)
-        {
-            atkDmg = newDmgValue;
-        }
-        void UpdateFogClear()
-        {
-            if (vfxRenderer != null)
-            {
-                vfxRenderer.SetVector3("PlayerPosition", transform.localPosition);
-            }
-
-        }
-
     }
-<<<<<<< HEAD
-=======
+
+
+
+
     void ApplyMovement()
     {
         rb.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * moveSpeed);
@@ -198,5 +161,4 @@ public class PlayerController : MonoBehaviour
         }
 
     }
->>>>>>> main
 }
