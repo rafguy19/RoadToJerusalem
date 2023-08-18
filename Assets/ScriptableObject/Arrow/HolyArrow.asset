@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <IsStackable>k__BackingField: 1
   <MaxStackSize>k__BackingField: 5
-  <Name>k__BackingField: Normal arrow
-  <Description>k__BackingField: arrow, just arrow
-  <ItemImage>k__BackingField: {fileID: 21300000, guid: edde441fed9d255469b5c299bc1c51a4, type: 3}
+  <Name>k__BackingField: Holy arrow
+  <Description>k__BackingField: Arrow recommended by the pope
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: f113c648b23192a4e807e40a9bac493b, type: 3}
   <DefaultParameterList>k__BackingField: []
-  <weaponType>k__BackingField: 0
+  <arrowType>k__BackingField: 0

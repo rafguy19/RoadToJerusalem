@@ -15,7 +15,7 @@ MonoBehaviour:
   <IsStackable>k__BackingField: 1
   <MaxStackSize>k__BackingField: 5
   <Name>k__BackingField: Fire arrow
-  <Description>k__BackingField: arrow, just arrow
-  <ItemImage>k__BackingField: {fileID: 21300000, guid: edde441fed9d255469b5c299bc1c51a4, type: 3}
+  <Description>k__BackingField: Arrow coated with oil
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: c9b778e841f83c84f9787e04dd4a805e, type: 3}
   <DefaultParameterList>k__BackingField: []
   <arrowType>k__BackingField: 0
