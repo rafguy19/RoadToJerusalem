@@ -16,7 +16,12 @@ public class HunterZombieMovement : MonoBehaviour
     public State currentState;
     [SerializeField]
     public List<GameObject> waypoints = new List<GameObject>();
-    private float attackDist = 1.87f;
+    private HunterZombieAI HunterZombieAI;
+    private PlayerController playerController;
+    [SerializeField]
+    private QT_Event qt_Event;
+    public GameObject QTE;
+    private float pounceDist = 4f;
     private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
@@ -31,8 +36,11 @@ public class HunterZombieMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        QTE.SetActive(false);
         attackTimer = 1;
         zombieAttack = GetComponentInChildren<ZombieAttack>();
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        HunterZombieAI = GetComponent<HunterZombieAI>();
         rb = GetComponentInParent<Rigidbody2D>();
         ChangeState(currentState);
     }
@@ -75,7 +83,7 @@ public class HunterZombieMovement : MonoBehaviour
         }
         else if (next == State.POUNCE)
         {
-            GetComponent<HunterZombieAI>().enabled = false;
+            GetComponent<HunterZombieAI>().enabled = true;
         }
         currentState = next;
     }
@@ -113,8 +121,9 @@ public class HunterZombieMovement : MonoBehaviour
             ChangeState(State.PATROL);
         }
 
-        if (Vector3.Distance(transform.position, target.transform.position) <= attackDist)
+        if (Vector3.Distance(transform.position, target.transform.position) <= pounceDist)
         {
+            HunterZombieAI.EnemySpeed = 600;
             attackTimerCountdown = attackTimer;
             ChangeState(State.POUNCE);
         }
@@ -128,17 +137,29 @@ public class HunterZombieMovement : MonoBehaviour
             attackTimerCountdown -= Time.deltaTime;
             if (attackTimerCountdown <= 0)
             {
+                playerController.Jumped = true;
+                playerController.rb.velocity = Vector2.zero;
                 zombieAttack.DealDamage();
+                QTE.SetActive(true);
                 attackTimerCountdown = attackTimer;
-                isAttacking = true;
             }
+
+            if(qt_Event.fillAmount >= 1)
+            {
+                qt_Event.enabled = false;
+                QTE.SetActive(false);
+                playerController.Jumped = false;
+            }
+            isAttacking = true;
         }
-        if (Vector3.Distance(transform.position, target.transform.position) > attackDist)
+        if (Vector3.Distance(transform.position, target.transform.position) > pounceDist)
         {
+            HunterZombieAI.EnemySpeed = 150;
             ChangeState(State.CHASE);
         }
         else if (Vector3.Distance(transform.position, target.transform.position) > 7.0f)
         {
+            HunterZombieAI.EnemySpeed = 150;
             ChangeState(State.PATROL);
         }
     }
