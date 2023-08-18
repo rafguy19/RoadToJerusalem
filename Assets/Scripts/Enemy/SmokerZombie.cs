@@ -5,8 +5,8 @@ public class SmokerZombie : MonoBehaviour
 {
     public enum State
     {
-        FOG,
         IDLE,
+        FOG,
     }
 
     [SerializeField]
@@ -41,28 +41,26 @@ public class SmokerZombie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentState == State.FOG)
-        {
-            Fog();
-
-        }
-        else if (currentState == State.IDLE)
+        if (currentState == State.IDLE)
         {
             Idle();
+        }
+        else if (currentState == State.FOG)
+        {
+            Fog();
         }
     }
 
     private void ChangeState(State next)
     {
-        if (next == State.FOG)
-        {
-            fogTime = 0.0f;
-            //GetComponent<HunterZombieAI>().enabled = false;
-        }
-        else if (next == State.IDLE)
+        if (next == State.IDLE)
         {
             idleTime = 0.0f;
-            //GetComponent<HunterZombieAI>().enabled = false;
+            GetComponent<HunterZombieAI>().enabled = false;
+        }
+        else if (next == State.FOG)
+        {
+            GetComponent<HunterZombieAI>().enabled = false;
         }
         currentState = next;
     }
@@ -73,8 +71,8 @@ public class SmokerZombie : MonoBehaviour
 
         if (idleTime >= 15.0f)
         {
-            smoke.SetActive(true);
             ChangeState(State.FOG);
+            smoke.SetActive(true);
             idleTime -= Time.deltaTime;
         }
     }
