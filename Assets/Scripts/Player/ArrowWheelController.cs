@@ -7,8 +7,8 @@ public class ArrowWheelController : MonoBehaviour
 {
     public Animator ar;
     private bool arrowwheelelected = false;
-    public static int arrowID;
-    public int selectedArrow;
+    public static int arrowID = 1;//defaulted to normal arrow
+    public int selectedArrow; 
 
     // Update is called once per frame
     void Update()
@@ -24,23 +24,21 @@ public class ArrowWheelController : MonoBehaviour
 
         switch (arrowID)
         {
-            case 0: // No arrow selected
-                break;
             case 1: // arrow selected
                 selectedArrow = 1;
-                Debug.Log("Arrow");
+                //Debug.Log("Arrow");
                 break;
             case 2: // fire arrow selected
                 selectedArrow = 2;
-                Debug.Log("Fire Arrow");
+                //Debug.Log("Fire Arrow");
                 break;
             case 3: // holy arrow selected
                 selectedArrow = 3;
-                Debug.Log("Holy Arrow");
+                //Debug.Log("Holy Arrow");
                 break;
             case 4: // unholy arrow selected
                 selectedArrow = 4;
-                Debug.Log("Unholy Arrow");
+                //Debug.Log("Unholy Arrow");
                 break;
             default:
                 break;

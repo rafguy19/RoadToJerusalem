@@ -392,6 +392,7 @@ MonoBehaviour:
   bowCharge: 0
   arrowSpeed: 10
   bowPowerSlider: {fileID: 0}
+  inventoryData: {fileID: 0}
   playerMeleeController: {fileID: 449232382}
 --- !u!61 &1743157260
 BoxCollider2D:

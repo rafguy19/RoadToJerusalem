@@ -13,10 +13,15 @@ public class Arrow : Item, IDestroyableItem//, IItemAction
 
 
     [field: SerializeField]
-    public ArrowType weaponType { get; private set; }
+    public ArrowType arrowType { get; private set; }
 
     public string ActionName => "Equip";
 
+
+    public ArrowType getArrowType()
+    {
+        return arrowType;
+    }
 
     //public bool PerformAction(GameObject character, List<ItemParameter> itemState = null)
     //{

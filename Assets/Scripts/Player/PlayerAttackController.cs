@@ -31,6 +31,13 @@ public class PlayerAttackController : MonoBehaviour
     [SerializeField]
     private PlayerMeleeController playerMeleeController;
 
+    //to check selected arrow
+    private ArrowWheelController arrowWheelController;
+
+    private void Start()
+    {
+        arrowWheelController = GameObject.FindGameObjectWithTag("ArrowWheel").GetComponent<ArrowWheelController>();
+    }
     public void AttackSelector(int type)
     {
         switch (type)
@@ -52,7 +59,7 @@ public class PlayerAttackController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            Debug.Log("RUNNIG LAH");
+            int arrowAmt = 0;
             //check if selected arrow exists
             for (int x = 0; x < inventoryData.GetInvSize(); x++)
             {
@@ -61,11 +68,39 @@ public class PlayerAttackController : MonoBehaviour
                     continue;
                 }
 
-                if (inventoryData.GetItemAt(x).item.GetType() == Type.GetType("Arrow"))
+                else
                 {
-                    Debug.Log("Nigger");
+                    switch (arrowWheelController.selectedArrow)
+                    {
+                        case 1://normal arrow
+                            if(inventoryData.GetItemAt(x).item.name == "NormalArrow")
+                            {
+                                arrowAmt += inventoryData.GetItemAt(x).quantity;
+                            }
+                            break;
+                        case 2: //fire arrow
+                            if (inventoryData.GetItemAt(x).item.name == "FireArrow")
+                            {
+                                arrowAmt += inventoryData.GetItemAt(x).quantity;
+                            }
+                            break;
+                        case 3: //holy arrow
+                            if (inventoryData.GetItemAt(x).item.name == "HolyArrow")
+                            {
+                                arrowAmt += inventoryData.GetItemAt(x).quantity;
+                            }
+                            break;
+                        case 4: //unholy arrow
+                            if (inventoryData.GetItemAt(x).item.name == "UnholyArrow")
+                            {
+                                arrowAmt += inventoryData.GetItemAt(x).quantity;
+                            }
+                            break;
+                    }
+
                 }
             }
+            Debug.Log(arrowAmt);
         }
         if (Input.GetMouseButton(0) && canFire)
         {

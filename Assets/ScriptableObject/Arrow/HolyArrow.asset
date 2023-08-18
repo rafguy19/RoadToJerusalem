@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e34ce8068d603514cbe7bb69d9463f57, type: 3}
+  m_Name: HolyArrow
+  m_EditorClassIdentifier: 
+  <IsStackable>k__BackingField: 1
+  <MaxStackSize>k__BackingField: 5
+  <Name>k__BackingField: Normal arrow
+  <Description>k__BackingField: arrow, just arrow
+  <ItemImage>k__BackingField: {fileID: 21300000, guid: edde441fed9d255469b5c299bc1c51a4, type: 3}
+  <DefaultParameterList>k__BackingField: []
+  <weaponType>k__BackingField: 0
