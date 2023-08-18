@@ -1,23 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
-using System;
 using UnityEngine;
 using Pathfinding;
 
-public class BasicZombieAI : MonoBehaviour
+public class TankZombieAI : MonoBehaviour
 {
     public Transform target;
     public float nextWaypointDistance = 3f;
     public Transform zombieGFX;
 
-    private int EnemySpeed;
+    public int EnemySpeed;
 
-    private BasicZombieMovement basicZombieMove; 
+    private TankZombieMovement tankZombieMovement;
 
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
-    //private float TrueSpeed;
     Seeker seeker;
     Rigidbody2D rb;
 
@@ -26,22 +24,23 @@ public class BasicZombieAI : MonoBehaviour
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        basicZombieMove = GetComponent<BasicZombieMovement>();
-        //TrueSpeed = EnemySpeed[Random.Range(0, EnemySpeed.Length)];
-        System.Random random = new System.Random();
-        EnemySpeed = random.Next(200, 401);
+        tankZombieMovement = GetComponent<TankZombieMovement>();
         InvokeRepeating("UpdatePath", 0f, .5f);
-        Debug.Log(EnemySpeed);
     }
 
     void UpdatePath()
     {
-        if (basicZombieMove.currentState == BasicZombieMovement.State.PATROL)
+        if (tankZombieMovement.currentState == TankZombieMovement.State.PATROL)
         {
             if (seeker.IsDone())
-                seeker.StartPath(rb.position, basicZombieMove.waypoints[basicZombieMove.targetIndex].transform.position, OnPathComplete);
+                seeker.StartPath(rb.position, tankZombieMovement.waypoints[tankZombieMovement.targetIndex].transform.position, OnPathComplete);
         }
-        else if (basicZombieMove.currentState == BasicZombieMovement.State.CHASE)
+        else if (tankZombieMovement.currentState == TankZombieMovement.State.CHASE)
+        {
+            if (seeker.IsDone())
+                seeker.StartPath(rb.position, target.transform.position, OnPathComplete);
+        }
+        else if (tankZombieMovement.currentState == TankZombieMovement.State.GUARD)
         {
             if (seeker.IsDone())
                 seeker.StartPath(rb.position, target.transform.position, OnPathComplete);

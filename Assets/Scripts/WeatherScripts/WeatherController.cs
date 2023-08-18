@@ -5,7 +5,7 @@ using UnityEngine;
 public class WeatherController : MonoBehaviour
 {
 
-    //bool for on off weather aka rain and fog, and also switching between day and night
+    //used to turn on and off the weather individually.
     private bool Night;
     private bool Rain;
     private bool Fog;
@@ -18,39 +18,9 @@ public class WeatherController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //detecting if rain is active
-        //if (RainDrops.activeSelf && RainSplash.activeSelf)
-        //{
-        //    Rain = true;
-
-        //}
-        //if (Rain = true)
-        //{
-        //    RainDrops.SetActive(true);
-        //    RainSplash.SetActive(true);
-        //}
-        //else if (Rain = false)
-        //{
-        //    RainDrops.SetActive(false);
-        //    RainSplash.SetActive(false);
-        //}
-        //if(FogActive.activeSelf)
-        //{
-        //    Fog = true;
-        //}
-        //else if(Fog=false)
-        //{
-        //    FogActive.SetActive(false);
-        //}
-        //if(Night.activeSelf)
-        //{
-        //    Night = true;
-        //}
-        //else if(Night=false)
-        //{
-        //    DayNight.SetActive(false);
-        //}
-        
+      
+        //check if the weather state is active
+        //do it so that they can be individually activated using as less input as possible
         //input to turn on and off day night
     }
 }
