@@ -18,7 +18,7 @@ public class FogClearFollow : MonoBehaviour
         }
         if(vfxSmoker!=null)
         {
-            vfxSmoker.SetVector3("PlayerPosition", transform.localPosition);
+            vfxSmoker.SetVector3("PlayerPos", transform.localPosition);
         }
     }
 }

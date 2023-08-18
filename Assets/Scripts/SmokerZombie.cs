@@ -5,8 +5,8 @@ public class SmokerZombie : MonoBehaviour
 {
     public enum State
     {
-        IDLE,
         FOG,
+        IDLE,
     }
 
     [SerializeField]
@@ -30,7 +30,6 @@ public class SmokerZombie : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        QTE.SetActive(false);
         attackTimer = 1;
         zombieAttack = GetComponentInChildren<ZombieAttack>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -42,26 +41,28 @@ public class SmokerZombie : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentState == State.IDLE)
-        {
-            Idle();
-        }
-        else if (currentState == State.FOG)
+        if (currentState == State.FOG)
         {
             Fog();
+
+        }
+        else if (currentState == State.IDLE)
+        {
+            Idle();
         }
     }
 
     private void ChangeState(State next)
     {
-        if (next == State.IDLE)
+        if (next == State.FOG)
+        {
+            fogTime = 0.0f;
+            //GetComponent<HunterZombieAI>().enabled = false;
+        }
+        else if (next == State.IDLE)
         {
             idleTime = 0.0f;
-            GetComponent<HunterZombieAI>().enabled = false;
-        }
-        else if (next == State.FOG)
-        {
-            GetComponent<HunterZombieAI>().enabled = false;
+            //GetComponent<HunterZombieAI>().enabled = false;
         }
         currentState = next;
     }
@@ -72,8 +73,8 @@ public class SmokerZombie : MonoBehaviour
 
         if (idleTime >= 15.0f)
         {
-            ChangeState(State.FOG);
             smoke.SetActive(true);
+            ChangeState(State.FOG);
             idleTime -= Time.deltaTime;
         }
     }
