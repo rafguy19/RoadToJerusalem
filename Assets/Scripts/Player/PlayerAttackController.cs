@@ -96,7 +96,6 @@ public class PlayerAttackController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && canHit)
         {
-            Debug.Log("SHING");
             playerMeleeController.Melee();
         }
     }
