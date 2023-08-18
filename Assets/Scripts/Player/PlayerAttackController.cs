@@ -34,6 +34,7 @@ public class PlayerAttackController : MonoBehaviour
     //to check selected arrow
     private ArrowWheelController arrowWheelController;
 
+    int arrowLoctionInInv = 0;
     private void Start()
     {
         arrowWheelController = GameObject.FindGameObjectWithTag("ArrowWheel").GetComponent<ArrowWheelController>();
@@ -57,9 +58,11 @@ public class PlayerAttackController : MonoBehaviour
     private void bowAttack()
     {
 
-        if (Input.GetKeyDown(KeyCode.F))
+
+        if (Input.GetMouseButton(0) && canFire)
         {
             int arrowAmt = 0;
+            bool arrowRemoved = false;
             //check if selected arrow exists
             for (int x = 0; x < inventoryData.GetInvSize(); x++)
             {
@@ -73,43 +76,78 @@ public class PlayerAttackController : MonoBehaviour
                     switch (arrowWheelController.selectedArrow)
                     {
                         case 1://normal arrow
-                            if(inventoryData.GetItemAt(x).item.name == "NormalArrow")
+                            if (inventoryData.GetItemAt(x).item.name == "NormalArrow")
                             {
+                                arrowLoctionInInv = x;
                                 arrowAmt += inventoryData.GetItemAt(x).quantity;
+                                if(arrowRemoved == false)
+                                {
+
+ 
+                                    arrowRemoved = true;
+                                }
                             }
                             break;
                         case 2: //fire arrow
                             if (inventoryData.GetItemAt(x).item.name == "FireArrow")
                             {
+                                arrowLoctionInInv = x;
                                 arrowAmt += inventoryData.GetItemAt(x).quantity;
+                                if (arrowRemoved == false)
+                                {
+
+
+                                    arrowRemoved = true;
+                                }
                             }
                             break;
                         case 3: //holy arrow
                             if (inventoryData.GetItemAt(x).item.name == "HolyArrow")
                             {
+                                arrowLoctionInInv = x;
                                 arrowAmt += inventoryData.GetItemAt(x).quantity;
+                                if (arrowRemoved == false)
+                                {
+
+
+                                    arrowRemoved = true;
+                                }
                             }
                             break;
                         case 4: //unholy arrow
                             if (inventoryData.GetItemAt(x).item.name == "UnholyArrow")
                             {
+                                arrowLoctionInInv = x;
                                 arrowAmt += inventoryData.GetItemAt(x).quantity;
+                                if (arrowRemoved == false)
+                                {
+
+
+                                    arrowRemoved = true;
+                                }
                             }
                             break;
                     }
 
                 }
             }
-            Debug.Log(arrowAmt);
-        }
-        if (Input.GetMouseButton(0) && canFire)
-        {
 
-            ChargeBow();
+            if(arrowAmt > 0)
+            {
+                ChargeBow();
+
+            }
+            else
+            {
+                Debug.Log("NO arrows");
+            }
         }
 
         else if (Input.GetMouseButtonUp(0) && canFire && bowCharge > 2)
-        {
+        {   
+
+            inventoryData.RemoveItem(arrowLoctionInInv, 1);
+            Debug.Log(inventoryData.GetItemAt(arrowLoctionInInv).quantity);
             FireBow();
         }
         else // Not firing bow
@@ -145,6 +183,8 @@ public class PlayerAttackController : MonoBehaviour
         arrowSpeed = bowCharge * 1.5f;
 
         Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
+
+        //remove one selected arrow
 
         canFire = false;
     }

@@ -176,6 +176,7 @@ public class Inventory : ScriptableObject
             InformAboutChange();
         }
     }
+
 }   
 [Serializable]
 //it is much ez to add items this way as its variables can't be edited by other scripts compared to using a class
@@ -188,6 +189,7 @@ public struct InventoryItem
 
     //returns when the inventory is empty
     public bool IsEmpty => item == null;
+
 
     public InventoryItem ChangeQuantity(int newQuantity)
     {
@@ -204,4 +206,5 @@ public struct InventoryItem
         item = null, quantity=0,
         itemState = new List<ItemParameter>()
     };
+
 }
