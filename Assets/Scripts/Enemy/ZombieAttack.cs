@@ -13,9 +13,11 @@ public class ZombieAttack : MonoBehaviour
     public LayerMask playerLayers;
     public int enemyattackDmg;
 
+    private BasicZombieMovement zombieMovement;
     private void Start()
     {
         enemyCurrentHealth = enemyMaxHealth;
+        zombieMovement = gameObject.GetComponentInParent<BasicZombieMovement>();
     }
 
     private void Update()
@@ -38,6 +40,7 @@ public class ZombieAttack : MonoBehaviour
         {
             player.GetComponent<PlayerHealth>().TakeDamage(enemyattackDmg);
         }
+        zombieMovement.isAttacking = false;
     }
 
     private void OnDrawGizmosSelected()
