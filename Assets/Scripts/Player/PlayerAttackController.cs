@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +24,8 @@ public class PlayerAttackController : MonoBehaviour
     Slider bowPowerSlider;
 
 
+    [SerializeField]
+    public Inventory inventoryData;
 
     //For normal melee
     [SerializeField]
@@ -46,10 +49,30 @@ public class PlayerAttackController : MonoBehaviour
 
     private void bowAttack()
     {
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Debug.Log("RUNNIG LAH");
+            //check if selected arrow exists
+            for (int x = 0; x < inventoryData.GetInvSize(); x++)
+            {
+                if (inventoryData.GetItemAt(x).item == null)
+                {
+                    continue;
+                }
+
+                if (inventoryData.GetItemAt(x).item.GetType() == Type.GetType("Arrow"))
+                {
+                    Debug.Log("Nigger");
+                }
+            }
+        }
         if (Input.GetMouseButton(0) && canFire)
         {
+
             ChargeBow();
         }
+
         else if (Input.GetMouseButtonUp(0) && canFire && bowCharge > 2)
         {
             FireBow();
