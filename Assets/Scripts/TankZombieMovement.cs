@@ -23,7 +23,7 @@ public class TankZombieMovement : MonoBehaviour
     private bool isAttacking = false;
     private float attackTimer;
     private float attackTimerCountdown;
-    private float prevHealth;
+    private int prevHealth;
 
     public Transform target;
 
@@ -32,6 +32,7 @@ public class TankZombieMovement : MonoBehaviour
     {
         attackTimer = 1;
         zombieAttack = GetComponentInChildren<ZombieAttack>();
+        prevHealth = zombieAttack.enemyCurrentHealth;
         rb = GetComponentInParent<Rigidbody2D>();
         ChangeState(currentState);
     }
@@ -39,7 +40,6 @@ public class TankZombieMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        prevHealth = zombieAttack.enemyCurrentHealth;
         if (currentState == State.PATROL)
         {
             Patrol();
@@ -55,6 +55,11 @@ public class TankZombieMovement : MonoBehaviour
         else if (currentState == State.GUARD)
         {
             Guard();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            zombieAttack.ReceiveDamage(10);
         }
     }
 
@@ -90,11 +95,11 @@ public class TankZombieMovement : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.transform.position) <= 7.0f)
         {
-
             ChangeState(State.CHASE);
         }
-        else if (zombieAttack.enemyCurrentHealth != prevHealth)
+        else if (prevHealth != zombieAttack.enemyCurrentHealth)
         {
+            damageReductionDelay = damageReductionDelayTimer;
             ChangeState(State.GUARD);
         }
     }
@@ -112,8 +117,9 @@ public class TankZombieMovement : MonoBehaviour
             attackTimerCountdown = attackTimer;
             ChangeState(State.ATTACK);
         }
-        else if (zombieAttack.enemyCurrentHealth != prevHealth)
+        else if (prevHealth != zombieAttack.enemyCurrentHealth)
         {
+            damageReductionDelay = damageReductionDelayTimer;
             ChangeState(State.GUARD);
         }
     }
@@ -124,7 +130,6 @@ public class TankZombieMovement : MonoBehaviour
         if (!isAttacking)
         {
             attackTimerCountdown -= Time.deltaTime;
-            Debug.Log(attackTimerCountdown);
             if (attackTimerCountdown <= 0)
             {
                 zombieAttack.DealDamage();
@@ -140,37 +145,63 @@ public class TankZombieMovement : MonoBehaviour
         {
             ChangeState(State.PATROL);
         }
-        else if (zombieAttack.enemyCurrentHealth != prevHealth)
+        else if (prevHealth != zombieAttack.enemyCurrentHealth)
         {
+            damageReductionDelay = damageReductionDelayTimer;
             ChangeState(State.GUARD);
         }
     }
 
-    private bool isDamageReduced = false;
-    private float damageReductionDuration = 3.0f;
+    private bool isDamageReduced;
+    private float damageReductionDurationTimer = 3.0f;
+    private float damageReductionDelay;
+    private float damageReductionDelayTimer = 6.0f;
     private float damageMultiplier = 0.4f;
+
     private void Guard()
     {
-        if (!isDamageReduced)
+        if (Input.GetKeyDown(KeyCode.Space) && damageReductionDelay > 0f)
         {
-            prevHealth = zombieAttack.enemyCurrentHealth;
             isDamageReduced = true;
-            StartCoroutine(ReduceDamage());
-        }
-
-        if(zombieAttack.enemyCurrentHealth != prevHealth)
-        {
-            int reducedDamage = (int)(10 * damageMultiplier);
-            if (Input.GetKeyDown(KeyCode.Space))
+            StartCoroutine(BlockDuration());
+            if (isDamageReduced)
             {
+                int reducedDamage = (int)(10 * damageMultiplier);
+                prevHealth = zombieAttack.enemyCurrentHealth;
                 zombieAttack.ReceiveDamage(reducedDamage);
             }
+            else
+            {
+                damageReductionDelay -= Time.deltaTime;
+
+                int actualDamage = 10;
+                prevHealth = zombieAttack.enemyCurrentHealth;
+                zombieAttack.ReceiveDamage(actualDamage);
+                if (damageReductionDelay <= 0f)
+                {
+                    damageReductionDelay = damageReductionDelayTimer;
+                }
+            }
         }
+        Debug.Log(damageReductionDelay);
+        //if (Vector3.Distance(transform.position, target.transform.position) <= attackDist)
+        //{
+        //    attackTimerCountdown = attackTimer;
+        //    ChangeState(State.ATTACK);
+        //}
+        //else if (Vector3.Distance(transform.position, target.transform.position) > attackDist)
+        //{
+        //    ChangeState(State.CHASE);
+        //}
+        //else if (Vector3.Distance(transform.position, target.transform.position) > 7.0f)
+        //{
+        //    ChangeState(State.PATROL);
+        //}
     }
 
-    IEnumerator ReduceDamage()
+    private IEnumerator BlockDuration()
     {
-        yield return new WaitForSeconds(damageReductionDuration);
+        yield return new WaitForSeconds(damageReductionDurationTimer);
         isDamageReduced = false;
     }
 }

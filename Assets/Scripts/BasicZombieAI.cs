@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using Pathfinding;
 
@@ -9,14 +10,14 @@ public class BasicZombieAI : MonoBehaviour
     public float nextWaypointDistance = 3f;
     public Transform zombieGFX;
 
-    public int[] EnemySpeed;
+    private int EnemySpeed;
 
     private BasicZombieMovement basicZombieMove; 
 
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
-    private float TrueSpeed;
+    //private float TrueSpeed;
     Seeker seeker;
     Rigidbody2D rb;
 
@@ -26,8 +27,11 @@ public class BasicZombieAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         basicZombieMove = GetComponent<BasicZombieMovement>();
-        TrueSpeed = EnemySpeed[Random.Range(0, EnemySpeed.Length)];
+        //TrueSpeed = EnemySpeed[Random.Range(0, EnemySpeed.Length)];
+        System.Random random = new System.Random();
+        EnemySpeed = random.Next(200, 401);
         InvokeRepeating("UpdatePath", 0f, .5f);
+        Debug.Log(EnemySpeed);
     }
 
     void UpdatePath()
@@ -70,7 +74,7 @@ public class BasicZombieAI : MonoBehaviour
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * TrueSpeed * Time.deltaTime;
+        Vector2 force = direction * EnemySpeed * Time.deltaTime;
 
         rb.AddForce(force);
 

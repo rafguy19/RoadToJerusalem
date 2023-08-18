@@ -40,6 +40,11 @@ public class TankZombieAI : MonoBehaviour
             if (seeker.IsDone())
                 seeker.StartPath(rb.position, target.transform.position, OnPathComplete);
         }
+        else if (tankZombieMovement.currentState == TankZombieMovement.State.GUARD)
+        {
+            if (seeker.IsDone())
+                seeker.StartPath(rb.position, target.transform.position, OnPathComplete);
+        }
     }
 
 
