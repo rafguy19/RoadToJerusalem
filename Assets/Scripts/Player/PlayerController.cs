@@ -6,12 +6,14 @@ using UnityEngine.VFX;
 
 public class PlayerController : MonoBehaviour
 {
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private Animator ar;
     private SpriteRenderer sr;
     [SerializeField]
     private PlayerScriptableObject stats;
     private PlayerAttackController playerAttackController;
+    private HunterZombieMovement hunterZombieMovement;
+    public bool Jumped;
     [SerializeField]
     private GameObject attackpoint;
     public VisualEffect vfxRenderer;
@@ -70,11 +72,12 @@ public class PlayerController : MonoBehaviour
 
     void Inputs()
     {
-        float moveX = Input.GetAxisRaw("Horizontal");
-        float moveY = Input.GetAxisRaw("Vertical");
+        if (!Jumped)
+        {
+            float moveX = Input.GetAxisRaw("Horizontal");
+            float moveY = Input.GetAxisRaw("Vertical");
 
-        moveDirection = new Vector2(moveX, moveY).normalized;
-
+            moveDirection = new Vector2(moveX, moveY).normalized;
 
         if (Input.GetMouseButton(0)) // Attacking
         {
@@ -98,12 +101,12 @@ public class PlayerController : MonoBehaviour
                         break;
                 }
             }
-
         }
     }
 
     void ApplyAnimation()
     {
+
         if (rb.velocity != new Vector2(0,0))
         {
             ar.SetBool("Run", true);
