@@ -30,7 +30,6 @@ public class SmokerZombie : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        QTE.SetActive(false);
         attackTimer = 1;
         zombieAttack = GetComponentInChildren<ZombieAttack>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
