@@ -15,9 +15,13 @@ MonoBehaviour:
   <IsStackable>k__BackingField: 0
   <MaxStackSize>k__BackingField: 1
   <Name>k__BackingField: 
-  <Description>k__BackingField: 
+  <Description>k__BackingField: 3 sticks and 3 strongs to craft this
   <ItemImage>k__BackingField: {fileID: 21300000, guid: 979da882264dfb34f8afa32f89ac32d2, type: 3}
-  <DefaultParameterList>k__BackingField: []
+  <DefaultParameterList>k__BackingField:
+  - itemParameter: {fileID: 11400000, guid: 483d1034571157e4dac526c81cdc023f, type: 2}
+    value: 20
+  - itemParameter: {fileID: 11400000, guid: 6d07b7add8b91d1499cd077f8f3a178f, type: 2}
+    value: 1
   <weaponType>k__BackingField: 0
   modifierData: []
   <actionSFX>k__BackingField: {fileID: 0}
