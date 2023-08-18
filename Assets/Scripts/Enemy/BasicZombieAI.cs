@@ -87,11 +87,11 @@ public class BasicZombieAI : MonoBehaviour
 
         if (force.x >= 0.01f)
         {
-            zombieGFX.localScale = new Vector3(1f, 1f, 1f);
+            zombieGFX.localScale = new Vector3(-1f, 1f, 1f);
         }
         else if (force.x <= -0.01f)
         {
-            zombieGFX.localScale = new Vector3(-1f, 1f, 1f);
+            zombieGFX.localScale = new Vector3(1f, 1f, 1f);
         }
     }
 }
