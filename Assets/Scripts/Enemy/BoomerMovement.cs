@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicZombieMovement : MonoBehaviour
+public class BoomerMovement : MonoBehaviour
 {
     public enum State
     {
         PATROL,
         CHASE,
-        ATTACK,
+        EXPLODE,
     }
     [SerializeField]
     public State currentState;
@@ -20,8 +20,7 @@ public class BasicZombieMovement : MonoBehaviour
     private Rigidbody2D rb;
     private ZombieAttack zombieAttack;
     public bool isAttacking = false;
-    public float attackTimer;
-    private float attackTimerCountdown;
+
 
     public Animator animator;
     private Transform target;
@@ -29,8 +28,8 @@ public class BasicZombieMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        target = GetComponent<BoomerAI>().target;
         zombieAttack = GetComponentInChildren<ZombieAttack>();
-        target = GetComponent<BasicZombieAI>().target;
         rb = GetComponentInParent<Rigidbody2D>();
         ChangeState(currentState);
     }
@@ -46,8 +45,8 @@ public class BasicZombieMovement : MonoBehaviour
             case State.CHASE:
                 Chase();
                 break;
-            case State.ATTACK:
-                Attack();
+            case State.EXPLODE:
+                Explode();
                 break;
         }
     }
@@ -57,15 +56,15 @@ public class BasicZombieMovement : MonoBehaviour
 
         if (next == State.PATROL)
         {
-            GetComponent<BasicZombieAI>().enabled = true;
+            GetComponent<BoomerAI>().enabled = true;
         }
         else if (next == State.CHASE)
         {
-            GetComponent<BasicZombieAI>().enabled = true;
+            GetComponent<BoomerAI>().enabled = true;
         }
-        else if (next == State.ATTACK)
+        else if (next == State.EXPLODE)
         {
-            GetComponent<BasicZombieAI>().enabled = false;
+            GetComponent<BoomerAI>().enabled = false;
         }
         currentState = next;
     }
@@ -95,28 +94,13 @@ public class BasicZombieMovement : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.transform.position) <= attackDist)
         {
-            attackTimerCountdown = 0;
-            ChangeState(State.ATTACK);
+            ChangeState(State.EXPLODE);
         }
     }
 
-    private void Attack()
+    private void Explode()
     {
-        attackTimerCountdown -= Time.deltaTime;
-        Debug.Log(attackTimerCountdown);
-        if (attackTimerCountdown <= 0)
-        {
-            animator.SetTrigger("attack");
-            attackTimerCountdown = attackTimer;
-            isAttacking = true;
-        }
-        if (Vector3.Distance(transform.position, target.transform.position) > attackDist && isAttacking == false)
-        {
-            ChangeState(State.CHASE);
-        }
-        else if (Vector3.Distance(transform.position, target.transform.position) > 7.0f && isAttacking == false)
-        {
-            ChangeState(State.PATROL);
-        }
+        animator.SetTrigger("attack");
+
     }
 }
