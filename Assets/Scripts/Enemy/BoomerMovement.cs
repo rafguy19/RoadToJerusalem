@@ -2,25 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicZombieMovement : MonoBehaviour
+public class BoomerMovement : MonoBehaviour
 {
     public enum State
     {
         PATROL,
         CHASE,
-        ATTACK,
+        EXPLODE,
+        DEATH,
     }
     [SerializeField]
     public State currentState;
     [SerializeField]
     public List<GameObject> waypoints = new List<GameObject>();
-    private float attackDist = 1.87f;
     private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
-    public bool isAttacking = false;
-    public float attackTimer;
-    private float attackTimerCountdown;
+    private ZombieAttack zombieAttack;
+
+    public Transform detectionCircle;
+    public float detectionRange;
+
+    public Transform attackCircle;
+    public float attackRange;
+
+    public float explosionDelay;
 
     public Animator animator;
     private Transform target;
@@ -28,7 +34,8 @@ public class BasicZombieMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        target = GetComponent<BasicZombieAI>().target;
+        target = GetComponent<BoomerAI>().target;
+        zombieAttack = GetComponentInChildren<ZombieAttack>();
         rb = GetComponentInParent<Rigidbody2D>();
         ChangeState(currentState);
     }
@@ -44,8 +51,18 @@ public class BasicZombieMovement : MonoBehaviour
             case State.CHASE:
                 Chase();
                 break;
-            case State.ATTACK:
-                Attack();
+            case State.EXPLODE:
+                explosionDelay -= Time.deltaTime;
+                rb.velocity= Vector3.zero;
+                if (explosionDelay < 0)
+                {
+                    Explode();
+                }
+
+
+                break;
+            case State.DEATH:
+
                 break;
         }
     }
@@ -55,15 +72,15 @@ public class BasicZombieMovement : MonoBehaviour
 
         if (next == State.PATROL)
         {
-            GetComponent<BasicZombieAI>().enabled = true;
+            GetComponent<BoomerAI>().enabled = true;
         }
         else if (next == State.CHASE)
         {
-            GetComponent<BasicZombieAI>().enabled = true;
+            GetComponent<BoomerAI>().enabled = true;
         }
-        else if (next == State.ATTACK)
+        else if (next == State.EXPLODE)
         {
-            GetComponent<BasicZombieAI>().enabled = false;
+            GetComponent<BoomerAI>().enabled = false;
         }
         currentState = next;
     }
@@ -78,7 +95,7 @@ public class BasicZombieMovement : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.transform.position) <= 7.0f)
         {
-    
+
             ChangeState(State.CHASE);
         }
     }
@@ -91,30 +108,27 @@ public class BasicZombieMovement : MonoBehaviour
             ChangeState(State.PATROL);
         }
 
-        if (Vector3.Distance(transform.position, target.transform.position) <= attackDist)
+        if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
         {
-            attackTimerCountdown = 0;
-            ChangeState(State.ATTACK);
+
+                ChangeState(State.EXPLODE);
+     
         }
     }
 
-    private void Attack()
+    private void Explode()
     {
-        attackTimerCountdown -= Time.deltaTime;
-        Debug.Log(attackTimerCountdown);
-        if (attackTimerCountdown <= 0)
+        animator.SetTrigger("Exploding");
+        currentState = State.DEATH;
+    }
+    private void OnDrawGizmosSelected()
+    {
+        if (detectionCircle == null)
         {
-            animator.SetTrigger("attack");
-            attackTimerCountdown = attackTimer;
-            isAttacking = true;
+            return;
         }
-        if (Vector3.Distance(transform.position, target.transform.position) > attackDist && isAttacking == false)
-        {
-            ChangeState(State.CHASE);
-        }
-        else if (Vector3.Distance(transform.position, target.transform.position) > 7.0f && isAttacking == false)
-        {
-            ChangeState(State.PATROL);
-        }
+        Gizmos.DrawWireSphere(detectionCircle.position, detectionRange);
+
+        Gizmos.DrawWireSphere(attackCircle.position, attackRange);
     }
 }
