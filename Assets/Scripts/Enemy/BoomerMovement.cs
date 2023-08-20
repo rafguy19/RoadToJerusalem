@@ -9,18 +9,24 @@ public class BoomerMovement : MonoBehaviour
         PATROL,
         CHASE,
         EXPLODE,
+        DEATH,
     }
     [SerializeField]
     public State currentState;
     [SerializeField]
     public List<GameObject> waypoints = new List<GameObject>();
-    private float attackDist = 1.87f;
     private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
     private ZombieAttack zombieAttack;
-    public bool isAttacking = false;
 
+    public Transform detectionCircle;
+    public float detectionRange;
+
+    public Transform attackCircle;
+    public float attackRange;
+
+    public float explosionDelay;
 
     public Animator animator;
     private Transform target;
@@ -46,7 +52,17 @@ public class BoomerMovement : MonoBehaviour
                 Chase();
                 break;
             case State.EXPLODE:
-                Explode();
+                explosionDelay -= Time.deltaTime;
+                rb.velocity= Vector3.zero;
+                if (explosionDelay < 0)
+                {
+                    Explode();
+                }
+
+
+                break;
+            case State.DEATH:
+
                 break;
         }
     }
@@ -79,7 +95,7 @@ public class BoomerMovement : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.transform.position) <= 7.0f)
         {
-    
+
             ChangeState(State.CHASE);
         }
     }
@@ -92,15 +108,27 @@ public class BoomerMovement : MonoBehaviour
             ChangeState(State.PATROL);
         }
 
-        if (Vector3.Distance(transform.position, target.transform.position) <= attackDist)
+        if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
         {
-            ChangeState(State.EXPLODE);
+
+                ChangeState(State.EXPLODE);
+     
         }
     }
 
     private void Explode()
     {
-        animator.SetTrigger("attack");
+        animator.SetTrigger("Exploding");
+        currentState = State.DEATH;
+    }
+    private void OnDrawGizmosSelected()
+    {
+        if (detectionCircle == null)
+        {
+            return;
+        }
+        Gizmos.DrawWireSphere(detectionCircle.position, detectionRange);
 
+        Gizmos.DrawWireSphere(attackCircle.position, attackRange);
     }
 }

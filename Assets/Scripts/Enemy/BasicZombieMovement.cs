@@ -18,7 +18,6 @@ public class BasicZombieMovement : MonoBehaviour
     private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
-    private ZombieAttack zombieAttack;
     public bool isAttacking = false;
     public float attackTimer;
     private float attackTimerCountdown;
@@ -29,7 +28,6 @@ public class BasicZombieMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        zombieAttack = GetComponentInChildren<ZombieAttack>();
         target = GetComponent<BasicZombieAI>().target;
         rb = GetComponentInParent<Rigidbody2D>();
         ChangeState(currentState);

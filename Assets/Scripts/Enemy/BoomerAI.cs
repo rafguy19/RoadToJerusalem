@@ -16,7 +16,7 @@ public class BoomerAI : MonoBehaviour
     int xSpriteScale;
 
     public Transform target;
-    public float nextWaypointDistance = 3f;
+    public float nextWaypointDistance = 0.1f;
     public Transform zombieGFX;
 
     private int EnemySpeed;
