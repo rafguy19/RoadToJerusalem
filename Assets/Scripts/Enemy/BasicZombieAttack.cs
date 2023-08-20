@@ -1,4 +1,4 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +10,7 @@ public class ZombieAttack : MonoBehaviour
 
     public Transform enemyattackPoint;
     public float enemyattackRange;
+
     public LayerMask playerLayers;
     public int enemyattackDmg;
 
@@ -42,7 +43,7 @@ public class ZombieAttack : MonoBehaviour
         }
         zombieMovement.isAttacking = false;
     }
-
+   
     private void OnDrawGizmosSelected()
     {
         if (enemyattackPoint == null)

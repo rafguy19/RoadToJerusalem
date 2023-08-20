@@ -4,7 +4,7 @@ using System;
 using UnityEngine;
 using Pathfinding;
 
-public class BasicZombieAI : MonoBehaviour
+public class BoomerAI : MonoBehaviour
 {
     public enum FLIP
     {
@@ -16,12 +16,12 @@ public class BasicZombieAI : MonoBehaviour
     int xSpriteScale;
 
     public Transform target;
-    public float nextWaypointDistance = 3f;
+    public float nextWaypointDistance = 0.1f;
     public Transform zombieGFX;
 
     private int EnemySpeed;
 
-    private BasicZombieMovement basicZombieMove; 
+    private BoomerMovement boomerMove; 
 
     Path path;
     int currentWaypoint = 0;
@@ -43,7 +43,7 @@ public class BasicZombieAI : MonoBehaviour
         }
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        basicZombieMove = GetComponent<BasicZombieMovement>();
+        boomerMove = GetComponent<BoomerMovement>();
         //TrueSpeed = EnemySpeed[Random.Range(0, EnemySpeed.Length)];
         System.Random random = new System.Random();
         EnemySpeed = random.Next(200, 401);
@@ -53,12 +53,12 @@ public class BasicZombieAI : MonoBehaviour
 
     void UpdatePath()
     {
-        if (basicZombieMove.currentState == BasicZombieMovement.State.PATROL)
+        if (boomerMove.currentState == BoomerMovement.State.PATROL)
         {
             if (seeker.IsDone())
-                seeker.StartPath(rb.position, basicZombieMove.waypoints[basicZombieMove.targetIndex].transform.position, OnPathComplete);
+                seeker.StartPath(rb.position, boomerMove.waypoints[boomerMove.targetIndex].transform.position, OnPathComplete);
         }
-        else if (basicZombieMove.currentState == BasicZombieMovement.State.CHASE)
+        else if (boomerMove.currentState == BoomerMovement.State.CHASE)
         {
             if (seeker.IsDone())
                 seeker.StartPath(rb.position, target.transform.position, OnPathComplete);
