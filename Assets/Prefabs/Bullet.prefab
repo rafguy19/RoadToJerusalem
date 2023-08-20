@@ -29,7 +29,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.1058686, y: 0.1895933, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,12 +75,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
+  m_Sprite: {fileID: 21300000, guid: edde441fed9d255469b5c299bc1c51a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -99,8 +99,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   force: 4
-  player: {fileID: 7285343805483786752, guid: 347a40b5245760e40a282c9238803e57, type: 3}
   lifetime: 4
+  arrow: {fileID: 21300000, guid: edde441fed9d255469b5c299bc1c51a4, type: 3}
+  firearrow: {fileID: 21300000, guid: c9b778e841f83c84f9787e04dd4a805e, type: 3}
+  holyarrow: {fileID: 21300000, guid: f113c648b23192a4e807e40a9bac493b, type: 3}
+  unholyarrow: {fileID: 21300000, guid: 5a9a9c83962817d4f87581b137efeeba, type: 3}
 --- !u!50 &6616246098808529605
 Rigidbody2D:
   serializedVersion: 4

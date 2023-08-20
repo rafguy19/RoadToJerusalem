@@ -196,6 +196,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemImage: {fileID: 7866791730792953108}
   quantityTxt: {fileID: 2479699808630289997}
+  quantityBG: {fileID: 2520270735968989377}
   selectorImage: {fileID: 8389870069365348242}
 --- !u!1 &6503869167578035069
 GameObject:
