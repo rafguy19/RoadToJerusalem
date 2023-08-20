@@ -14,7 +14,7 @@ public class BoomerAttack : MonoBehaviour
 
     public LayerMask playerLayers;
     public int enemyattackDmg;
-
+    public float explosionForce = 1;
     private BoomerMovement zombieMovement;
     private void Start()
     {
@@ -48,11 +48,11 @@ public class BoomerAttack : MonoBehaviour
 
             Debug.Log("Direction: " + direction);
 
-            Vector2 knockback = new Vector2(direction.x, direction.y) * 1000;
+            Vector2 knockback = new Vector2(direction.x, direction.y) * explosionForce;
             Debug.Log("Knockback: " + knockback);
 
 
-
+            player.GetComponent<PlayerController>().knockBacked = true;
             player.GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
 
             Debug.Log("Player Velocity: " + player.GetComponent<Rigidbody2D>().velocity);
