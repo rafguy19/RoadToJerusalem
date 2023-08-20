@@ -18,7 +18,7 @@ public class BoomerMovement : MonoBehaviour
     private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
-    private ZombieAttack zombieAttack;
+    private BasicZombieAttack basicZombieAttack;
 
     public Transform detectionCircle;
     public float detectionRange;
@@ -35,7 +35,7 @@ public class BoomerMovement : MonoBehaviour
     void Start()
     {
         target = GetComponent<BoomerAI>().target;
-        zombieAttack = GetComponentInChildren<ZombieAttack>();
+        basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
         rb = GetComponentInParent<Rigidbody2D>();
         ChangeState(currentState);
     }

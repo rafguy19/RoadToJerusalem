@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicZombieAttack : MonoBehaviour
+public class HunterZombieAttack : MonoBehaviour
 {
     public int enemyMaxHealth = 20;
     public int enemyCurrentHealth;
@@ -14,11 +14,11 @@ public class BasicZombieAttack : MonoBehaviour
     public LayerMask playerLayers;
     public int enemyattackDmg;
 
-    private BasicZombieMovement zombieMovement;
+    private HunterZombieMovement zombieMovement;
     private void Start()
     {
         enemyCurrentHealth = enemyMaxHealth;
-        //zombieMovement = gameObject.GetComponentInParent<BasicZombieMovement>();
+        zombieMovement = gameObject.GetComponentInParent<HunterZombieMovement>();
     }
 
     private void Update()
