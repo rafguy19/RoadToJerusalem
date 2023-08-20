@@ -46,12 +46,15 @@ public class BoomerMovement : MonoBehaviour
         switch (currentState)
         {
             case State.PATROL:
+                animator.SetBool("isWalking", true);
                 Patrol();
                 break;
             case State.CHASE:
+                animator.SetBool("isWalking", true);
                 Chase();
                 break;
             case State.EXPLODE:
+                animator.SetBool("isWalking", false);
                 explosionDelay -= Time.deltaTime;
                 rb.velocity= Vector3.zero;
                 if (explosionDelay < 0)
@@ -93,7 +96,7 @@ public class BoomerMovement : MonoBehaviour
             targetIndex %= waypoints.Count;
         }
 
-        if (Vector3.Distance(transform.position, target.transform.position) <= 7.0f)
+        if (Vector3.Distance(transform.position, target.transform.position) <= detectionRange)
         {
 
             ChangeState(State.CHASE);
@@ -102,16 +105,10 @@ public class BoomerMovement : MonoBehaviour
 
     private void Chase()
     {
-        if (Vector3.Distance(transform.position, target.transform.position) > 7.0f)
-        {
-
-            ChangeState(State.PATROL);
-        }
-
         if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
         {
 
-                ChangeState(State.EXPLODE);
+                currentState= State.EXPLODE;
      
         }
     }
