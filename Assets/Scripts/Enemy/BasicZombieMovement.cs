@@ -18,17 +18,18 @@ public class BasicZombieMovement : MonoBehaviour
     private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
+    private ZombieAttack zombieAttack;
     public bool isAttacking = false;
     public float attackTimer;
     private float attackTimerCountdown;
 
     public Animator animator;
-    private Transform target;
+    public Transform target;
 
     // Start is called before the first frame update
     void Start()
     {
-        target = GetComponent<BasicZombieAI>().target;
+        zombieAttack = GetComponentInChildren<ZombieAttack>();
         rb = GetComponentInParent<Rigidbody2D>();
         ChangeState(currentState);
     }
@@ -36,17 +37,17 @@ public class BasicZombieMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (currentState)
+        if (currentState == State.PATROL)
         {
-            case State.PATROL:
-                Patrol();
-                break;
-            case State.CHASE:
-                Chase();
-                break;
-            case State.ATTACK:
-                Attack();
-                break;
+            Patrol();
+        }
+        else if (currentState == State.CHASE)
+        {
+            Chase();
+        }
+        else if (currentState == State.ATTACK)
+        {
+            Attack();
         }
     }
 

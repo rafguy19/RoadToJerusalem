@@ -6,15 +6,6 @@ using Pathfinding;
 
 public class BasicZombieAI : MonoBehaviour
 {
-    public enum FLIP
-    {
-        LEFT,
-        RIGHT,
-    }
-
-    public FLIP spriteFlip;
-    int xSpriteScale;
-
     public Transform target;
     public float nextWaypointDistance = 3f;
     public Transform zombieGFX;
@@ -33,14 +24,6 @@ public class BasicZombieAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(spriteFlip == FLIP.LEFT)
-        {
-            xSpriteScale = 1;
-        }
-        else
-        {
-            xSpriteScale = -1;
-        }
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         basicZombieMove = GetComponent<BasicZombieMovement>();
@@ -104,11 +87,11 @@ public class BasicZombieAI : MonoBehaviour
 
         if (force.x >= 0.01f)
         {
-            zombieGFX.localScale = new Vector3(-xSpriteScale, 1f, 1f);
+            zombieGFX.localScale = new Vector3(-1f, 1f, 1f);
         }
         else if (force.x <= -0.01f)
         {
-            zombieGFX.localScale = new Vector3(xSpriteScale, 1f, 1f);
+            zombieGFX.localScale = new Vector3(1f, 1f, 1f);
         }
     }
 }
