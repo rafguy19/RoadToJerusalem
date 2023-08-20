@@ -1,4 +1,4 @@
-     using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -31,19 +31,12 @@ public class PlayerController : MonoBehaviour
 
     int type;
 
-    public bool knockBacked;
-    private float knockBackStunTimer;
-    public float knockBackStunDuration = 0.25f;
-
-
     //checking of weapon type
     private WeaponSystem playerCurrentWeapon;
 
     // Start is called before the first frame update
     void Start()
     {
-        knockBackStunTimer = knockBackStunDuration;
-        knockBacked =false;
         stats.Reset();
         moveSpeed = stats.speed;
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -77,28 +70,12 @@ public class PlayerController : MonoBehaviour
         {
             slider.SetActive(false);
         }
-        if(knockBacked == true)
-        {
-            knockBackStunTimer -= Time.deltaTime;
-            if(knockBackStunTimer <= 0)
-            {
-                knockBacked= false;
-            }
-        }
-        else
-        {
-            knockBackStunTimer = knockBackStunDuration;
-        }
     }
 
 
     private void FixedUpdate()
     {
-        if(knockBacked == false)
-        {
-            ApplyMovement();
-        }
-
+        ApplyMovement();
     }
 
     void Inputs()
@@ -135,7 +112,6 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
-
         }
         else
         {
