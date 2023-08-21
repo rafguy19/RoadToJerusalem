@@ -18,7 +18,7 @@ public class HunterZombieAttack : MonoBehaviour
     private void Start()
     {
         enemyCurrentHealth = enemyMaxHealth;
-        zombieMovement = gameObject.GetComponentInParent<HunterZombieMovement>();
+        zombieMovement = gameObject.GetComponent<HunterZombieMovement>();
     }
 
     private void Update()
