@@ -72,9 +72,10 @@ GameObject:
   m_Component:
   - component: {fileID: 9136158532391940358}
   - component: {fileID: 9136158532391940359}
-  - component: {fileID: 9136158532391940601}
   - component: {fileID: 9136158532391940602}
-  - component: {fileID: 9136158532391940357}
+  - component: {fileID: 589860836}
+  - component: {fileID: 589860842}
+  - component: {fileID: 589860843}
   m_Layer: 0
   m_Name: Based
   m_TagString: Enemy
@@ -128,22 +129,6 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!114 &9136158532391940601
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9136158532391940603}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b01983ebefda2344af2b0a56791f2db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteFlip: 0
-  target: {fileID: 0}
-  nextWaypointDistance: 1
-  zombieGFX: {fileID: 9136158532848882135}
 --- !u!50 &9136158532391940602
 Rigidbody2D:
   serializedVersion: 4
@@ -165,7 +150,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &9136158532391940357
+--- !u!114 &589860836
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -174,17 +159,43 @@ MonoBehaviour:
   m_GameObject: {fileID: 9136158532391940603}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fdd7b5305b924a4b9a28347c60b600c, type: 3}
+  m_Script: {fileID: 11500000, guid: d66e4b5a8cde97148ac183773fd11cb3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Spit: {fileID: 7072913766467637802, guid: 946555946f3470142ab99890e108748a, type: 3}
+  SpitPos: {fileID: 9136158532786202555}
+--- !u!114 &589860842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136158532391940603}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f6d461ac0841d74a8d5662ab71135ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteFlip: 0
+  target: {fileID: 0}
+  nextWaypointDistance: 1
+  zombieGFX: {fileID: 9136158532848882135}
+--- !u!114 &589860843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136158532391940603}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae5b573d7382c354c9b3f10e1c8c568b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
+  waypoints: []
   targetIndex: 0
-  isAttacking: 0
-  attackTimer: 1
-  animator: {fileID: 224508928}
+  target: {fileID: 0}
 --- !u!1 &9136158532786202556
 GameObject:
   m_ObjectHideFlags: 0
@@ -195,7 +206,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9136158532786202555}
   m_Layer: 0
-  m_Name: zombieattackpoint
+  m_Name: SpitPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +220,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9136158532786202556}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.129, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -230,7 +241,7 @@ GameObject:
   - component: {fileID: 224508929}
   - component: {fileID: 513888155}
   m_Layer: 0
-  m_Name: BasicZombie
+  m_Name: Spitter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -367,8 +378,8 @@ MonoBehaviour:
   enemyCurrentHealth: 0
   entireZombie: {fileID: 9136158532391940603}
   enemyattackPoint: {fileID: 9136158532786202555}
-  enemyattackRange: 1
+  enemyattackRange: 0
   playerLayers:
     serializedVersion: 2
     m_Bits: 8
-  enemyattackDmg: 10
+  enemyattackDmg: 20
