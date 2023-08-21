@@ -215,7 +215,7 @@ MonoBehaviour:
   targetIndex: 0
   isAttacking: 0
   attackTimer: 2
-  animator: {fileID: 224508928}
+  animator: {fileID: 5837653812251026915}
 --- !u!1 &9136158532848882120
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,9 +226,9 @@ GameObject:
   m_Component:
   - component: {fileID: 9136158532848882135}
   - component: {fileID: 9136158532848882132}
-  - component: {fileID: 224508928}
   - component: {fileID: 224508929}
   - component: {fileID: 4264619100549335805}
+  - component: {fileID: 5837653812251026915}
   m_Layer: 0
   m_Name: BaseZombieSprite
   m_TagString: Untagged
@@ -304,27 +304,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!95 &224508928
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9136158532848882120}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 01d6c28ac1ca7a642970292ba68ae229, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!61 &224508929
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -372,3 +351,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   enemyattackDmg: 10
+--- !u!95 &5837653812251026915
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136158532848882120}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 01d6c28ac1ca7a642970292ba68ae229, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
