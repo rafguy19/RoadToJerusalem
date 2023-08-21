@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [HideInInspector]
     public Rigidbody2D rb;
-    private Animator ar;
+    private Animator animator;
     private SpriteRenderer sr;
     [SerializeField]
     private PlayerScriptableObject stats;
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour
         stats.Reset();
         moveSpeed = stats.speed;
         rb = gameObject.GetComponent<Rigidbody2D>();
-        ar = gameObject.GetComponent<Animator>();
+        animator = gameObject.GetComponent<Animator>();
         sr = gameObject.GetComponent<SpriteRenderer>();
         playerAttackController = gameObject.GetComponent<PlayerAttackController>();
         playerCurrentWeapon = gameObject.GetComponent<WeaponSystem>();
@@ -146,21 +146,27 @@ public class PlayerController : MonoBehaviour
     {
         if (rb.velocity != new Vector2(0, 0))
         {
-
-            if (rb.velocity != new Vector2(0, 0))
-            {
-                ar.SetBool("Run", true);
-            }
-            else
-            {
-                ar.SetBool("Run", false);
-            }
-
+            animator.SetBool("Run", true);
+        }
+        else
+        {
+            animator.SetBool("Run", false);
         }
     }
 
 
-
+    //player modifier
+    public void UpdateDamage(int newDmgValue)
+    {
+        atkDmg = newDmgValue;
+    }
+    void UpdateFogClear()
+    {
+        if (vfxRenderer != null)
+        {
+            vfxRenderer.SetVector3("PlayerPosition", transform.localPosition);
+        }
+    }
 
     void ApplyMovement()
     {
@@ -181,16 +187,4 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    //player modifier
-    public void UpdateDamage(int newDmgValue)
-    {
-        atkDmg = newDmgValue;
-    }
-    void UpdateFogClear()
-    {
-        if (vfxRenderer != null)
-        {
-            vfxRenderer.SetVector3("PlayerPosition", transform.localPosition);
-        }
-    }
 }

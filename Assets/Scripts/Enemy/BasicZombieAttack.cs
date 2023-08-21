@@ -18,7 +18,7 @@ public class BasicZombieAttack : MonoBehaviour
     private void Start()
     {
         enemyCurrentHealth = enemyMaxHealth;
-        //zombieMovement = gameObject.GetComponentInParent<BasicZombieMovement>();
+        zombieMovement = gameObject.GetComponentInParent<BasicZombieMovement>();
     }
 
     private void Update()
@@ -41,7 +41,7 @@ public class BasicZombieAttack : MonoBehaviour
         {
             player.GetComponent<PlayerHealth>().TakeDamage(enemyattackDmg);
         }
-        //zombieMovement.isAttacking = false;
+        zombieMovement.isAttacking = false;
     }
 
     private void OnDrawGizmosSelected()

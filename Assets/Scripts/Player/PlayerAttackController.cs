@@ -35,8 +35,15 @@ public class PlayerAttackController : MonoBehaviour
     private ArrowWheelController arrowWheelController;
 
     int arrowLoctionInInv = 0;
+
+    //audio
+    public AudioSource outOfArrow;
+    public AudioClip outOfAmmoClip;
+    public AudioClip pullBow;
+    public AudioClip shootBow;
     private void Start()
     {
+        canFire = true;
         arrowWheelController = GameObject.FindGameObjectWithTag("ArrowWheel").GetComponent<ArrowWheelController>();
     }
     public void AttackSelector(int type)
@@ -134,18 +141,29 @@ public class PlayerAttackController : MonoBehaviour
 
             if(arrowAmt > 0)
             {
+                if (Input.GetMouseButtonDown(0))
+                {
+                    outOfArrow.PlayOneShot(pullBow);
+                }
+
                 ChargeBow();
 
             }
             else
             {
-                Debug.Log("NO arrows");
+                if(Input.GetMouseButtonDown(0))
+                {
+                    //when out of arrow
+                    outOfArrow.PlayOneShot(outOfAmmoClip);
+                    Debug.Log("NO arrows");
+                }
+
             }
         }
 
         else if (Input.GetMouseButtonUp(0) && canFire && bowCharge > 2)
-        {   
-
+        {
+            outOfArrow.PlayOneShot(shootBow);
             inventoryData.RemoveItem(arrowLoctionInInv, 1);
             Debug.Log(inventoryData.GetItemAt(arrowLoctionInInv).quantity);
             FireBow();
@@ -161,7 +179,7 @@ public class PlayerAttackController : MonoBehaviour
                 bowCharge = 0f;
                 canFire = true;
             }
-            bowPowerSlider.value = bowCharge / 20;
+            bowPowerSlider.value = bowCharge / MaxBowCharge;
         }
     }
 
@@ -169,7 +187,7 @@ public class PlayerAttackController : MonoBehaviour
     {
         bowCharge += 6.6f * Time.deltaTime;
 
-        bowPowerSlider.value = bowCharge / 20;
+        bowPowerSlider.value = bowCharge / MaxBowCharge;
 
         if (bowCharge > MaxBowCharge)
         {
