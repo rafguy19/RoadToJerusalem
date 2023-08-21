@@ -948,6 +948,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8300000, guid: c10cf3e3304cc474791ad780ef918515, type: 3}
     - target: {fileID: 4819906586624744404, guid: 347a40b5245760e40a282c9238803e57, type: 3}
+      propertyPath: BowPower
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819906586624744404, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: shootBow
       value: 
       objectReference: {fileID: 8300000, guid: f258f21481b18c441a245b0d96962c4b, type: 3}
