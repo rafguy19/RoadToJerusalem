@@ -51,8 +51,7 @@ GameObject:
   - component: {fileID: 4819906586105975901}
   - component: {fileID: 4819906586105975892}
   - component: {fileID: 4819906586105975895}
-  - component: {fileID: 1376460237}
-  m_Layer: 3
+  m_Layer: 0
   m_Name: PlayerSprite
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -179,10 +178,7 @@ MonoBehaviour:
   Jumped: 0
   attackpoint: {fileID: 4819906585751540130}
   vfxRenderer: {fileID: 0}
-  qt_Event: {fileID: 0}
   slider: {fileID: 0}
-  knockBacked: 0
-  knockBackStunDuration: 0.25
 --- !u!114 &4819906586624744404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,7 +197,7 @@ MonoBehaviour:
   bowCharge: 0
   arrowSpeed: 10
   bowPowerSlider: {fileID: 0}
-  inventoryData: {fileID: 11400000, guid: 5776a03df2f900e409b990b81675d099, type: 2}
+  inventoryData: {fileID: 0}
   playerMeleeController: {fileID: 4819906585751540135}
 --- !u!61 &4819906586105975893
 BoxCollider2D:
@@ -283,21 +279,6 @@ MonoBehaviour:
   weaponName: {fileID: 0}
   weaponStats: {fileID: 0}
   weaponSprite: {fileID: 4819906585751540132}
---- !u!114 &1376460237
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2880335738060918361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2097d520ca9696b498ddfabb3e03a21c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  healthBar: {fileID: 0}
 --- !u!1 &4819906585297308341
 GameObject:
   m_ObjectHideFlags: 0
