@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Enemy
   - ArrowWheel
+  - Rain
+  - Spitter
+  - Pool
+  - Spit
   layers:
   - Default
   - TransparentFX

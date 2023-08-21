@@ -1,30 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.VFX;
 public class SmokerZombie : MonoBehaviour
 {
-    private PlayerController playerController;
-    public GameObject smoke;
-
-    private bool smokeSpawn;
+    public VisualEffect smoke;
+    private BasicZombieAttack basicZombieAttack;
+    public GameObject smoker;
     // Start is called before the first frame update
     void Start()
     {
-        playerController = GetComponent<PlayerController>();
+        basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
+        smoke.enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (smoke.activeSelf)
+        if (smoker.activeInHierarchy)
         {
-            //smoke.transform.position = playerController.transform.position;
             Fog();
+        }
+        else
+        {
+            return;
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            basicZombieAttack.ReceiveDamage(10);
         }
     }
 
     private void Fog()
     {
-        smoke.SetActive(true);
+        //if (basicZombieAttack.enemyCurrentHealth > 0)
+        //{
+        //    smoke.enabled = true;
+        //}
+        //else if (basicZombieAttack.enemyCurrentHealth <= 0)
+        //{
+        //    smoke.enabled = false;
+        //    Destroy(smoker);
+        //}
     }
 }

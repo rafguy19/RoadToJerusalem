@@ -2,11 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieSpit : MonoBehaviour
+public class ZombiePool : MonoBehaviour
 {
-    public GameObject Spit;
-    public Transform SpitPos;
     public GameObject poisonPool;
+    public Transform poisonPoolPos;
 
     private float timer;
     private GameObject player;
@@ -21,20 +20,19 @@ public class ZombieSpit : MonoBehaviour
 
         float distance = Vector2.Distance(transform.position, player.transform.position);
 
-        if (distance < 6)
+        if (distance < 1.2)
         {
             timer += Time.deltaTime;
 
-            if (timer > 4)
+            if (timer > 2)
             {
                 timer = 0;
-                Shoot();
+                Pool();
             }
         }
     }
-
-    private void Shoot()
+    private void Pool()
     {
-        Instantiate(Spit, SpitPos.position, Quaternion.identity);
+        Instantiate(poisonPool, poisonPoolPos.position, Quaternion.identity);
     }
 }
