@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Enemy
   - ArrowWheel
+  - Rain
+  - FoodChest_1
+  - WeapChest_1
   layers:
   - Default
   - TransparentFX
