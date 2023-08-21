@@ -119,8 +119,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6786fa133b3779e48b8444c6da2b93b7
-      internalID: -1619444048
+      spriteID: 20640cb816e5de5499d9bd3fa02768b4
+      internalID: -656829212
       vertices: []
       indices: 
       edges: []
@@ -140,8 +140,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7fc6357bfafe1624fab3182b9411c034
-      internalID: -872875146
+      spriteID: 8235b022dd81f03479014fae8249a401
+      internalID: 405343782
       vertices: []
       indices: 
       edges: []
@@ -161,8 +161,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9fed78955f7067347b8a59c2c8ed208f
-      internalID: 602282999
+      spriteID: a8f7fa3b4430814479123d7561200c7e
+      internalID: -1731204141
       vertices: []
       indices: 
       edges: []
@@ -182,8 +182,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88ed1b6be093e5045b0f84727d836ba0
-      internalID: 661433864
+      spriteID: c4ed64a8b1a3c38458fa9fd07a89eeb4
+      internalID: -1111106527
       vertices: []
       indices: 
       edges: []
@@ -203,8 +203,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 192aef9b73529624d970c4bc2aafec6c
-      internalID: -754848687
+      spriteID: 0d6784b8377b8f1419b7040148d23e15
+      internalID: -1328376550
       vertices: []
       indices: 
       edges: []
@@ -224,8 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 626724f340e1ab64ca11efee85acd0d0
-      internalID: 193947566
+      spriteID: 75997798055df8745b67469165e9f2fd
+      internalID: 589631892
       vertices: []
       indices: 
       edges: []
@@ -241,12 +241,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      normal_AFK_0: -1619444048
-      normal_AFK_1: -872875146
-      normal_AFK_2: 602282999
-      normal_AFK_3: 661433864
-      normal_AFK_4: -754848687
-      normal_AFK_5: 193947566
+      normal_AFK_0: -656829212
+      normal_AFK_1: 405343782
+      normal_AFK_2: -1731204141
+      normal_AFK_3: -1111106527
+      normal_AFK_4: -1328376550
+      normal_AFK_5: 589631892
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
