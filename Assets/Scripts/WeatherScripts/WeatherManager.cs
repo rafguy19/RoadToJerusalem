@@ -6,6 +6,7 @@ public class WeatherManager : MonoBehaviour
 {
 
     public GameObject RainDrops;
+        
     public GameObject RainSplash;
     public GameObject Fog;
     public GameObject Night;

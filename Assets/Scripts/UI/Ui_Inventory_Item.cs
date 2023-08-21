@@ -14,6 +14,8 @@ public class Ui_Inventory_Item : MonoBehaviour, IPointerClickHandler,IBeginDragH
     private Image itemImage;
     [SerializeField]
     private TMP_Text quantityTxt;
+    [SerializeField]
+    private GameObject quantityBG;
 
     [SerializeField]
     //since selector itself is a parent, we cant just disable it (it will hide everything inside), thus we only
@@ -40,11 +42,21 @@ public class Ui_Inventory_Item : MonoBehaviour, IPointerClickHandler,IBeginDragH
 
 
     //set data required for the items
-    public void SetData(Sprite sprite, int quantity)
+    public void SetData(Sprite sprite, int quantity,bool isStackable)
     {
         this.itemImage.gameObject.SetActive(true);
         this.itemImage.sprite = sprite;
         this.quantityTxt.text = quantity + "";
+        if (isStackable)
+        {
+            this.quantityBG.SetActive(true);
+          
+        }
+        else
+        {
+            this.quantityBG.SetActive(false);
+        }
+       
         empty = false;
     }
     public void Select()

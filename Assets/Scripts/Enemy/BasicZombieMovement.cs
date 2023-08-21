@@ -18,18 +18,17 @@ public class BasicZombieMovement : MonoBehaviour
     private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
-    private ZombieAttack zombieAttack;
-    private bool isAttacking = false;
-    private float attackTimer;
+    public bool isAttacking = false;
+    public float attackTimer;
     private float attackTimerCountdown;
 
-    public Transform target;
+    public Animator animator;
+    private Transform target;
 
     // Start is called before the first frame update
     void Start()
     {
-        attackTimer = 1;
-        zombieAttack = GetComponentInChildren<ZombieAttack>();
+        target = GetComponent<BasicZombieAI>().target;
         rb = GetComponentInParent<Rigidbody2D>();
         ChangeState(currentState);
     }
@@ -37,17 +36,17 @@ public class BasicZombieMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentState == State.PATROL)
+        switch (currentState)
         {
-            Patrol();
-        }
-        else if (currentState == State.CHASE)
-        {
-            Chase();
-        }
-        else if (currentState == State.ATTACK)
-        {
-            Attack();
+            case State.PATROL:
+                Patrol();
+                break;
+            case State.CHASE:
+                Chase();
+                break;
+            case State.ATTACK:
+                Attack();
+                break;
         }
     }
 
@@ -94,30 +93,26 @@ public class BasicZombieMovement : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.transform.position) <= attackDist)
         {
-            attackTimerCountdown = attackTimer;
+            attackTimerCountdown = 0;
             ChangeState(State.ATTACK);
         }
     }
 
     private void Attack()
     {
-        isAttacking = false;
-        if (!isAttacking)
+        attackTimerCountdown -= Time.deltaTime;
+        Debug.Log(attackTimerCountdown);
+        if (attackTimerCountdown <= 0)
         {
-            attackTimerCountdown -= Time.deltaTime;
-            Debug.Log(attackTimerCountdown);
-            if (attackTimerCountdown <= 0)
-            {
-                zombieAttack.DealDamage();
-                attackTimerCountdown = attackTimer;
-                isAttacking = true;
-            }
+            animator.SetTrigger("attack");
+            attackTimerCountdown = attackTimer;
+            isAttacking = true;
         }
-        if (Vector3.Distance(transform.position, target.transform.position) > attackDist)
+        if (Vector3.Distance(transform.position, target.transform.position) > attackDist && isAttacking == false)
         {
             ChangeState(State.CHASE);
         }
-        else if (Vector3.Distance(transform.position, target.transform.position) > 7.0f)
+        else if (Vector3.Distance(transform.position, target.transform.position) > 7.0f && isAttacking == false)
         {
             ChangeState(State.PATROL);
         }

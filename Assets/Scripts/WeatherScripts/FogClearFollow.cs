@@ -7,6 +7,7 @@ public class FogClearFollow : MonoBehaviour
 {
 
     public VisualEffect vfxRenderer;
+    public VisualEffect vfxSmoker;
     // Update is called once per frame
     void Update()
     {
@@ -14,6 +15,10 @@ public class FogClearFollow : MonoBehaviour
         {
            vfxRenderer.SetVector3("PlayerPosition", transform.localPosition);
 
+        }
+        if(vfxSmoker!=null)
+        {
+            vfxSmoker.SetVector3("PlayerPos", transform.localPosition);
         }
     }
 }

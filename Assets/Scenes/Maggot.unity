@@ -790,6 +790,14 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 3279194675442524216, guid: 347a40b5245760e40a282c9238803e57, type: 3}
+      propertyPath: vfxRenderer
+      value: 
+      objectReference: {fileID: 785775646}
+    - target: {fileID: 3279194675442524217, guid: 347a40b5245760e40a282c9238803e57, type: 3}
+      propertyPath: inventoryUI
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7285343805483786752, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: m_Name
       value: Player
@@ -956,7 +964,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 3
-      m_TileSpriteIndex: 3
+      m_TileSpriteIndex: 6
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -966,7 +974,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 0
-      m_TileSpriteIndex: 2
+      m_TileSpriteIndex: 3
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -986,7 +994,7 @@ Tilemap:
     second:
       serializedVersion: 2
       m_TileIndex: 5
-      m_TileSpriteIndex: 0
+      m_TileSpriteIndex: 2
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -1029,20 +1037,20 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   m_TileSpriteArray:
-  - m_RefCount: 1
-    m_Data: {fileID: -5610908, guid: 9be524de6c17b1640b380ae41358a564, type: 3}
+  - m_RefCount: 0
+    m_Data: {fileID: 0}
   - m_RefCount: 1
     m_Data: {fileID: -115639161, guid: 9be524de6c17b1640b380ae41358a564, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -1145859425, guid: 9be524de6c17b1640b380ae41358a564, type: 3}
+    m_Data: {fileID: -5610908, guid: 9be524de6c17b1640b380ae41358a564, type: 3}
   - m_RefCount: 1
-    m_Data: {fileID: -1553281669, guid: 9be524de6c17b1640b380ae41358a564, type: 3}
+    m_Data: {fileID: -1145859425, guid: 9be524de6c17b1640b380ae41358a564, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -655105886, guid: 9be524de6c17b1640b380ae41358a564, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: -665239262, guid: 9be524de6c17b1640b380ae41358a564, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: -1553281669, guid: 9be524de6c17b1640b380ae41358a564, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 6
     m_Data:
@@ -1089,6 +1097,27 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &728442512 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5231132976487519527, guid: 347a40b5245760e40a282c9238803e57, type: 3}
+  m_PrefabInstance: {fileID: 344122649}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &728442513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 728442512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 361e8ed1824971846b99a1e1ac569945, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RainDrops: {fileID: 1738815280}
+  RainSplash: {fileID: 1527576294}
+  Fog: {fileID: 785775642}
+  Night: {fileID: 232546421}
 --- !u!1 &785775642 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8366554230206653162, guid: 39a68d9348387a349af326295523a8c4, type: 3}

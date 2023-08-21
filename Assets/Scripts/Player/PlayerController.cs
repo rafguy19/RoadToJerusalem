@@ -1,4 +1,4 @@
-using System.Collections;
+     using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -6,6 +6,7 @@ using UnityEngine.VFX;
 
 public class PlayerController : MonoBehaviour
 {
+    [HideInInspector]
     public Rigidbody2D rb;
     private Animator ar;
     private SpriteRenderer sr;
@@ -18,6 +19,8 @@ public class PlayerController : MonoBehaviour
     private GameObject attackpoint;
     public VisualEffect vfxRenderer;
     [SerializeField]
+    public GameObject qt_Event;
+    [SerializeField]
     GameObject slider;
 
     //player stats
@@ -28,12 +31,19 @@ public class PlayerController : MonoBehaviour
 
     int type;
 
+    public bool knockBacked;
+    private float knockBackStunTimer;
+    public float knockBackStunDuration = 0.25f;
+
+
     //checking of weapon type
     private WeaponSystem playerCurrentWeapon;
 
     // Start is called before the first frame update
     void Start()
     {
+        knockBackStunTimer = knockBackStunDuration;
+        knockBacked =false;
         stats.Reset();
         moveSpeed = stats.speed;
         rb = gameObject.GetComponent<Rigidbody2D>();
@@ -67,18 +77,36 @@ public class PlayerController : MonoBehaviour
         {
             slider.SetActive(false);
         }
+        if(knockBacked == true)
+        {
+            knockBackStunTimer -= Time.deltaTime;
+            if(knockBackStunTimer <= 0)
+            {
+                knockBacked= false;
+            }
+        }
+        else
+        {
+            knockBackStunTimer = knockBackStunDuration;
+        }
     }
 
 
     private void FixedUpdate()
     {
-        ApplyMovement();
+        if(knockBacked == false)
+        {
+            ApplyMovement();
+        }
+
     }
 
     void Inputs()
     {
         if (!Jumped)
         {
+            qt_Event.SetActive(false);
+
             float moveX = Input.GetAxisRaw("Horizontal");
             float moveY = Input.GetAxisRaw("Vertical");
 
@@ -107,6 +135,11 @@ public class PlayerController : MonoBehaviour
                     }
                 }
             }
+
+        }
+        else
+        {
+            qt_Event.SetActive(true);
         }
     }
     void ApplyAnimation()
@@ -159,6 +192,5 @@ public class PlayerController : MonoBehaviour
         {
             vfxRenderer.SetVector3("PlayerPosition", transform.localPosition);
         }
-
     }
 }
