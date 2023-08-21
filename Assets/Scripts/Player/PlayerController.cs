@@ -146,17 +146,13 @@ public class PlayerController : MonoBehaviour
     {
         if (rb.velocity != new Vector2(0, 0))
         {
-
-            if (rb.velocity != new Vector2(0, 0))
-            {
-                ar.SetBool("Run", true);
-            }
-            else
-            {
-                ar.SetBool("Run", false);
-            }
-
+            ar.SetBool("Run", true);
         }
+        else
+        {
+            ar.SetBool("Run", false);
+        }
+
     }
 
 
