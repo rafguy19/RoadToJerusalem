@@ -475,7 +475,7 @@ GameObject:
   - component: {fileID: 203403666}
   - component: {fileID: 203403665}
   m_Layer: 0
-  m_Name: Weather
+  m_Name: Weather(FollowPlayer)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -497,6 +497,7 @@ MonoBehaviour:
   RainSplash: {fileID: 1527576294}
   Fog: {fileID: 785775642}
   Night: {fileID: 232546421}
+  mainCam: {fileID: 320363139}
 --- !u!4 &203403666
 Transform:
   m_ObjectHideFlags: 0
@@ -504,13 +505,21 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203403664}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
+<<<<<<< Updated upstream
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+=======
+  m_Children:
+  - {fileID: 1738815283}
+  - {fileID: 232546423}
+  m_Father: {fileID: 1186720199}
+  m_RootOrder: 0
+>>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &232546421
 GameObject:
@@ -528,7 +537,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &232546422
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -569,7 +578,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 66
   m_Sprite: {fileID: 21300000, guid: 5ca6cd2e79e957e4eaab27550cb12bb0, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 0.7764706}
   m_FlipX: 0
@@ -589,11 +598,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232546421}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09786976, y: -0.004972324, z: 11}
-  m_LocalScale: {x: 18.50876, y: 10.759514, z: 10}
+  m_LocalPosition: {x: -0.1497, y: 0.09, z: 0}
+  m_LocalScale: {x: 18.344275, y: 10.602999, z: 10}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 320363140}
+  m_Father: {fileID: 203403666}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &320363137
@@ -675,12 +684,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320363137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: 0, y: 0, z: -10}
+=======
+  m_LocalPosition: {x: 0, y: 0, z: -11}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 0.99111307, y: 0.98545337, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1738815283}
-  - {fileID: 232546423}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -808,6 +819,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7285343805483786756, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: m_LocalScale.x
+<<<<<<< Updated upstream
       value: 4.138511
       objectReference: {fileID: 0}
     - target: {fileID: 7285343805483786756, guid: 347a40b5245760e40a282c9238803e57, type: 3}
@@ -817,6 +829,17 @@ PrefabInstance:
     - target: {fileID: 7285343805483786756, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+=======
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7285343805483786756, guid: 347a40b5245760e40a282c9238803e57, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7285343805483786756, guid: 347a40b5245760e40a282c9238803e57, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 5
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 7285343805483786756, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1128,6 +1151,11 @@ VisualEffect:
   m_CorrespondingSourceObject: {fileID: 8366554230206653166, guid: 39a68d9348387a349af326295523a8c4, type: 3}
   m_PrefabInstance: {fileID: 8366554230841384688}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &785775648 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8366554230206653163, guid: 39a68d9348387a349af326295523a8c4, type: 3}
+  m_PrefabInstance: {fileID: 8366554230841384688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &792682768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,6 +1268,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1186720198
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1186720199}
+  m_Layer: 0
+  m_Name: WeatherSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1186720199
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186720198}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 203403666}
+  - {fileID: 785775648}
+  - {fileID: 1527576295}
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1214917878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1304,7 +1366,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1214917878}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< Updated upstream
   m_LocalPosition: {x: 0, y: 0, z: -10}
+=======
+  m_LocalPosition: {x: 0, y: 0, z: -11}
+>>>>>>> Stashed changes
   m_LocalScale: {x: 0.5184375, y: 0.646875, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -17103,12 +17169,17 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1527576294}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0527, y: 0.0949, z: -11}
+  m_LocalPosition: {x: -0.0527, y: 0.0949, z: 0}
   m_LocalScale: {x: 0.8616562, y: 0.9554999, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
+<<<<<<< Updated upstream
   m_Father: {fileID: 0}
   m_RootOrder: 3
+=======
+  m_Father: {fileID: 1186720199}
+  m_RootOrder: 2
+>>>>>>> Stashed changes
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &1527576296
 ParticleSystemRenderer:
@@ -21918,11 +21989,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738815280}
   m_LocalRotation: {x: 0.104707845, y: -0.06850377, z: -0.31135365, w: 0.9420204}
-  m_LocalPosition: {x: -0.26999998, y: -0.84999996, z: 9}
-  m_LocalScale: {x: 0.378915, y: 1.0199627, z: 0.9914929}
+  m_LocalPosition: {x: -0.32030052, y: -0.7427353, z: -2}
+  m_LocalScale: {x: 0.37478688, y: 1.0078702, z: 0.9908156}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 320363140}
+  m_Father: {fileID: 203403666}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 8.895, y: -11.34, z: -37.464}
 --- !u!199 &1738815284
@@ -26754,7 +26825,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1186720199}
     m_Modifications:
     - target: {fileID: 8366554230206653162, guid: 39a68d9348387a349af326295523a8c4, type: 3}
       propertyPath: m_Name
@@ -26762,7 +26833,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8366554230206653163, guid: 39a68d9348387a349af326295523a8c4, type: 3}
       propertyPath: m_RootOrder
+<<<<<<< Updated upstream
       value: 5
+=======
+      value: 1
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 8366554230206653163, guid: 39a68d9348387a349af326295523a8c4, type: 3}
       propertyPath: m_LocalPosition.x
