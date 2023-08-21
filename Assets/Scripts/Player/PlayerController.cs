@@ -151,10 +151,22 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("Run", false);
+        }
     }
 
 
-
+    //player modifier
+    public void UpdateDamage(int newDmgValue)
+    {
+        atkDmg = newDmgValue;
+    }
+    void UpdateFogClear()
+    {
+        if (vfxRenderer != null)
+        {
+            vfxRenderer.SetVector3("PlayerPosition", transform.localPosition);
+        }
+    }
 
     void ApplyMovement()
     {
@@ -175,16 +187,4 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    //player modifier
-    public void UpdateDamage(int newDmgValue)
-    {
-        atkDmg = newDmgValue;
-    }
-    void UpdateFogClear()
-    {
-        if (vfxRenderer != null)
-        {
-            vfxRenderer.SetVector3("PlayerPosition", transform.localPosition);
-        }
-    }
 }
