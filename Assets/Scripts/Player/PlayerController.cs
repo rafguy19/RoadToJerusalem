@@ -59,7 +59,6 @@ public class PlayerController : MonoBehaviour
         Inputs();
         ApplyAnimation();
         UpdateDirection();
-        UpdateFogClear();
 
         if (playerCurrentWeapon.getWeapon() != null)
         {
@@ -185,12 +184,5 @@ public class PlayerController : MonoBehaviour
     public void UpdateDamage(int newDmgValue)
     {
         atkDmg = newDmgValue;
-    }
-    void UpdateFogClear()
-    {
-        if (vfxRenderer != null)
-        {
-            vfxRenderer.SetVector3("PlayerPosition", transform.localPosition);
-        }
     }
 }

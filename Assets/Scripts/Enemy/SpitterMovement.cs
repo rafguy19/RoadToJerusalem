@@ -79,7 +79,7 @@ public class SpitterMovement : MonoBehaviour
             targetIndex %= waypoints.Count;
         }
 
-        if (Vector3.Distance(transform.position, target.transform.position) <= 10.0f)
+        if (Vector3.Distance(transform.position, target.transform.position) <= 15.0f)
         {
             ChangeState(State.CHASE);
         }
@@ -87,12 +87,12 @@ public class SpitterMovement : MonoBehaviour
 
     private void Chase()
     {
-        if (Vector3.Distance(transform.position, target.transform.position) > 10.0f)
+        if (Vector3.Distance(transform.position, target.transform.position) > 15.0f)
         {
 
             ChangeState(State.PATROL);
         }
-        else if (Vector3.Distance(transform.position, target.transform.position) <= 8.0f)
+        else if (Vector3.Distance(transform.position, target.transform.position) <= 6.0f)
         {
             ChangeState(State.SPIT);
         }
@@ -111,7 +111,7 @@ public class SpitterMovement : MonoBehaviour
                 isAttacking = true;
             }
         }
-        if (Vector3.Distance(transform.position, target.transform.position) > 8.0f)
+        if (Vector3.Distance(transform.position, target.transform.position) > 12.5f)
         {
             ChangeState(State.CHASE);
         }

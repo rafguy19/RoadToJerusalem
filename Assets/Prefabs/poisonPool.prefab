@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4856388585347387377}
   - component: {fileID: 766218579233518464}
   - component: {fileID: 1357219127856615735}
-  - component: {fileID: 7819013338130456959}
   - component: {fileID: 363723429544571584}
+  - component: {fileID: 4980036304695870953}
   m_Layer: 0
-  m_Name: Spit
+  m_Name: poisonPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 7072913766467637802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.434459, y: 2.8319373, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -107,20 +107,7 @@ Rigidbody2D:
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 0
---- !u!114 &7819013338130456959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7072913766467637802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1b3311e3e8a6aa478ae90e7b06382f3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  force: 5
+  m_Constraints: 4
 --- !u!58 &363723429544571584
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -137,3 +124,15 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &4980036304695870953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7072913766467637802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f756f4ec691521f4c841f8d0c66005cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
