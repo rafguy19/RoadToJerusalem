@@ -1,8 +1,8 @@
-    using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieAttack : MonoBehaviour
+public class BasicZombieAttack : MonoBehaviour
 {
     public int enemyMaxHealth = 20;
     public int enemyCurrentHealth;
@@ -18,7 +18,7 @@ public class ZombieAttack : MonoBehaviour
     private void Start()
     {
         enemyCurrentHealth = enemyMaxHealth;
-        zombieMovement = gameObject.GetComponentInParent<BasicZombieMovement>();
+        //zombieMovement = gameObject.GetComponentInParent<BasicZombieMovement>();
     }
 
     private void Update()
@@ -41,9 +41,9 @@ public class ZombieAttack : MonoBehaviour
         {
             player.GetComponent<PlayerHealth>().TakeDamage(enemyattackDmg);
         }
-        zombieMovement.isAttacking = false;
+        //zombieMovement.isAttacking = false;
     }
-   
+
     private void OnDrawGizmosSelected()
     {
         if (enemyattackPoint == null)

@@ -25,7 +25,7 @@ public class HunterZombieMovement : MonoBehaviour
     private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
-    private ZombieAttack zombieAttack;
+    private BasicZombieAttack basicZombieAttack;
     private bool isAttacking = false;
     private float attackTimer;
     private float attackTimerCountdown;
@@ -38,7 +38,7 @@ public class HunterZombieMovement : MonoBehaviour
     {
         QTE.SetActive(false);
         attackTimer = 1;
-        zombieAttack = GetComponentInChildren<ZombieAttack>();
+        basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         HunterZombieAI = GetComponent<HunterZombieAI>();
         rb = GetComponentInParent<Rigidbody2D>();
@@ -141,7 +141,7 @@ public class HunterZombieMovement : MonoBehaviour
         {
             playerController.Jumped = true;
             playerController.rb.velocity = Vector2.zero;
-            zombieAttack.DealDamage();
+            basicZombieAttack.DealDamage();
             QTE.SetActive(true);
             attackTimerCountdown = attackTimer;
         }

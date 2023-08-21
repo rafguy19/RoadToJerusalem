@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4507941343584687118}
   - component: {fileID: 4507941343584687117}
-  - component: {fileID: 4507941343584687119}
+  - component: {fileID: 3959101205552156167}
   m_Layer: 0
-  m_Name: Square
+  m_Name: SmokerZombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4507941343584687119
+--- !u!114 &3959101205552156167
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,18 +95,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 4507941343584687121}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6befac621aead548a26fdfaee5a54bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 32d7ec5397a515a4ba998c9da4afbe61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyMaxHealth: 100
+  enemyMaxHealth: 50
   enemyCurrentHealth: 0
   entireZombie: {fileID: 4507941344048919586}
-  enemyattackPoint: {fileID: 4507941343654650466}
-  enemyattackRange: 1
+  enemyattackPoint: {fileID: 0}
+  enemyattackRange: 0
   playerLayers:
     serializedVersion: 2
-    m_Bits: 8
-  enemyattackDmg: 5
+    m_Bits: 0
+  enemyattackDmg: 0
 --- !u!1 &4507941343654650469
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 4507941344048919584}
   - component: {fileID: 4507941344048919587}
   - component: {fileID: 4507941344048919772}
-  - component: {fileID: 4631190268141173126}
+  - component: {fileID: 307242470}
   m_Layer: 0
   m_Name: BRyanNGo
   m_TagString: Enemy
@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2b01983ebefda2344af2b0a56791f2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteFlip: 0
   target: {fileID: 0}
   nextWaypointDistance: 1
   zombieGFX: {fileID: 4507941343584687118}
@@ -283,8 +284,10 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   targetIndex: 0
-  target: {fileID: 0}
---- !u!114 &4631190268141173126
+  isAttacking: 0
+  attackTimer: 0
+  animator: {fileID: 0}
+--- !u!114 &307242470
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -296,7 +299,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9813ac95293db2740bd54cb8bf9ef2d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 0
-  waypoints: []
-  targetIndex: 0
   smoke: {fileID: 0}

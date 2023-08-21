@@ -10,9 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2422570955381714581}
   - component: {fileID: 2422570955381714570}
-  - component: {fileID: 2422570955381714580}
+  - component: {fileID: 9019712061948049444}
+  - component: {fileID: 963438824}
+  - component: {fileID: 9057940906761420605}
   m_Layer: 0
-  m_Name: Square
+  m_Name: HunterZombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +88,28 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2422570955381714580
+--- !u!114 &9019712061948049444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2422570955381714582}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63cc372bef7951a49ab0b689ab9b4ac8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMaxHealth: 50
+  enemyCurrentHealth: 0
+  entireZombie: {fileID: 2422570955642907734}
+  enemyattackPoint: {fileID: 2422570955714260139}
+  enemyattackRange: 1
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  enemyattackDmg: 5
+--- !u!114 &963438824
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,7 +118,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 2422570955381714582}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6befac621aead548a26fdfaee5a54bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 32d7ec5397a515a4ba998c9da4afbe61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMaxHealth: 50
+  enemyCurrentHealth: 0
+  entireZombie: {fileID: 2422570955642907734}
+  enemyattackPoint: {fileID: 2422570955714260139}
+  enemyattackRange: 1
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  enemyattackDmg: 5
+--- !u!114 &9057940906761420605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2422570955381714582}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63cc372bef7951a49ab0b689ab9b4ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMaxHealth: 50
@@ -118,17 +162,16 @@ GameObject:
   - component: {fileID: 2422570955642907720}
   - component: {fileID: 2422570955642907721}
   - component: {fileID: 2422570955642907722}
-  - component: {fileID: 2422570955642907723}
   - component: {fileID: 2422570955642907732}
-  - component: {fileID: 2422570955642907733}
   - component: {fileID: 2422570955642907727}
+  - component: {fileID: 1071120405}
   m_Layer: 0
   m_Name: Hunter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2422570955642907720
 Transform:
   m_ObjectHideFlags: 0
@@ -199,22 +242,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &2422570955642907723
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2422570955642907734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b01983ebefda2344af2b0a56791f2db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  nextWaypointDistance: 1
-  zombieGFX: {fileID: 2422570955381714581}
-  EnemySpeed: c80000002c01000090010000
 --- !u!50 &2422570955642907732
 Rigidbody2D:
   serializedVersion: 4
@@ -236,24 +263,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &2422570955642907733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2422570955642907734}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fdd7b5305b924a4b9a28347c60b600c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 0
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  targetIndex: 0
-  target: {fileID: 0}
 --- !u!114 &2422570955642907727
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,6 +275,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af01cadf2869b804496b8acb1280ef40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentState: 0
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  qt_Event: {fileID: 0}
+  QTE: {fileID: 0}
+  targetIndex: 0
+  target: {fileID: 0}
+--- !u!114 &1071120405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2422570955642907734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76dfe25cfcc5fc54ca7262fdc2fad00a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  nextWaypointDistance: 1
+  zombieGFX: {fileID: 2422570955381714581}
+  EnemySpeed: 125
 --- !u!1 &2422570955714260148
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +323,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2422570955714260148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.87, y: 0, z: 0}
+  m_LocalPosition: {x: 1.66, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

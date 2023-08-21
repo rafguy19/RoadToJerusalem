@@ -156,9 +156,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8926547016158381145}
   - component: {fileID: 8926547016158381146}
-  - component: {fileID: 8926547016158381144}
+  - component: {fileID: 1102043966}
   m_Layer: 0
-  m_Name: Square
+  m_Name: TankZombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -232,7 +232,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8926547016158381144
+--- !u!114 &1102043966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -241,7 +241,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8926547016158381126}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6befac621aead548a26fdfaee5a54bc, type: 3}
+  m_Script: {fileID: 11500000, guid: 32d7ec5397a515a4ba998c9da4afbe61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMaxHealth: 300
@@ -252,7 +252,7 @@ MonoBehaviour:
   playerLayers:
     serializedVersion: 2
     m_Bits: 8
-  enemyattackDmg: 25
+  enemyattackDmg: 20
 --- !u!1 &8926547016353133106
 GameObject:
   m_ObjectHideFlags: 0

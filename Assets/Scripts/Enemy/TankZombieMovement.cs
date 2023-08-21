@@ -19,7 +19,7 @@ public class TankZombieMovement : MonoBehaviour
     private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
-    private ZombieAttack zombieAttack;
+    private BasicZombieAttack basicZombieAttack;
     private bool isAttacking = false;
     private float attackTimer;
     private float attackTimerCountdown;
@@ -31,8 +31,8 @@ public class TankZombieMovement : MonoBehaviour
     void Start()
     {
         attackTimer = 1;
-        zombieAttack = GetComponentInChildren<ZombieAttack>();
-        prevHealth = zombieAttack.enemyCurrentHealth;
+        basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
+        prevHealth = basicZombieAttack.enemyCurrentHealth;
         rb = GetComponentInParent<Rigidbody2D>();
         ChangeState(currentState);
     }
@@ -59,7 +59,7 @@ public class TankZombieMovement : MonoBehaviour
 
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            zombieAttack.ReceiveDamage(10);
+            basicZombieAttack.ReceiveDamage(10);
         }
     }
 
@@ -97,7 +97,7 @@ public class TankZombieMovement : MonoBehaviour
         {
             ChangeState(State.CHASE);
         }
-        else if (prevHealth != zombieAttack.enemyCurrentHealth)
+        else if (prevHealth != basicZombieAttack.enemyCurrentHealth)
         {
             damageReductionDelay = damageReductionDelayTimer;
             damageReductionDuration = damageReductionDurationTimer;
@@ -118,7 +118,7 @@ public class TankZombieMovement : MonoBehaviour
             attackTimerCountdown = attackTimer;
             ChangeState(State.ATTACK);
         }
-        else if (prevHealth != zombieAttack.enemyCurrentHealth)
+        else if (prevHealth != basicZombieAttack.enemyCurrentHealth)
         {
             damageReductionDelay = damageReductionDelayTimer;
             damageReductionDuration = damageReductionDurationTimer;
@@ -134,7 +134,7 @@ public class TankZombieMovement : MonoBehaviour
             attackTimerCountdown -= Time.deltaTime;
             if (attackTimerCountdown <= 0)
             {
-                zombieAttack.DealDamage();
+                basicZombieAttack.DealDamage();
                 attackTimerCountdown = attackTimer;
                 isAttacking = true;
             }
@@ -147,7 +147,7 @@ public class TankZombieMovement : MonoBehaviour
         {
             ChangeState(State.PATROL);
         }
-        else if (prevHealth != zombieAttack.enemyCurrentHealth)
+        else if (prevHealth != basicZombieAttack.enemyCurrentHealth)
         {
             damageReductionDelay = damageReductionDelayTimer;
             damageReductionDuration = damageReductionDurationTimer;
@@ -164,14 +164,14 @@ public class TankZombieMovement : MonoBehaviour
 
     private void Guard()
     {
-        if(prevHealth != zombieAttack.enemyCurrentHealth && damageReductionDuration > 0f)
+        if(prevHealth != basicZombieAttack.enemyCurrentHealth && damageReductionDuration > 0f)
         {
             damageReductionDuration -= Time.deltaTime;
             isDamageReduced = true;
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 int reducedDamage = (int)(10 * damageMultiplier);
-                zombieAttack.ReceiveDamage(reducedDamage);
+                basicZombieAttack.ReceiveDamage(reducedDamage);
             }
         }
         if (damageReductionDuration <= 0f)
@@ -180,7 +180,7 @@ public class TankZombieMovement : MonoBehaviour
             damageReductionDelay -= Time.deltaTime;
             if(damageReductionDelay <= 0f)
             {
-                prevHealth = zombieAttack.enemyCurrentHealth;
+                prevHealth = basicZombieAttack.enemyCurrentHealth;
                 damageReductionDuration = damageReductionDurationTimer;
                 damageReductionDelay = damageReductionDelayTimer;
             }

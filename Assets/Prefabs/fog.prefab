@@ -69,7 +69,7 @@ VisualEffect:
       - m_Value: {x: 1, y: -0.3, z: 0}
         m_Name: WindSpeedMax
         m_Overridden: 1
-      - m_Value: {x: -1.6593934, y: -1.5827413, z: 0.02824324}
+      - m_Value: {x: -3.2004697, y: 2.8440223, z: 0.02824324}
         m_Name: PlayerPosition
         m_Overridden: 1
     m_Vector4f:
