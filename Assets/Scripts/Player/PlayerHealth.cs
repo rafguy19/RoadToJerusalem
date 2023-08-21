@@ -7,8 +7,10 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 100;
     public int currentHealth;
     public HealthBar healthBar;
+    private Animator animator;
     private void Start()
     {
+        animator = GetComponent<Animator>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -19,6 +21,7 @@ public class PlayerHealth : MonoBehaviour
     }
     public void TakeDamage(int damage)
     {
+        animator.SetTrigger("Hit");
         currentHealth -= damage;
         healthBar.SetHealth(currentHealth);
     }
