@@ -35,8 +35,17 @@ public class PlayerAttackController : MonoBehaviour
     private ArrowWheelController arrowWheelController;
 
     int arrowLoctionInInv = 0;
+
+    //audio
+    public AudioSource outOfArrow;
+    public AudioClip outOfAmmoClip;
+    bool pullPlay;
+    public AudioClip pullBow;
+    public AudioClip shootBow;
     private void Start()
     {
+        pullPlay = false;
+        canFire = true;
         arrowWheelController = GameObject.FindGameObjectWithTag("ArrowWheel").GetComponent<ArrowWheelController>();
     }
     public void AttackSelector(int type)
@@ -134,42 +143,58 @@ public class PlayerAttackController : MonoBehaviour
 
             if(arrowAmt > 0)
             {
+
+
                 ChargeBow();
 
             }
             else
             {
-                Debug.Log("NO arrows");
+                if(Input.GetMouseButtonDown(0))
+                {
+                    //when out of arrow
+                    outOfArrow.PlayOneShot(outOfAmmoClip);
+                    Debug.Log("NO arrows");
+                }
+
             }
         }
 
-        else if (Input.GetMouseButtonUp(0) && canFire && bowCharge > 2)
-        {   
-
+        else if (Input.GetMouseButtonUp(0) && canFire && bowCharge > MaxBowCharge/2)
+        {
+            pullPlay = false;
+            outOfArrow.PlayOneShot(shootBow);
             inventoryData.RemoveItem(arrowLoctionInInv, 1);
             Debug.Log(inventoryData.GetItemAt(arrowLoctionInInv).quantity);
             FireBow();
         }
         else // Not firing bow
         {
+            pullPlay = false;
             if (bowCharge > 0f)
             {
-                bowCharge -= 5 * Time.deltaTime;
+                bowCharge -= BowPower*4 * Time.deltaTime;
             }
             else
             {
                 bowCharge = 0f;
                 canFire = true;
             }
-            bowPowerSlider.value = bowCharge / 20;
+            bowPowerSlider.value = bowCharge / MaxBowCharge;
         }
     }
 
     void ChargeBow()
     {
-        bowCharge += 6.6f * Time.deltaTime;
+        if (pullPlay == false)
+        {
+            Debug.Log("play");
+            outOfArrow.PlayOneShot(pullBow);
+            pullPlay = true;
+        }
+        bowCharge += BowPower * Time.deltaTime;
 
-        bowPowerSlider.value = bowCharge / 20;
+        bowPowerSlider.value = bowCharge / MaxBowCharge;
 
         if (bowCharge > MaxBowCharge)
         {
@@ -185,8 +210,8 @@ public class PlayerAttackController : MonoBehaviour
         Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
 
         //remove one selected arrow
+        pullPlay = false;
 
-        canFire = false;
     }
 
     void meleeAttack()

@@ -38,10 +38,10 @@ public class HunterZombieMovement : MonoBehaviour
     {
         QTE.SetActive(false);
         attackTimer = 1;
-        hunterZombieAttack = GetComponentInChildren<HunterZombieAttack>();
+        hunterZombieAttack = GetComponent<HunterZombieAttack>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         HunterZombieAI = GetComponent<HunterZombieAI>();
-        rb = GetComponentInParent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
         ChangeState(currentState);
     }
 
@@ -137,6 +137,7 @@ public class HunterZombieMovement : MonoBehaviour
     private void Pounce()
     {
         attackTimerCountdown -= Time.deltaTime;
+        Vector3 playerCurrentPos = target.transform.position;
         if (attackTimerCountdown <= 0)
         {
             playerController.Jumped = true;
