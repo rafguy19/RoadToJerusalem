@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c8db59bc7c86c244c9e465e145370e8d
+guid: 903842e919ba3d347ac0d55b01a84c82
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -47,7 +47,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 180
+  spritePixelsToUnits: 150
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -105,7 +105,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: normal_Walk_0
+      name: normal_AFK_0
       rect:
         serializedVersion: 2
         x: 0
@@ -119,14 +119,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79bf2439f91a9fe4cbe36eea4b3498d9
-      internalID: 1411087116
+      spriteID: 6786fa133b3779e48b8444c6da2b93b7
+      internalID: -1619444048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: normal_Walk_1
+      name: normal_AFK_1
       rect:
         serializedVersion: 2
         x: 256
@@ -140,14 +140,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bd14e8a1dc4caf4d900b726ebde889b
-      internalID: -151072830
+      spriteID: 7fc6357bfafe1624fab3182b9411c034
+      internalID: -872875146
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: normal_Walk_2
+      name: normal_AFK_2
       rect:
         serializedVersion: 2
         x: 512
@@ -161,14 +161,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8ac1f4ca21a86944a8f8cf8ebff62bb4
-      internalID: -1536686973
+      spriteID: 9fed78955f7067347b8a59c2c8ed208f
+      internalID: 602282999
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: normal_Walk_3
+      name: normal_AFK_3
       rect:
         serializedVersion: 2
         x: 768
@@ -182,14 +182,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 20c808cd3d637ab4aa04f54ca0e14f16
-      internalID: -880127463
+      spriteID: 88ed1b6be093e5045b0f84727d836ba0
+      internalID: 661433864
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: normal_Walk_4
+      name: normal_AFK_4
       rect:
         serializedVersion: 2
         x: 1024
@@ -203,14 +203,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b0a456cb462bba4a83f5ae37d6d9bc6
-      internalID: -502392197
+      spriteID: 192aef9b73529624d970c4bc2aafec6c
+      internalID: -754848687
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: normal_Walk_5
+      name: normal_AFK_5
       rect:
         serializedVersion: 2
         x: 0
@@ -224,50 +224,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 61a9fcc7d993fcc45ad4c19f23ea1ea5
-      internalID: -59031384
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: normal_Walk_6
-      rect:
-        serializedVersion: 2
-        x: 256
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ae52a9636edb874cb54b887c361166f
-      internalID: -1092374237
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: normal_Walk_7
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 0
-        width: 256
-        height: 256
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: acfd36d30b8e2374ca8e712696535883
-      internalID: 1534090951
+      spriteID: 626724f340e1ab64ca11efee85acd0d0
+      internalID: 193947566
       vertices: []
       indices: 
       edges: []
@@ -283,14 +241,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      normal_Walk_0: 1411087116
-      normal_Walk_1: -151072830
-      normal_Walk_2: -1536686973
-      normal_Walk_3: -880127463
-      normal_Walk_4: -502392197
-      normal_Walk_5: -59031384
-      normal_Walk_6: -1092374237
-      normal_Walk_7: 1534090951
+      normal_AFK_0: -1619444048
+      normal_AFK_1: -872875146
+      normal_AFK_2: 602282999
+      normal_AFK_3: 661433864
+      normal_AFK_4: -754848687
+      normal_AFK_5: 193947566
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
