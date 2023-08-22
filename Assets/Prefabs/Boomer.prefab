@@ -275,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyMaxHealth: 20
   enemyCurrentHealth: 0
-  entireZombie: {fileID: 0}
+  entireZombie: {fileID: 6853292524781953082}
   explosionRadius: {fileID: 5965706698119692604}
   explosionRange: 4
   playerLayers:
@@ -333,7 +333,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6853292524781953223
 Transform:
   m_ObjectHideFlags: 0

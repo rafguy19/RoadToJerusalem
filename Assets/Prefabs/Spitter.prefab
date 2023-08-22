@@ -73,16 +73,15 @@ GameObject:
   - component: {fileID: 9136158532391940358}
   - component: {fileID: 9136158532391940359}
   - component: {fileID: 9136158532391940602}
-  - component: {fileID: 589860836}
-  - component: {fileID: 589860842}
-  - component: {fileID: 589860843}
+  - component: {fileID: 1580744573}
+  - component: {fileID: 1580744574}
   m_Layer: 0
   m_Name: Spitter
-  m_TagString: Enemy
+  m_TagString: Spitter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9136158532391940358
 Transform:
   m_ObjectHideFlags: 0
@@ -150,7 +149,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!114 &589860836
+--- !u!114 &1580744573
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,43 +158,33 @@ MonoBehaviour:
   m_GameObject: {fileID: 9136158532391940603}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d66e4b5a8cde97148ac183773fd11cb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Spit: {fileID: 7072913766467637802, guid: 946555946f3470142ab99890e108748a, type: 3}
-  SpitPos: {fileID: 9136158532786202555}
---- !u!114 &589860842
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9136158532391940603}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f6d461ac0841d74a8d5662ab71135ab, type: 3}
+  m_Script: {fileID: 11500000, guid: 2b01983ebefda2344af2b0a56791f2db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteFlip: 0
   target: {fileID: 0}
   nextWaypointDistance: 1
   zombieGFX: {fileID: 9136158532848882135}
---- !u!114 &589860843
+--- !u!114 &1580744574
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9136158532391940603}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae5b573d7382c354c9b3f10e1c8c568b, type: 3}
+  m_Script: {fileID: 11500000, guid: 7fdd7b5305b924a4b9a28347c60b600c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  waypoints: []
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
   targetIndex: 0
-  target: {fileID: 0}
+  isAttacking: 0
+  attackTimer: 1
+  animator: {fileID: 224508928}
 --- !u!1 &9136158532786202556
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,7 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9136158532786202555}
   m_Layer: 0
-  m_Name: SpitPosition
+  m_Name: zombieattackposition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -239,8 +228,9 @@ GameObject:
   - component: {fileID: 9136158532848882132}
   - component: {fileID: 224508928}
   - component: {fileID: 224508929}
+  - component: {fileID: 108862660}
   m_Layer: 0
-  m_Name: Spitter
+  m_Name: BasedZombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -361,3 +351,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6695404, y: 1.2985075}
   m_EdgeRadius: 0
+--- !u!114 &108862660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9136158532848882120}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32d7ec5397a515a4ba998c9da4afbe61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMaxHealth: 100
+  enemyCurrentHealth: 0
+  entireZombie: {fileID: 9136158532391940603}
+  enemyattackPoint: {fileID: 9136158532786202555}
+  enemyattackRange: 1
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  enemyattackDmg: 10

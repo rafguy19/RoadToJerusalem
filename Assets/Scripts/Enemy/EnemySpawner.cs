@@ -6,15 +6,40 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject zombieObject;
+    [SerializeField]
+    private GameObject hunterObject;
+    [SerializeField]
+    private GameObject tankObject;
+    [SerializeField]
+    private GameObject smokerObject;
+    [SerializeField]
+    private GameObject boomerObject;
+    [SerializeField]
+    private GameObject spitterObject;
 
     public LayerMask mapLayer;
 
     [SerializeField]
     private float zombieInterval = 3.5f;
+    [SerializeField]
+    private float hunterInterval = 6f;
+    [SerializeField]
+    private float tankInterval = 15f;
+    [SerializeField]
+    private float smokerInterval = 10f;
+    [SerializeField]
+    private float boomerInterval = 7f;
+    [SerializeField]
+    private float spitterInterval = 8f;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(spawnEnemy(zombieInterval, zombieObject));
+        StartCoroutine(spawnEnemy(hunterInterval, hunterObject));
+        StartCoroutine(spawnEnemy(tankInterval, tankObject));
+        StartCoroutine(spawnEnemy(smokerInterval, smokerObject));
+        StartCoroutine(spawnEnemy(boomerInterval, boomerObject));
+        StartCoroutine(spawnEnemy(spitterInterval, spitterObject));
     }
 
     private IEnumerator spawnEnemy(float interval, GameObject enemy)
