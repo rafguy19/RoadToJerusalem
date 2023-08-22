@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(knockBacked == false)
+        if(knockBacked == false || Jumped == false)
         {
             ApplyMovement();
         }
@@ -140,6 +140,8 @@ public class PlayerController : MonoBehaviour
         else
         {
             qt_Event.SetActive(true);
+            moveDirection = Vector2.zero;
+            rb.velocity.Set(0, 0);
         }
     }
     void ApplyAnimation()
