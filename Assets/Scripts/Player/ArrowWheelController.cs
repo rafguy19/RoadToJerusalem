@@ -33,7 +33,7 @@ public class ArrowWheelController : MonoBehaviour
                 //Debug.Log("Fire Arrow");
                 break;
             case 3: // holy arrow selected
-                selectedArrow = 3;
+                selectedArrow = 3;  
                 //Debug.Log("Holy Arrow");
                 break;
             case 4: // unholy arrow selected
