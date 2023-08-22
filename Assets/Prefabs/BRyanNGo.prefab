@@ -300,3 +300,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoke: {fileID: 0}
+  smoker: {fileID: 4507941344048919586}

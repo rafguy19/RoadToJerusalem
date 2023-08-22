@@ -46,9 +46,9 @@ public class ZombiePoolScript : MonoBehaviour
 
         while (elapsedTime < timer)
         {
+            yield return new WaitForSeconds(tickInterval);
             playerHealth.TakeDamage(basicZombieAttack.enemyattackDmg);
             elapsedTime += Time.deltaTime;
-            yield return new WaitForSeconds(tickInterval);
         }
         isDOTActive = false;
     }

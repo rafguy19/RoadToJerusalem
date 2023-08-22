@@ -46,7 +46,7 @@ public class BasicZombieAI : MonoBehaviour
         basicZombieMove = GetComponent<BasicZombieMovement>();
         //TrueSpeed = EnemySpeed[Random.Range(0, EnemySpeed.Length)];
         System.Random random = new System.Random();
-        EnemySpeed = random.Next(200, 401);
+        EnemySpeed = random.Next(100, 501);
         InvokeRepeating("UpdatePath", 0f, .5f);
         Debug.Log(EnemySpeed);
     }

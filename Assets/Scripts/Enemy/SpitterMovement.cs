@@ -31,7 +31,6 @@ public class SpitterMovement : MonoBehaviour
     {
         attackTimer = 1;
         basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
-        prevHealth = basicZombieAttack.enemyCurrentHealth;
         rb = GetComponentInParent<Rigidbody2D>();
         ChangeState(currentState);
     }
@@ -100,17 +99,6 @@ public class SpitterMovement : MonoBehaviour
 
     private void Spit()
     {
-        isAttacking = false;
-        if (!isAttacking)
-        {
-            attackTimerCountdown -= Time.deltaTime;
-            if (attackTimerCountdown <= 0)
-            {
-                basicZombieAttack.DealDamage();
-                attackTimerCountdown = attackTimer;
-                isAttacking = true;
-            }
-        }
         if (Vector3.Distance(transform.position, target.transform.position) > 12.5f)
         {
             ChangeState(State.CHASE);
