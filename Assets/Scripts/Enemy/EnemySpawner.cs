@@ -45,15 +45,36 @@ public class EnemySpawner : MonoBehaviour
     private IEnumerator spawnEnemy(float interval, GameObject enemy)
     {
         yield return new WaitForSeconds(interval);
-        Vector3 spawnPosition = new Vector3(Random.Range(-7.5f, 17), Random.Range(-3, 6), 0);
-        if (!Physics2D.Raycast(spawnPosition, Vector2.zero, Mathf.Infinity, mapLayer))
+
+        Vector3 spawnPosition = FindValidSpawnPosition();
+        if (spawnPosition != Vector3.zero)
         {
-            GameObject newEnemy = Instantiate(enemy, spawnPosition, Quaternion.identity);
+            Instantiate(enemy, spawnPosition, Quaternion.identity);
         }
-        else
-        {
-            GameObject newEnemy = Instantiate(enemy, spawnPosition, Quaternion.identity);
-        }
+
         StartCoroutine(spawnEnemy(interval, enemy));
+    }
+
+    private Vector3 FindValidSpawnPosition()
+    {
+        Collider2D[] colliders;
+        Vector3 spawnPosition;
+
+        float maxAttempts = Mathf.Infinity;
+        int currentAttempt = 0;
+
+        do
+        {
+            spawnPosition = new Vector3(Random.Range(-7.5f, 17), Random.Range(-3, 6), 0);
+            colliders = Physics2D.OverlapCircleAll(spawnPosition, 0.5f, mapLayer);
+            currentAttempt++;
+        } while (colliders.Length > 0 && currentAttempt < maxAttempts);
+
+        if (colliders.Length == 0)
+        {
+            return spawnPosition;
+        }
+
+        return Vector3.zero; // No valid spawn position found
     }
 }
