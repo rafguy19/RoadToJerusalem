@@ -67465,7 +67465,7 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2422570955381714581, guid: 3299bee7c766a864ea5b13c1ffaba279, type: 3}
   m_PrefabInstance: {fileID: 1155326498}
   m_PrefabAsset: {fileID: 0}
---- !u!95 &1291086465
+--- !u!95 &1291086458
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -67475,7 +67475,7 @@ Animator:
   m_GameObject: {fileID: 1291086456}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0e13317b9c80b1040b7af398fe7ec30d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -124305,6 +124305,18 @@ PrefabInstance:
       propertyPath: inventoryUI
       value: 
       objectReference: {fileID: 724776227}
+    - target: {fileID: 4819906586245839687, guid: 347a40b5245760e40a282c9238803e57, type: 3}
+      propertyPath: initialItems.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4819906586245839687, guid: 347a40b5245760e40a282c9238803e57, type: 3}
+      propertyPath: initialItems.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: b52d863f9fc20bc46874815084e482d1, type: 2}
+    - target: {fileID: 4819906586245839687, guid: 347a40b5245760e40a282c9238803e57, type: 3}
+      propertyPath: initialItems.Array.data[0].quantity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4819906586624744404, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: bowPowerSlider
       value: 

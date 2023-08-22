@@ -29,9 +29,8 @@ public class HunterZombieMovement : MonoBehaviour
     public int targetIndex;
     private Rigidbody2D rb;
     private HunterZombieAttack hunterZombieAttack;
-    private bool isAttacking = false;
-    private float attackTimer;
-    private float attackTimerCountdown;
+    public bool isAttacking = false;
+    
     private float idleTime;
 
     public Transform target;
@@ -45,6 +44,9 @@ public class HunterZombieMovement : MonoBehaviour
     bool collided;
     Vector3 playerCurrentPos;
     Vector3 direction;
+    private bool jumped;
+
+    Animator animator;
     private void OnDrawGizmosSelected()
     {
         if (pounceRadius == null)
@@ -61,9 +63,10 @@ public class HunterZombieMovement : MonoBehaviour
     }
     void Start()
     {
+        jumped = false;
+        animator = GetComponent<Animator>();
         collided = false;
         QTE.SetActive(false);
-        attackTimer = 1;
         hunterZombieAttack = GetComponent<HunterZombieAttack>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         hunterZombieAI = GetComponent<HunterZombieAI>();
@@ -76,24 +79,29 @@ public class HunterZombieMovement : MonoBehaviour
     {
         if (currentState == State.IDLE)
         {
+            animator.SetBool("isWalking", false);
             Idle();
         }
         else if (currentState == State.PATROL)
         {
+            animator.SetBool("isWalking", true);
             Patrol();
         }
         else if (currentState == State.CHASE)
         {
+            animator.SetBool("isWalking", true);
             qt_Event.GetComponent<Image>().fillAmount = qt_Event.fillAmount;
             qt_Event.fillAmount = 0;
             Chase();
         }
         else if (currentState == State.POUNCE)
         {
+          
             Pounce();
         }
         else if (currentState == State.ATTACK) 
         {
+
             Attack();
         }
         //Debug.Log(attackTimerCountdown);
@@ -130,7 +138,15 @@ public class HunterZombieMovement : MonoBehaviour
 
         if (idleTime >= 7)
         {
-            ChangeState(State.PATROL);
+            if(Vector3.Distance(transform.position, target.transform.position) <= detectionRange)
+            {
+                ChangeState(State.CHASE);
+            }
+            else
+            {
+                ChangeState(State.PATROL);
+            }
+
         }
     }
 
@@ -160,16 +176,32 @@ public class HunterZombieMovement : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.transform.position) <= pounceDist)
         {
-            attackTimerCountdown = attackTimer;
+
             playerCurrentPos = target.transform.position;
             direction = playerCurrentPos - transform.position;
             direction.Normalize();
+
+            if(direction.x < 0)
+            {
+                gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
+            }
+            else if(direction.x > 0)
+            {
+                gameObject.transform.localScale = new Vector3(1f, 1f, 1f);
+            }
             ChangeState(State.POUNCE);
         }
     }
 
     private void Pounce()
     {
+        animator.SetBool("landed", false);
+        if(jumped == false)
+        {
+            animator.SetTrigger("pounce");
+            jumped = true;
+        }
+
         Debug.Log(playerCurrentPos);
         float distance = Vector3.Distance(transform.position, playerCurrentPos);
 
@@ -186,7 +218,8 @@ public class HunterZombieMovement : MonoBehaviour
 
         if(collided == true)
         {
-            
+            jumped = false;
+            animator.SetBool("landed", true);
             rb.velocity = Vector2.zero;
             // Check if the gameObject is colliding with objects tagged as "Player"
             Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(hunterZombieAttack.enemyattackPoint.position, hunterZombieAttack.enemyattackRange, hunterZombieAttack.playerLayers);
@@ -222,11 +255,16 @@ public class HunterZombieMovement : MonoBehaviour
     {
         collided = false;
         Debug.Log("ATTACKING");
-
-        playerController.Jumped = true;
+        rb.velocity = Vector2.zero;
         playerController.rb.velocity = Vector2.zero;
-        QTE.SetActive(true);
+        playerController.Jumped = true;
 
+        QTE.SetActive(true);
+        if(isAttacking == false)
+        {
+            animator.SetTrigger("attack");
+            isAttacking = true;
+        }
         if (qt_Event.fillAmount >= 1)
         {
             QTE.SetActive(false);
