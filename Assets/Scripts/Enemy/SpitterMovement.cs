@@ -8,7 +8,7 @@ public class SpitterMovement : MonoBehaviour
     {
         PATROL,
         CHASE,
-        SPIT,
+        SPIT
     }
     [SerializeField]
     public State currentState;
@@ -23,7 +23,8 @@ public class SpitterMovement : MonoBehaviour
     private float attackTimer;
     private float attackTimerCountdown;
     private int prevHealth;
-
+    private Animator ar;
+    private bool dead;
     public Transform target;
 
     // Start is called before the first frame update
@@ -32,6 +33,7 @@ public class SpitterMovement : MonoBehaviour
         attackTimer = 1;
         basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
         rb = GetComponentInParent<Rigidbody2D>();
+        ar = GetComponentInChildren<Animator>();
         ChangeState(currentState);
     }
 
@@ -50,21 +52,34 @@ public class SpitterMovement : MonoBehaviour
         {
             Spit();
         }
+        if(basicZombieAttack.enemyCurrentHealth <= 0 && dead == false)
+        {
+            dead = true;
+            Death();
+        }
+    }
+
+    private void Death()
+    {
+        ar.SetTrigger("Death");
     }
 
     private void ChangeState(State next)
     {
-
         if (next == State.PATROL)
         {
+            ar.SetBool("Moving", true);
             GetComponent<SpitterAI>().enabled = true;
         }
         else if (next == State.CHASE)
         {
+            ar.SetBool("Moving", true);
             GetComponent<SpitterAI>().enabled = true;
         }
         else if (next == State.SPIT)
         {
+            ar.SetBool("Moving", false);
+            ar.SetTrigger("Attack");
             GetComponent<SpitterAI>().enabled = false;
         }
         currentState = next;

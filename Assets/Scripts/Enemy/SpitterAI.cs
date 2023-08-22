@@ -12,7 +12,7 @@ public class SpitterAI : MonoBehaviour
     }
 
     public FLIP spriteFlip;
-    int xSpriteScale;
+    float xSpriteScale;
 
     public Transform target;
     public float nextWaypointDistance = 3f;
@@ -34,11 +34,11 @@ public class SpitterAI : MonoBehaviour
     {
         if (spriteFlip == FLIP.LEFT)
         {
-            xSpriteScale = 1;
+            xSpriteScale = 0.5f;
         }
         else
         {
-            xSpriteScale = -1;
+            xSpriteScale = -0.5f;
         }
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
@@ -101,11 +101,11 @@ public class SpitterAI : MonoBehaviour
 
         if (force.x >= 0.01f)
         {
-            zombieGFX.localScale = new Vector3(-xSpriteScale, 1f, 1f);
+            zombieGFX.localScale = new Vector3(-xSpriteScale, 0.5f, 0.5f);
         }
         else if (force.x <= -0.01f)
         {
-            zombieGFX.localScale = new Vector3(xSpriteScale, 1f, 1f);
+            zombieGFX.localScale = new Vector3(xSpriteScale, 0.5f, 0.5f);
         }
     }
 }

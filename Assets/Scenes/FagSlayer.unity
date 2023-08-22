@@ -1699,6 +1699,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5100830838441542162, guid: 638eb935fecc43a4294349cb89272229, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5100830838449572821, guid: 638eb935fecc43a4294349cb89272229, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2183,6 +2187,10 @@ PrefabInstance:
     - target: {fileID: 9136158532391940603, guid: 3b92e90fe8ed7e2489717344342f76ca, type: 3}
       propertyPath: m_Name
       value: Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136158532391940603, guid: 3b92e90fe8ed7e2489717344342f76ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b92e90fe8ed7e2489717344342f76ca, type: 3}
@@ -3547,6 +3555,58 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spitter
       objectReference: {fileID: 0}
+    - target: {fileID: 4013915196330855165, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1484001110, guid: faec571b7da04bc4584bf5dc1f74d95d, type: 3}
+    - target: {fileID: 4013915196330855166, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5149
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013915196330855166, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5149
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013915196330855166, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.5149
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013915196330855166, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2.0891
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013915196330855166, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.8609
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295790458246194984, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_Size.x
+      value: 2.215395
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295790458246194984, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_Size.y
+      value: 2.4532433
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295790458246194984, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_Offset.x
+      value: 0.07867283
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295790458246194984, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.07370615
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295790458246194984, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295790458246194984, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 2.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 5295790458246194985, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 452a96edfe2086d44ac03fe65db13065, type: 2}
     - target: {fileID: 6262531783367131324, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
       propertyPath: SpitPos
       value: 
@@ -3555,10 +3615,18 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1308960121}
+    - target: {fileID: 6262531783367131325, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: spriteFlip
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6262531783367131326, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
       propertyPath: target
       value: 
       objectReference: {fileID: 1308960121}
+    - target: {fileID: 6262531783367131326, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: currentState
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6262531783367131326, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
       propertyPath: waypoints.Array.size
       value: 2
