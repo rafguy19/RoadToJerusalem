@@ -13,7 +13,6 @@ public class BoomerMovement : MonoBehaviour
     }
     [SerializeField]
     public State currentState;
-    [SerializeField]
     public List<GameObject> waypoints = new List<GameObject>();
     private SpriteRenderer sr;
     public int targetIndex;
@@ -90,11 +89,17 @@ public class BoomerMovement : MonoBehaviour
 
     private void Patrol()
     {
-        if (Vector3.Distance(waypoints[targetIndex].transform.position, transform.position) <= 0.5f)
+       
+        if(waypoints.Count != 0)
         {
-            targetIndex++;
-            targetIndex %= waypoints.Count;
+            if (Vector3.Distance(waypoints[targetIndex].transform.position, transform.position) <= 0.5f)
+            {
+                targetIndex++;
+                targetIndex %= waypoints.Count;
+            }
         }
+
+
 
         if (Vector3.Distance(transform.position, target.transform.position) <= detectionRange)
         {
