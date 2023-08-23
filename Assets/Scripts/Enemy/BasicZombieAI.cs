@@ -18,15 +18,15 @@ public class BasicZombieAI : MonoBehaviour
     public Transform target;
     public float nextWaypointDistance = 3f;
     public Transform zombieGFX;
-
+    public LayerMask blockage;
     private int EnemySpeed;
-
+    public float sideForce;
     private BasicZombieMovement basicZombieMove; 
 
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
-    //private float TrueSpeed;
+    private Vector2 direction;
     Seeker seeker;
     Rigidbody2D rb;
 
@@ -44,11 +44,9 @@ public class BasicZombieAI : MonoBehaviour
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         basicZombieMove = GetComponent<BasicZombieMovement>();
-        //TrueSpeed = EnemySpeed[Random.Range(0, EnemySpeed.Length)];
         System.Random random = new System.Random();
         EnemySpeed = random.Next(100, 501);
         InvokeRepeating("UpdatePath", 0f, .5f);
-        Debug.Log(EnemySpeed);
     }
 
     void UpdatePath()
@@ -90,7 +88,7 @@ public class BasicZombieAI : MonoBehaviour
             reachedEndOfPath = false;
         }
 
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+        direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
         Vector2 force = direction * EnemySpeed * Time.deltaTime;
 
         rb.AddForce(force);
@@ -109,6 +107,15 @@ public class BasicZombieAI : MonoBehaviour
         else if (force.x <= -0.01f)
         {
             zombieGFX.localScale = new Vector3(xSpriteScale, 1f, 1f);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if ((blockage.value & (1 << other.gameObject.layer)) != 0)
+        {
+            Vector2 sideForceDirection = new Vector2(-other.contacts[0].normal.y, other.contacts[0].normal.x).normalized;
+            rb.AddForce(sideForceDirection * sideForce, ForceMode2D.Force);
         }
     }
 }
