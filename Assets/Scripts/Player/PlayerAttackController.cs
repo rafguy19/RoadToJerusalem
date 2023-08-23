@@ -164,6 +164,7 @@ public class PlayerAttackController : MonoBehaviour
         {
             pullPlay = false;
             outOfArrow.PlayOneShot(shootBow);
+            CinemachineShake.Instance.ShakeCamera(3, .1f);
             inventoryData.RemoveItem(arrowLoctionInInv, 1);
             Debug.Log(inventoryData.GetItemAt(arrowLoctionInInv).quantity);
             FireBow();
@@ -219,6 +220,8 @@ public class PlayerAttackController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0) && canHit)
         {
+            Debug.Log("Attack");
+
             playerMeleeController.Melee();
         }
     }
