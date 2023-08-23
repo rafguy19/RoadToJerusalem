@@ -2136,6 +2136,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1308960121}
+    - target: {fileID: 1520548879036097158, guid: 3b92e90fe8ed7e2489717344342f76ca, type: 3}
+      propertyPath: nextWaypointDistance
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9136158532391940358, guid: 3b92e90fe8ed7e2489717344342f76ca, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -2183,6 +2187,10 @@ PrefabInstance:
     - target: {fileID: 9136158532391940603, guid: 3b92e90fe8ed7e2489717344342f76ca, type: 3}
       propertyPath: m_Name
       value: Base
+      objectReference: {fileID: 0}
+    - target: {fileID: 9136158532391940603, guid: 3b92e90fe8ed7e2489717344342f76ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b92e90fe8ed7e2489717344342f76ca, type: 3}
@@ -2364,7 +2372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2097d520ca9696b498ddfabb3e03a21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 2147483647
   currentHealth: 0
   healthBar: {fileID: 1814631723}
 --- !u!114 &1308960133
@@ -2465,6 +2473,11 @@ VisualEffect:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6097023978393406944, guid: 85b1f74be2c2ef34b950dddac0507133, type: 3}
   m_PrefabInstance: {fileID: 1797300167}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1328676992 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9136158532391940603, guid: 3b92e90fe8ed7e2489717344342f76ca, type: 3}
+  m_PrefabInstance: {fileID: 1172502469}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1365193458
 GameObject:
@@ -2577,6 +2590,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
+--- !u!1 &1429791570 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4013915195849796306, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+  m_PrefabInstance: {fileID: 6262531783430218624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1450966870
 GameObject:
   m_ObjectHideFlags: 0
@@ -3481,11 +3499,11 @@ PrefabInstance:
     - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: zombieObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1328676992}
     - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: spitterObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1429791570}
     - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: mapLayer.m_Bits
       value: 200
@@ -3546,6 +3564,10 @@ PrefabInstance:
     - target: {fileID: 4013915195849796306, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
       propertyPath: m_Name
       value: Spitter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013915195849796306, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6262531783367131324, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
       propertyPath: SpitPos
