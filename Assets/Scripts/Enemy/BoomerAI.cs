@@ -55,8 +55,14 @@ public class BoomerAI : MonoBehaviour
     {
         if (boomerMove.currentState == BoomerMovement.State.PATROL)
         {
-            if (seeker.IsDone())
-                seeker.StartPath(rb.position, boomerMove.waypoints[boomerMove.targetIndex].transform.position, OnPathComplete);
+            if(boomerMove.waypoints.Count != 0)
+            {
+                if (seeker.IsDone())
+                    seeker.StartPath(rb.position, boomerMove.waypoints[boomerMove.targetIndex].transform.position, OnPathComplete);
+            }
+
+
+
         }
         else if (boomerMove.currentState == BoomerMovement.State.CHASE)
         {

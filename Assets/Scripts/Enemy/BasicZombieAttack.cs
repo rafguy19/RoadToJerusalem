@@ -25,7 +25,7 @@ public class BasicZombieAttack : MonoBehaviour
     {
         if (enemyCurrentHealth <= 0)
         {
-            Destroy(entireZombie);
+            Destroy(entireZombie, 0.6f);
         }
     }
 

@@ -67,25 +67,29 @@ public class HunterZombieAI : MonoBehaviour
             reachedEndOfPath = false;
         }
 
-        Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
-        Vector2 force = direction * EnemySpeed * Time.deltaTime;
-
-        rb.AddForce(force);
-
-        float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
-
-        if (distance < nextWaypointDistance)
+        if(hunterZombieMovement.currentState != HunterZombieMovement.State.POUNCE || hunterZombieMovement.currentState != HunterZombieMovement.State.ATTACK)
         {
-            currentWaypoint++;
-        }
+            Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
+            Vector2 force = direction * EnemySpeed * Time.deltaTime;
 
-        if (force.x >= 0.01f)
-        {
-            zombieGFX.localScale = new Vector3(1f, 1f, 1f);
+            rb.velocity = force;
+
+            float distance = Vector2.Distance(rb.position, path.vectorPath[currentWaypoint]);
+
+            if (distance < nextWaypointDistance)
+            {
+                currentWaypoint++;
+            }
+
+            if (force.x >= 0.01f)
+            {
+                zombieGFX.localScale = new Vector3(1f, 1f, 1f);
+            }
+            else if (force.x <= -0.01f)
+            {
+                zombieGFX.localScale = new Vector3(-1f, 1f, 1f);
+            }
         }
-        else if (force.x <= -0.01f)
-        {
-            zombieGFX.localScale = new Vector3(-1f, 1f, 1f);
-        }
+        
     }
 }
