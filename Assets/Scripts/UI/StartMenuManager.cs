@@ -44,17 +44,22 @@ public class StartMenuManager : MonoBehaviour
     {
         if(weaponselector == 1)//Change to bow
         {
-            sprite.sprite = Bow;
-            weaponselector = 0;
-            nameOfWeapon.text = "Wooden Bow";
-            descOfWeapon.text = "A ranged weapon. The damage and speed of arrows will vary on how much charge you add. It is limited based on the arrows you have.";
-        }
-        else//Change to wooden sword
-        {
             sprite.sprite = WoodenSword;
-            weaponselector = 1;
+            weaponselector = 0;
             nameOfWeapon.text = "Wooden Sword";
             descOfWeapon.text = "A close combat weapon. It has decent attack speed with a short distance. Be wary as it has low durability. A true crusader's weapon";
         }
+        else//Change to wooden sword
+        {
+            sprite.sprite = Bow;
+            weaponselector = 1;
+            nameOfWeapon.text = "Wooden Bow";
+            descOfWeapon.text = "A ranged weapon. The damage and speed of arrows will vary on how much charge you add. It is limited based on the arrows you have.";
+        }
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
