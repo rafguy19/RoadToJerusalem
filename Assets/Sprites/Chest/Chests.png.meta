@@ -150,7 +150,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chests_3
+      name: NatureChest1
       rect:
         serializedVersion: 2
         x: 96
@@ -234,7 +234,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chests_15
+      name: NatureChest2
       rect:
         serializedVersion: 2
         x: 96
@@ -318,7 +318,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chests_27
+      name: NatureChest3
       rect:
         serializedVersion: 2
         x: 96
@@ -402,7 +402,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Chests_39
+      name: NatureChest4
       rect:
         serializedVersion: 2
         x: 96
@@ -816,7 +816,6 @@ TextureImporter:
       Chests_11: 753471363
       Chests_13: -1203112649
       Chests_14: 621190261
-      Chests_15: -1397959461
       Chests_16: -209343165
       Chests_17: -907339417
       Chests_18: 324318482
@@ -828,10 +827,8 @@ TextureImporter:
       Chests_23: -1754281478
       Chests_25: 117199265
       Chests_26: 736874062
-      Chests_27: 278764490
       Chests_28: -902467784
       Chests_29: -1388102428
-      Chests_3: -984264890
       Chests_30: -1651572695
       Chests_31: -1544744253
       Chests_32: 1882763826
@@ -840,7 +837,6 @@ TextureImporter:
       Chests_35: -878161387
       Chests_37: -1720365195
       Chests_38: 21040816
-      Chests_39: 1273404154
       Chests_4: 283576468
       Chests_40: 660921825
       Chests_41: 643363375
@@ -903,6 +899,10 @@ TextureImporter:
       Chests_93: -308536358
       Chests_94: 1395615304
       Chests_95: -1890903802
+      NatureChest1: -984264890
+      NatureChest2: -1397959461
+      NatureChest3: 278764490
+      NatureChest4: 1273404154
       RedChest1: 1106222496
       RedChest2: -799288499
       RedChest3: -1967986327

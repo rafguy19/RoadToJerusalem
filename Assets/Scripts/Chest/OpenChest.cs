@@ -30,7 +30,7 @@ public class OpenChest : MonoBehaviour
     {
         chestOpened = true;
         ar.Play("ChestOpen");
-
+        ar.Play("NatureChestOpen");
 
         
         yield return new WaitForSeconds(1);
