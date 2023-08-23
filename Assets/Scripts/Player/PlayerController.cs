@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     //player stats
     private float moveSpeed;
-    private float atkDmg;
+    public int atkDmg;
 
     private Vector2 moveDirection;
 
