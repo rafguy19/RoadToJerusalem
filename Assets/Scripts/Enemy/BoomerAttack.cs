@@ -16,8 +16,15 @@ public class BoomerAttack : MonoBehaviour
     public int enemyattackDmg;
     public float explosionForce = 1;
     private BoomerMovement zombieMovement;
+
+    private AudioSource audioSource;
+    public AudioClip explosionSound;
+
+    private Collider2D collider;
     private void Start()
     {
+        collider = GetComponent<Collider2D>();
+        audioSource = GetComponentInParent<AudioSource>();
         enemyCurrentHealth = enemyMaxHealth;
         zombieMovement = gameObject.GetComponentInParent<BoomerMovement>();
     }
@@ -38,27 +45,31 @@ public class BoomerAttack : MonoBehaviour
 
     public void ExplosionKnockBack()
     {
+        collider.enabled = false;
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(explosionRadius.position, explosionRange, playerLayers);
+
         foreach (Collider2D player in hitPlayer)
         {
+
             player.GetComponent<PlayerHealth>().TakeDamage(enemyattackDmg);
 
             Vector3 direction = player.transform.position - transform.position;
             direction.Normalize();
 
-            Debug.Log("Direction: " + direction);
+
 
             Vector2 knockback = new Vector2(direction.x, direction.y) * explosionForce;
-            Debug.Log("Knockback: " + knockback);
+
 
 
             player.GetComponent<PlayerController>().knockBacked = true;
             player.GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
 
-            Debug.Log("Player Velocity: " + player.GetComponent<Rigidbody2D>().velocity);
 
 
         }
+        CinemachineShake.Instance.ShakeCamera(10, .5f);
+        audioSource.PlayOneShot(explosionSound);
     }
     private void OnDrawGizmosSelected()
     {

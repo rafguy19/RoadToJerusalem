@@ -108,11 +108,11 @@ public class BoomerAI : MonoBehaviour
             currentWaypoint++;
         }
 
-        if (force.x >= 0.01f)
+        if (direction.x >= 0.01f)
         {
             zombieGFX.localScale = new Vector3(-xSpriteScale, 1f, 1f);
         }
-        else if (force.x <= -0.01f)
+        else if (direction.x <= -0.01f)
         {
             zombieGFX.localScale = new Vector3(xSpriteScale, 1f, 1f);
         }

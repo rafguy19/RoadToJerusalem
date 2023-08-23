@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
 
     //player stats
     private float moveSpeed;
-    private float atkDmg;
+    public int atkDmg;
 
     private Vector2 moveDirection;
 
@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
     //checking of weapon type
     private WeaponSystem playerCurrentWeapon;
 
-    // Start is called before the first frame update
+
     void Start()
     {
         pickedUpPressed = false;
@@ -96,7 +96,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(knockBacked == false || Jumped == false)
+        if(knockBacked == false && Jumped == false)
         {
             ApplyMovement();
         }
@@ -116,6 +116,7 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetMouseButton(0)) // Attacking
             {
+
                 //if nothing is equiped (fist)
                 if (playerCurrentWeapon.getWeapon() == null)
                 {
