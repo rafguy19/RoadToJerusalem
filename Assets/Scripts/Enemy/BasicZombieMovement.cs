@@ -14,7 +14,7 @@ public class BasicZombieMovement : MonoBehaviour
     public State currentState;
     [SerializeField]
     public List<GameObject> waypoints = new List<GameObject>();
-    private float attackDist = 1.87f;
+    private float attackDist = 1;
     private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
@@ -39,12 +39,15 @@ public class BasicZombieMovement : MonoBehaviour
         switch (currentState)
         {
             case State.PATROL:
+                animator.SetBool("isWalking", true);
                 Patrol();
                 break;
             case State.CHASE:
+                animator.SetBool("isWalking", true);
                 Chase();
                 break;
             case State.ATTACK:
+                animator.SetBool("isWalking", false);
                 Attack();
                 break;
         }

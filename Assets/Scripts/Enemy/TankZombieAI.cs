@@ -8,9 +8,9 @@ public class TankZombieAI : MonoBehaviour
     public Transform target;
     public float nextWaypointDistance = 3f;
     public Transform zombieGFX;
-
+    public LayerMask blockage;
     public int EnemySpeed;
-
+    public float sideForce;
     private TankZombieMovement tankZombieMovement;
 
     Path path;
@@ -91,6 +91,15 @@ public class TankZombieAI : MonoBehaviour
         else if (force.x <= -0.01f)
         {
             zombieGFX.localScale = new Vector3(-1f, 1f, 1f);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if ((blockage.value & (1 << other.gameObject.layer)) != 0)
+        {
+            Vector2 sideForceDirection = new Vector2(-other.contacts[0].normal.y, other.contacts[0].normal.x).normalized;
+            rb.AddForce(sideForceDirection * sideForce, ForceMode2D.Force);
         }
     }
 }
