@@ -62,4 +62,5 @@ public class StartMenuManager : MonoBehaviour
     {
         Application.Quit();
     }
+
 }
