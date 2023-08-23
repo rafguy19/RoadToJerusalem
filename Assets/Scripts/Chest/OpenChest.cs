@@ -1,35 +1,40 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-
 public class OpenChest : MonoBehaviour
 {
-   [System.Serializable]
-   public class DropWeapons
-   {
-        public string name;
-        public ScriptableObject item;
-        public int ItemRarity;
-   }
-    public List<DropWeapons> ChestLoot = new List<DropWeapons>();
+   
+   
     private Animator ar;
-    private bool hasOpen;
+
+    public GameObject lootDrop;
+
+    bool chestOpened;
     // Start is called before the first frame update
     void Start()
     {
         ar = GetComponent<Animator>();
+        chestOpened = false;
     }
    
     private void OnTriggerEnter2D(Collider2D collided)
     {
-        if(collided.tag=="Player")
+        if(collided.tag=="Player" && chestOpened == false)
         {
-            ar.Play("ChestOpen");
-            Destroy(gameObject, 6);
+
+            StartCoroutine(ChestOpenCoroutine());
+            //Destroy(gameObject, 1);
         }
+       
     }
-    void CalcItemDrop()
+    IEnumerator ChestOpenCoroutine()
     {
-        int DropWhichItem = Random.Range(0, 4);
+        chestOpened = true;
+        ar.Play("ChestOpen");
+
+
+        
+        yield return new WaitForSeconds(1);
+
+        Instantiate(lootDrop, this.transform);
     }
 }
