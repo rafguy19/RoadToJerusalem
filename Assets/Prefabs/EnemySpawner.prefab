@@ -59,4 +59,6 @@ MonoBehaviour:
   smokerInterval: 10
   boomerInterval: 7
   spitterInterval: 8
+  xSize: 42.06
+  ySize: 39.13
   stage: 0

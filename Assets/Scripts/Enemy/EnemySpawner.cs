@@ -32,6 +32,8 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float spitterInterval = 8f;
 
+    public float xSize;
+    public float ySize;
     public int stage = 0;
     // Start is called before the first frame update
     void Start()
@@ -67,7 +69,7 @@ public class EnemySpawner : MonoBehaviour
 
         do
         {
-            spawnPosition = new Vector3(Random.Range(-23, 10.1f), Random.Range(-7.5f, 5.3f), 0);
+            spawnPosition = new Vector3(Random.Range(gameObject.transform.position.x - xSize/2, gameObject.transform.position.x + xSize / 2), Random.Range(gameObject.transform.position.y - ySize / 2, gameObject.transform.position.y + ySize / 2), 0);
 
             // Cast a ray upwards to check if the spawn position is clear on the desired layer
             RaycastHit2D hit = Physics2D.Raycast(spawnPosition, Vector2.zero, 0f, mapLayer);
@@ -82,5 +84,12 @@ public class EnemySpawner : MonoBehaviour
         } while (currentAttempt < maxAttempts);
 
         return Vector3.zero; // No valid spawn position found
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green; // Set the Gizmo color
+
+        // Draw the wireframe cube (rectangle in 2D) at the specified position and size
+        Gizmos.DrawWireCube(gameObject.transform.position, new Vector3(xSize,ySize,0));
     }
 }
