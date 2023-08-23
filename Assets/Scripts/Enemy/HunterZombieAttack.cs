@@ -41,7 +41,7 @@ public class HunterZombieAttack : MonoBehaviour
         {
             player.GetComponent<PlayerHealth>().TakeDamage(enemyattackDmg);
         }
-        //zombieMovement.isAttacking = false;
+        zombieMovement.isAttacking= false;
     }
 
     private void OnDrawGizmosSelected()

@@ -8,7 +8,7 @@ public class SpitterMovement : MonoBehaviour
     {
         PATROL,
         CHASE,
-        SPIT,
+        SPIT
     }
     [SerializeField]
     public State currentState;
@@ -23,7 +23,8 @@ public class SpitterMovement : MonoBehaviour
     private float attackTimer;
     private float attackTimerCountdown;
     private int prevHealth;
-
+    private Animator ar;
+    private bool dead;
     public Transform target;
 
     // Start is called before the first frame update
@@ -31,8 +32,8 @@ public class SpitterMovement : MonoBehaviour
     {
         attackTimer = 1;
         basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
-        prevHealth = basicZombieAttack.enemyCurrentHealth;
         rb = GetComponentInParent<Rigidbody2D>();
+        ar = GetComponentInChildren<Animator>();
         ChangeState(currentState);
     }
 
@@ -51,21 +52,34 @@ public class SpitterMovement : MonoBehaviour
         {
             Spit();
         }
+        if(basicZombieAttack.enemyCurrentHealth <= 0 && dead == false)
+        {
+            dead = true;
+            Death();
+        }
+    }
+
+    private void Death()
+    {
+        ar.SetTrigger("Death");
     }
 
     private void ChangeState(State next)
     {
-
         if (next == State.PATROL)
         {
+            ar.SetBool("Moving", true);
             GetComponent<SpitterAI>().enabled = true;
         }
         else if (next == State.CHASE)
         {
+            ar.SetBool("Moving", true);
             GetComponent<SpitterAI>().enabled = true;
         }
         else if (next == State.SPIT)
         {
+            ar.SetBool("Moving", false);
+            ar.SetTrigger("Attack");
             GetComponent<SpitterAI>().enabled = false;
         }
         currentState = next;
@@ -79,7 +93,7 @@ public class SpitterMovement : MonoBehaviour
             targetIndex %= waypoints.Count;
         }
 
-        if (Vector3.Distance(transform.position, target.transform.position) <= 10.0f)
+        if (Vector3.Distance(transform.position, target.transform.position) <= 15.0f)
         {
             ChangeState(State.CHASE);
         }
@@ -87,12 +101,12 @@ public class SpitterMovement : MonoBehaviour
 
     private void Chase()
     {
-        if (Vector3.Distance(transform.position, target.transform.position) > 10.0f)
+        if (Vector3.Distance(transform.position, target.transform.position) > 15.0f)
         {
 
             ChangeState(State.PATROL);
         }
-        else if (Vector3.Distance(transform.position, target.transform.position) <= 8.0f)
+        else if (Vector3.Distance(transform.position, target.transform.position) <= 6.0f)
         {
             ChangeState(State.SPIT);
         }
@@ -100,18 +114,7 @@ public class SpitterMovement : MonoBehaviour
 
     private void Spit()
     {
-        isAttacking = false;
-        if (!isAttacking)
-        {
-            attackTimerCountdown -= Time.deltaTime;
-            if (attackTimerCountdown <= 0)
-            {
-                basicZombieAttack.DealDamage();
-                attackTimerCountdown = attackTimer;
-                isAttacking = true;
-            }
-        }
-        if (Vector3.Distance(transform.position, target.transform.position) > 8.0f)
+        if (Vector3.Distance(transform.position, target.transform.position) > 12.5f)
         {
             ChangeState(State.CHASE);
         }

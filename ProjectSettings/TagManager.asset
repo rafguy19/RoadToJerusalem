@@ -7,8 +7,9 @@ TagManager:
   - Enemy
   - ArrowWheel
   - Rain
-  - FoodChest_1
-  - WeapChest_1
+  - Spitter
+  - Pool
+  - Spit
   layers:
   - Default
   - TransparentFX

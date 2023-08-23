@@ -6,6 +6,7 @@ public class ZombieSpit : MonoBehaviour
 {
     public GameObject Spit;
     public Transform SpitPos;
+    public GameObject poisonPool;
 
     private float timer;
     private GameObject player;
@@ -19,13 +20,12 @@ public class ZombieSpit : MonoBehaviour
     {
 
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        Debug.Log(distance);
 
         if (distance < 6)
         {
             timer += Time.deltaTime;
 
-            if (timer > 2)
+            if (timer > 4)
             {
                 timer = 0;
                 Shoot();
