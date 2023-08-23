@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class OpenChest : MonoBehaviour
 {
+   [System.Serializable]
+   public class DropWeapons
+   {
+        public string name;
+        public ScriptableObject item;
+        public int ItemRarity;
+   }
+    public List<DropWeapons> ChestLoot = new List<DropWeapons>();
     private Animator ar;
     private bool hasOpen;
-    public List<GameObject> ChestLoot = new List<GameObject>(); 
     // Start is called before the first frame update
     void Start()
     {
         ar = GetComponent<Animator>();
-        
     }
-    //void Update()
-    //{
-    //    RNGitemDrop();
-    //}
+   
     private void OnTriggerEnter2D(Collider2D collided)
     {
         if(collided.tag=="Player")
@@ -25,8 +28,8 @@ public class OpenChest : MonoBehaviour
             Destroy(gameObject, 6);
         }
     }
-    //void RNGitemDrop()
-    //{
-
-    //}
+    void CalcItemDrop()
+    {
+        int DropWhichItem = Random.Range(0, 4);
+    }
 }

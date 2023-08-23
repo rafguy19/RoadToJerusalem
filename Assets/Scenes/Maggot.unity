@@ -27250,6 +27250,34 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3640160173550796024, guid: 8e4641a8bcf60124ab1b9e04778f9859, type: 3}
+      propertyPath: ChestLoot.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640160173550796024, guid: 8e4641a8bcf60124ab1b9e04778f9859, type: 3}
+      propertyPath: ChestLoot.Array.data[0].item
+      value: 
+      objectReference: {fileID: 11400000, guid: b52d863f9fc20bc46874815084e482d1, type: 2}
+    - target: {fileID: 3640160173550796024, guid: 8e4641a8bcf60124ab1b9e04778f9859, type: 3}
+      propertyPath: ChestLoot.Array.data[0].name
+      value: Diamond Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640160173550796024, guid: 8e4641a8bcf60124ab1b9e04778f9859, type: 3}
+      propertyPath: ChestLoot.Array.data[1].item
+      value: 
+      objectReference: {fileID: 11400000, guid: 9d4e44ab94c4b144b818fdb89d5a7d62, type: 2}
+    - target: {fileID: 3640160173550796024, guid: 8e4641a8bcf60124ab1b9e04778f9859, type: 3}
+      propertyPath: ChestLoot.Array.data[1].name
+      value: Stone Sword
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640160173550796024, guid: 8e4641a8bcf60124ab1b9e04778f9859, type: 3}
+      propertyPath: ChestLoot.Array.data[0].ItemRarity
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3640160173550796024, guid: 8e4641a8bcf60124ab1b9e04778f9859, type: 3}
+      propertyPath: ChestLoot.Array.data[1].ItemRarity
+      value: 70
+      objectReference: {fileID: 0}
     - target: {fileID: 3931240390412799101, guid: 8e4641a8bcf60124ab1b9e04778f9859, type: 3}
       propertyPath: m_Layer
       value: 3
