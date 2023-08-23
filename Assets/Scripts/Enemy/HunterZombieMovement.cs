@@ -47,6 +47,13 @@ public class HunterZombieMovement : MonoBehaviour
     private bool jumped;
 
     Animator animator;
+
+    //audio
+    private AudioSource audioSource;
+    public AudioClip hunterHit;
+    public AudioClip hunterJump;
+    public AudioClip hunterSpot;
+    public AudioClip hunterWalk;
     private void OnDrawGizmosSelected()
     {
         if (pounceRadius == null)
@@ -63,6 +70,7 @@ public class HunterZombieMovement : MonoBehaviour
     }
     void Start()
     {
+        audioSource = gameObject.AddComponent<AudioSource>();
         jumped = false;
         animator = GetComponent<Animator>();
         collided = false;
@@ -198,6 +206,8 @@ public class HunterZombieMovement : MonoBehaviour
         animator.SetBool("landed", false);
         if(jumped == false)
         {
+            audioSource.PlayOneShot(hunterJump);
+
             animator.SetTrigger("pounce");
             jumped = true;
         }
@@ -227,6 +237,8 @@ public class HunterZombieMovement : MonoBehaviour
             {
                 if (player.CompareTag("Player"))
                 {
+                    CinemachineShake.Instance.ShakeCamera(10, .1f);
+                    audioSource.PlayOneShot(hunterHit);
                     Debug.Log("HIT");
                     ChangeState(State.ATTACK);
                     break; // Exit the loop once we find a player
@@ -253,6 +265,7 @@ public class HunterZombieMovement : MonoBehaviour
     }
     private void Attack()
     {
+        CinemachineShake.Instance.ShakeCamera(1, .1f);
         collided = false;
         Debug.Log("ATTACKING");
         rb.velocity = Vector2.zero;

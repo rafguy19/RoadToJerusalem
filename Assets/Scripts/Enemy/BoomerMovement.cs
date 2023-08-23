@@ -30,9 +30,13 @@ public class BoomerMovement : MonoBehaviour
     public Animator animator;
     private Transform target;
 
+    private AudioSource audioSource;
+    public AudioClip boomerDelaySound;
+    bool delaySoundPlayed = false;
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         target = GetComponent<BoomerAI>().target;
         basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
         rb = GetComponentInParent<Rigidbody2D>();
@@ -54,6 +58,11 @@ public class BoomerMovement : MonoBehaviour
                 break;
             case State.EXPLODE:
                 animator.SetBool("isWalking", false);
+                if(delaySoundPlayed == false)
+                {
+                    audioSource.PlayOneShot(boomerDelaySound);
+                    delaySoundPlayed= true;
+                }
                 explosionDelay -= Time.deltaTime;
                 rb.velocity= Vector3.zero;
                 if (explosionDelay < 0)
@@ -120,6 +129,7 @@ public class BoomerMovement : MonoBehaviour
 
     private void Explode()
     {
+ 
         animator.SetTrigger("Exploding");
         currentState = State.DEATH;
     }
