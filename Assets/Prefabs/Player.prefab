@@ -115,8 +115,8 @@ GameObject:
   - component: {fileID: 1769251839}
   - component: {fileID: 1308960143}
   - component: {fileID: 1308960144}
-  - component: {fileID: 1308960123}
   - component: {fileID: 1308960133}
+  - component: {fileID: 7285343805422103973}
   m_Layer: 3
   m_Name: PlayerSprite
   m_TagString: Player
@@ -246,6 +246,7 @@ MonoBehaviour:
   vfxRenderer: {fileID: 0}
   qt_Event: {fileID: 0}
   slider: {fileID: 0}
+  atkDmg: 0
   knockBacked: 0
   knockBackStunDuration: 0.25
 --- !u!114 &4819906586624744404
@@ -528,21 +529,6 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
---- !u!114 &1308960123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2880335738060918361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2097d520ca9696b498ddfabb3e03a21c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
-  currentHealth: 0
-  healthBar: {fileID: 0}
 --- !u!114 &1308960133
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,6 +543,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vfxRenderer: {fileID: 8366554230206653166, guid: 39a68d9348387a349af326295523a8c4, type: 3}
   vfxSmoker: {fileID: 0}
+--- !u!114 &7285343805422103973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2880335738060918361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2097d520ca9696b498ddfabb3e03a21c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 0}
 --- !u!1 &4819906585297308341
 GameObject:
   m_ObjectHideFlags: 0
