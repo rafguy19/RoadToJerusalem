@@ -52,10 +52,11 @@ MonoBehaviour:
   spitterObject: {fileID: 0}
   mapLayer:
     serializedVersion: 2
-    m_Bits: 192
+    m_Bits: 512
   zombieInterval: 3.5
   hunterInterval: 6
   tankInterval: 15
   smokerInterval: 10
   boomerInterval: 7
   spitterInterval: 8
+  stage: 0

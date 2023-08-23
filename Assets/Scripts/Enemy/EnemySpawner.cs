@@ -31,6 +31,8 @@ public class EnemySpawner : MonoBehaviour
     private float boomerInterval = 7f;
     [SerializeField]
     private float spitterInterval = 8f;
+
+    public int stage = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,36 +46,40 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator spawnEnemy(float interval, GameObject enemy)
     {
-        yield return new WaitForSeconds(interval);
-
-        Vector3 spawnPosition = FindValidSpawnPosition();
-        if (spawnPosition != Vector3.zero)
+        while (stage < 1) // Keep spawning enemies indefinitely
         {
-            Instantiate(enemy, spawnPosition, Quaternion.identity);
-        }
+            yield return new WaitForSeconds(interval);
 
-        StartCoroutine(spawnEnemy(interval, enemy));
+            Vector3 spawnPosition = FindValidSpawnPosition();
+            if (spawnPosition != Vector3.zero)
+            {
+                Instantiate(enemy, spawnPosition, Quaternion.identity);
+            }
+        }
     }
 
     private Vector3 FindValidSpawnPosition()
     {
-        Collider2D[] colliders;
         Vector3 spawnPosition;
 
-        float maxAttempts = Mathf.Infinity;
+        float maxAttempts = 100; // Set a reasonable maximum number of attempts
         int currentAttempt = 0;
 
         do
         {
-            spawnPosition = new Vector3(Random.Range(-7.5f, 17), Random.Range(-3, 6), 0);
-            colliders = Physics2D.OverlapCircleAll(spawnPosition, 0.5f, mapLayer);
-            currentAttempt++;
-        } while (colliders.Length > 0 && currentAttempt < maxAttempts);
+            spawnPosition = new Vector3(Random.Range(-23, 10.1f), Random.Range(-7.5f, 5.3f), 0);
 
-        if (colliders.Length == 0)
-        {
-            return spawnPosition;
-        }
+            // Cast a ray upwards to check if the spawn position is clear on the desired layer
+            RaycastHit2D hit = Physics2D.Raycast(spawnPosition, Vector2.zero, 0f, mapLayer);
+            Debug.Log(hit.collider);
+
+            if (hit.collider == null)
+            {
+                return spawnPosition;
+            }
+
+            currentAttempt++;
+        } while (currentAttempt < maxAttempts);
 
         return Vector3.zero; // No valid spawn position found
     }

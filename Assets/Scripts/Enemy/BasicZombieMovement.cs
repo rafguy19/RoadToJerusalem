@@ -104,7 +104,7 @@ public class BasicZombieMovement : MonoBehaviour
     private void Attack()
     {
         attackTimerCountdown -= Time.deltaTime;
-        Debug.Log(attackTimerCountdown);
+        //Debug.Log(attackTimerCountdown);
         if (attackTimerCountdown <= 0)
         {
             animator.SetTrigger("attack");
