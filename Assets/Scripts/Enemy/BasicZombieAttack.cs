@@ -13,10 +13,6 @@ public class BasicZombieAttack : MonoBehaviour
 
     public LayerMask playerLayers;
     public int enemyattackDmg;
-    private Animator animator;
-
-    [SerializeField]
-    private EnemySpawner enemySpawner;
 
     private BasicZombieMovement zombieMovement;
 
@@ -36,12 +32,7 @@ public class BasicZombieAttack : MonoBehaviour
     {
         blood.Play();
         enemyCurrentHealth -= playerDamage;
-        if (enemyCurrentHealth <= 0)
-        {
-            //animator.SetTrigger("dead");
-            Destroy(entireZombie, 0.5f);
-            enemySpawner.zombieCount--;
-        }
+
     }
 
     public void DealDamage()
