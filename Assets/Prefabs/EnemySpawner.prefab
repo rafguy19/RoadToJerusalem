@@ -45,19 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   zombieObject: {fileID: 0}
-  hunterObject: {fileID: 0}
-  tankObject: {fileID: 0}
-  boomerObject: {fileID: 0}
   spitterObject: {fileID: 0}
   mapLayer:
     serializedVersion: 2
     m_Bits: 512
-  zombieInterval: 2
-  hunterInterval: 3
-  tankInterval: 6
-  boomerInterval: 5
-  spitterInterval: 4
+  zombieInterval: 0.1
+  spitterInterval: 8
   walkableTilemap: {fileID: 0}
-  xSize: 53.38
+  xSize: 42.06
   ySize: 39.13
   stage: 0

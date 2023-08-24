@@ -7,7 +7,6 @@ public class GameManager : MonoBehaviour
 
     public int starterWeaponID;
     public bool staterReceived;
-    public int scene = 1;
 
     public List<InventoryItem> starterWeapon = new List<InventoryItem>();
     private void Awake()

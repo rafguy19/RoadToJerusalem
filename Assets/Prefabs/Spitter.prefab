@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &110812146
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 110812147}
-  m_Layer: 0
-  m_Name: SpitPos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &110812147
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 110812146}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.39, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4013915196330855166}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2710953640401167386
 GameObject:
   m_ObjectHideFlags: 0
@@ -60,7 +29,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4013915196330855166}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2794386564913745854
 GameObject:
@@ -194,7 +163,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Spit: {fileID: 7072913766467637802, guid: 946555946f3470142ab99890e108748a, type: 3}
-  SpitPos: {fileID: 110812147}
+  SpitPos: {fileID: 4240092899546730533}
   poisonPool: {fileID: 7072913766467637802, guid: 720effdc4d5de5f44aa1e3b71657fca4, type: 3}
 --- !u!114 &6262531783367131325
 MonoBehaviour:
@@ -245,7 +214,7 @@ GameObject:
   - component: {fileID: 8237247713723126228}
   m_Layer: 0
   m_Name: Spitter
-  m_TagString: Spitter
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,12 +226,11 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4013915196330855137}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.33, y: -4.9, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 110812147}
   - {fileID: 4240092899546730533}
   m_Father: {fileID: 4013915195849796143}
   m_RootOrder: 0
@@ -308,7 +276,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 1484001110, guid: faec571b7da04bc4584bf5dc1f74d95d, type: 3}
+  m_Sprite: {fileID: 219206536, guid: d1e019da933a1b14b890df8d0d4fa08b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -329,7 +297,7 @@ Animator:
   m_GameObject: {fileID: 4013915196330855137}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 452a96edfe2086d44ac03fe65db13065, type: 2}
+  m_Controller: {fileID: 9100000, guid: 01d6c28ac1ca7a642970292ba68ae229, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -353,18 +321,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.07867283, y: -0.07370615}
+  m_Offset: {x: 0.14385939, y: -0.20407966}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.56, y: 2.56}
+    oldSize: {x: 1.7066667, y: 1.7066667}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.215395, y: 2.4532433}
+  m_Size: {x: 0.6695404, y: 1.2985075}
   m_EdgeRadius: 0
 --- !u!114 &8237247713723126228
 MonoBehaviour:
@@ -387,7 +355,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   enemyattackDmg: 4
-  blood: {fileID: 0}
 --- !u!1 &9197337100832517189
 GameObject:
   m_ObjectHideFlags: 0
