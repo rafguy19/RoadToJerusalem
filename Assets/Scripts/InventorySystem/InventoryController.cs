@@ -39,11 +39,11 @@ public class InventoryController : MonoBehaviour
     private int errorState = (int)possibleErrors.none;
     private void Start()
     {
-        //if (GameManager.instance.staterReceived == false)
-        //{
-        //    initialItems.Add(GameManager.instance.starterWeapon[GameManager.instance.starterWeaponID]);
-        //    GameManager.instance.staterReceived = true;
-        //}
+        if (GameManager.instance.staterReceived == false)
+        {
+            initialItems.Add(GameManager.instance.starterWeapon[GameManager.instance.starterWeaponID]);
+            GameManager.instance.staterReceived = true;
+        }
         PrepareUI();
         PrepareInventoryData();
         inventoryUI.Hide();
