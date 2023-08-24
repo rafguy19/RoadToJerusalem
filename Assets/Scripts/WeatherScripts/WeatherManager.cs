@@ -6,10 +6,11 @@ public class WeatherManager : MonoBehaviour
 {
 
     public GameObject RainDrops;
-        
+    public GameObject Torch;
     public GameObject RainSplash;
     public GameObject Fog;
-    public GameObject Night;
+    //public GameObject Night;
+    public GameObject Day;
     private int x;
 
     void Start()
@@ -18,8 +19,9 @@ public class WeatherManager : MonoBehaviour
         RainSplash.SetActive(false);
         RainDrops.SetActive(false);
         Fog.SetActive(false);
-        Night.SetActive(false);
-       
+        //Night.SetActive(false);
+        Day.SetActive(true);
+        Torch.SetActive(false);
     }
     // Update is called once per frame
     void Update()
@@ -30,7 +32,7 @@ public class WeatherManager : MonoBehaviour
         if(Input.GetKeyDown("p"))
         {
             x++;
-            if(x>7)
+            if(x>8)
             {
                 x = 0;
             }
@@ -38,13 +40,13 @@ public class WeatherManager : MonoBehaviour
     }
     void WeatherGenerationUpdate()
     {
-        //numbers from 0 to 4 if number is 0 it rains, if number is 1 fog activates, if number is 2 both rain and fog  activates, if number is 3 Night time is active
-        //if number is 4 no state active
+        //numbers from 0 to 7 to randomise weather and day or night time
         switch (x)
         {
             //random weather generation for each stage 
             case 0:
                 //Just rain
+           
             RainDrops.SetActive(true);
             RainSplash.SetActive(true);
             break;
@@ -65,36 +67,45 @@ public class WeatherManager : MonoBehaviour
             RainSplash.SetActive(false);
             RainDrops.SetActive(false);
             Fog.SetActive(false);
-            Night.SetActive(true);
+            Day.SetActive(false);
+            Torch.SetActive(true);
+            //Night.SetActive(true);
             break;
             case 4:
                 //rain and night
             RainDrops.SetActive(true);
             RainSplash.SetActive(true);
-            Night.SetActive(true);
+            
+            //Night.SetActive(true);
             break;
             case 5:
                 //fog and night
             RainSplash.SetActive(false);
             RainDrops.SetActive(false);
             Fog.SetActive(true);
-            Night.SetActive(true);
+            //Night.SetActive(true);
+            Torch.SetActive(true);
             break;
             case 6:
                 //everything at night
             RainDrops.SetActive(true);
             RainSplash.SetActive(true);
             Fog.SetActive(true);
-            Night.SetActive(true);
+            Torch.SetActive(true);
+            //Night.SetActive(true);
             break;
             case 7:
-                //nothing at all
+                //nothing at all only day
             RainSplash.SetActive(false);
             RainDrops.SetActive(false);
             Fog.SetActive(false);
-            Night.SetActive(false);
+                //Night.SetActive(false);
+            Torch.SetActive(false);
+            Day.SetActive(true);
             break;
-           
+              
+
+
 
         }
     }
