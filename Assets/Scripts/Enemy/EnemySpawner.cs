@@ -7,14 +7,14 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject zombieObject;
-    [SerializeField]
-    private GameObject hunterObject;
-    [SerializeField]
-    private GameObject tankObject;
+    //[SerializeField]
+    //private GameObject hunterObject;
+    //[SerializeField]
+    //private GameObject tankObject;
     //[SerializeField]
     //private GameObject smokerObject;
-    [SerializeField]
-    private GameObject boomerObject;
+    //[SerializeField]
+    //private GameObject boomerObject;
     [SerializeField]
     private GameObject spitterObject;
 
@@ -22,14 +22,14 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField]
     private float zombieInterval = 3.5f;
-    [SerializeField]
-    private float hunterInterval = 6f;
-    [SerializeField]
-    private float tankInterval = 15f;
+    //[SerializeField]
+    //private float hunterInterval = 6f;
+    //[SerializeField]
+    //private float tankInterval = 15f;
     //[SerializeField]
     //private float smokerInterval = 10f;
-    [SerializeField]
-    private float boomerInterval = 7f;
+    //[SerializeField]
+    //private float boomerInterval = 7f;
     [SerializeField]
     private float spitterInterval = 8f;
 
@@ -53,10 +53,10 @@ public class EnemySpawner : MonoBehaviour
         if (withinArea && !coroutineUsed)
         {
             StartCoroutine(spawnEnemy(zombieInterval, zombieObject));
-            StartCoroutine(spawnEnemy(hunterInterval, hunterObject));
-            StartCoroutine(spawnEnemy(tankInterval, tankObject));
+            //StartCoroutine(spawnEnemy(hunterInterval, hunterObject));
+            //StartCoroutine(spawnEnemy(tankInterval, tankObject));
             //StartCoroutine(spawnEnemy(smokerInterval, smokerObject));
-            StartCoroutine(spawnEnemy(boomerInterval, boomerObject));
+            //StartCoroutine(spawnEnemy(boomerInterval, boomerObject));
             StartCoroutine(spawnEnemy(spitterInterval, spitterObject));
             coroutineUsed = true;
         }
