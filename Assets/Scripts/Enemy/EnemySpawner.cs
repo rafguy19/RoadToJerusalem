@@ -40,6 +40,7 @@ public class EnemySpawner : MonoBehaviour
     public float ySize;
     private bool withinArea = false;
     private bool coroutineUsed = false;
+    public int zombieCount = 0;
     public int stage = 0;
     // Start is called before the first frame update
     void Start()
@@ -50,30 +51,38 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         withinArea = PlayerInArea();
-        if (withinArea && !coroutineUsed)
+        if (withinArea && !coroutineUsed && zombieCount < 25)
         {
-            StartCoroutine(spawnEnemy(zombieInterval, zombieObject));
-            StartCoroutine(spawnEnemy(hunterInterval, hunterObject));
-            StartCoroutine(spawnEnemy(tankInterval, tankObject));
-            //StartCoroutine(spawnEnemy(smokerInterval, smokerObject));
-            StartCoroutine(spawnEnemy(boomerInterval, boomerObject));
-            StartCoroutine(spawnEnemy(spitterInterval, spitterObject));
+            StartCoroutine(spawnEnemy());
             coroutineUsed = true;
         }
-        else if (!withinArea)
+        else if (!withinArea || zombieCount >= 25)
         {
             StopAllCoroutines();
         }
+        Debug.Log(zombieCount);
     }
 
-    private IEnumerator spawnEnemy(float interval, GameObject enemy)
+    private IEnumerator spawnEnemy()
     {
-        yield return new WaitForSeconds(interval);
-
         Vector3 spawnPosition = FindValidSpawnPosition();
         if (spawnPosition != Vector3.zero)
         {
-            Instantiate(enemy, spawnPosition, Quaternion.identity);
+            Instantiate(zombieObject, spawnPosition, Quaternion.identity);
+            yield return new WaitForSeconds(zombieInterval);
+            zombieCount++;
+            Instantiate(hunterObject, spawnPosition, Quaternion.identity);
+            yield return new WaitForSeconds(hunterInterval);
+            zombieCount++;
+            Instantiate(tankObject, spawnPosition, Quaternion.identity);
+            yield return new WaitForSeconds(tankInterval);
+            zombieCount++;
+            Instantiate(boomerObject, spawnPosition, Quaternion.identity);
+            yield return new WaitForSeconds(boomerInterval);
+            zombieCount++;
+            Instantiate(spitterObject, spawnPosition, Quaternion.identity);
+            yield return new WaitForSeconds(spitterInterval);
+            zombieCount++;
             coroutineUsed = false;
         }
     }
@@ -109,9 +118,11 @@ public class EnemySpawner : MonoBehaviour
 
     private bool PlayerInArea()
     {
-        distance = Vector3.Distance(player.transform.position, gameObject.transform.position);
+        Vector3 areaCenter = gameObject.transform.position;
+        float distanceX = Mathf.Abs(player.transform.position.x - areaCenter.x);
+        float distanceY = Mathf.Abs(player.transform.position.y - areaCenter.y);
 
-        return distance <= xSize / 2 && distance <= ySize / 2;
+        return distanceX <= xSize / 2 && distanceY <= ySize / 2;
     }
 
     public bool IsPositionWalkable(Vector3 position)

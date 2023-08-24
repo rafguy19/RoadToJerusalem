@@ -323,6 +323,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   enemyattackDmg: 20
+  enemySpawner: {fileID: 0}
   blood: {fileID: 0}
 --- !u!95 &856864828
 Animator:

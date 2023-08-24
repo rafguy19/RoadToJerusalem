@@ -387,6 +387,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   enemyattackDmg: 4
+  enemySpawner: {fileID: 0}
   blood: {fileID: 0}
 --- !u!1 &9197337100832517189
 GameObject:
