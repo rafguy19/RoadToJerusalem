@@ -441,7 +441,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   enemyattackDmg: 10
-  enemySpawner: {fileID: 0}
   blood: {fileID: 5170328338335650998}
 --- !u!1001 &1525633835
 PrefabInstance:

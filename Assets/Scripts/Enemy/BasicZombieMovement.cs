@@ -9,6 +9,7 @@ public class BasicZombieMovement : MonoBehaviour
         PATROL,
         CHASE,
         ATTACK,
+        DEATH,
     }
     [SerializeField]
     public State currentState;
@@ -25,9 +26,11 @@ public class BasicZombieMovement : MonoBehaviour
     public Animator animator;
     private Transform target;
 
+    BasicZombieAttack basicZombieAttack;
     // Start is called before the first frame update
     void Start()
     {
+        basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
         target = GetComponent<BasicZombieAI>().target;
         rb = GetComponentInParent<Rigidbody2D>();
         ChangeState(currentState);
@@ -36,21 +39,30 @@ public class BasicZombieMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        switch (currentState)
+
+            switch (currentState)
+            {
+                case State.PATROL:
+                    animator.SetBool("isWalking", true);
+                    Patrol();
+                    break;
+                case State.CHASE:
+                    animator.SetBool("isWalking", true);
+                    Chase();
+                    break;
+                case State.ATTACK:
+                    animator.SetBool("isWalking", false);
+                    Attack();
+                    break;
+                case State.DEATH:
+                    rb.velocity = Vector2.zero;
+                    break;
+            }
+        if (basicZombieAttack.isDead == true)
         {
-            case State.PATROL:
-                animator.SetBool("isWalking", true);
-                Patrol();
-                break;
-            case State.CHASE:
-                animator.SetBool("isWalking", true);
-                Chase();
-                break;
-            case State.ATTACK:
-                animator.SetBool("isWalking", false);
-                Attack();
-                break;
+            currentState = State.DEATH;
         }
+        
     }
 
     private void ChangeState(State next)

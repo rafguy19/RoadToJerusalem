@@ -8,12 +8,11 @@ public class HunterZombieAttack : BasicZombieAttack
 
     Animator animator;
 
-    public bool isDead;
 
-    float deathTimer;
+
     private void Start()
     {
-        deathTimer = 3;
+        audioSource = GetComponent<AudioSource>();
         isDead = false;
         animator = GetComponent<Animator>();
         enemyCurrentHealth = enemyMaxHealth;
@@ -36,10 +35,7 @@ public class HunterZombieAttack : BasicZombieAttack
         }
     }
 
-    public void deleteZombie()
-    {
-        Destroy(entireZombie);
-    }
+
     new public void DealDamage()
     {
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(enemyattackPoint.position, enemyattackRange, playerLayers);
