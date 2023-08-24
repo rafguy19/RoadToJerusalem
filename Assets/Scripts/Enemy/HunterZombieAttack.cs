@@ -4,28 +4,21 @@ using UnityEngine;
 
 public class HunterZombieAttack : BasicZombieAttack
 {
-
-
-
-
-
     private HunterZombieMovement zombieMovement;
+
+    Animator animator;
     private void Start()
     {
-        enemyMaxHealth = 20;
+        animator = GetComponent<Animator>();
         enemyCurrentHealth = enemyMaxHealth;
         zombieMovement = gameObject.GetComponent<HunterZombieMovement>();
     }
 
-    private void Update()
+
+    public void deleteZombie()
     {
-        if (enemyCurrentHealth <= 0)
-        {
-            Destroy(entireZombie);
-        }
+        Destroy(entireZombie);
     }
-
-
     new public void DealDamage()
     {
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(enemyattackPoint.position, enemyattackRange, playerLayers);
