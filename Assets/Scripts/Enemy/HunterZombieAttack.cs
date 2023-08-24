@@ -6,23 +6,14 @@ public class HunterZombieAttack : BasicZombieAttack
 {
     private HunterZombieMovement zombieMovement;
 
-    bool deadAnimation;
     Animator animator;
     private void Start()
     {
-        deadAnimation = false;
         animator = GetComponent<Animator>();
         enemyCurrentHealth = enemyMaxHealth;
         zombieMovement = gameObject.GetComponent<HunterZombieMovement>();
     }
-    private void Update()
-    {
-        if(enemyCurrentHealth <= 0 && deadAnimation == false)
-        {
-            animator.SetTrigger("dead");
-            deadAnimation = true;
-        }
-    }
+
 
     public void deleteZombie()
     {
