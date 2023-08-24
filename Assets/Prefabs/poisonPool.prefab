@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 766218579233518464}
   - component: {fileID: 1357219127856615735}
   - component: {fileID: 363723429544571584}
-  - component: {fileID: 4980036304695870953}
   - component: {fileID: 1274614444}
+  - component: {fileID: 1775686864982420692}
   m_Layer: 0
   m_Name: poisonPool
   m_TagString: Untagged
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 553621928, guid: 7fa359611123f694db3748af03e309ac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -124,19 +124,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.0013616278, y: -0.0149786025}
   serializedVersion: 2
-  m_Radius: 0.18953621
---- !u!114 &4980036304695870953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7072913766467637802}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f756f4ec691521f4c841f8d0c66005cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Radius: 0.14
 --- !u!95 &1274614444
 Animator:
   serializedVersion: 5
@@ -158,3 +146,15 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1775686864982420692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7072913766467637802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4ccdd5bcbd448458f6ef284ade3547, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

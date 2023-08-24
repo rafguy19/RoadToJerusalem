@@ -24,7 +24,7 @@ public class ZombieSpitScript : MonoBehaviour
         Vector3 Direction = player.transform.position - transform.position;
         rb.velocity = new Vector2(Direction.x, Direction.y).normalized * force;
         zombieSpit = spitter.GetComponent<ZombieSpit>();
-
+        Destroy(gameObject, 4);
         //uncomment whne there is sprite for spit
         //float rot = Mathf.Atan2(-Direction.y, -Direction.x) * Mathf.Rad2Deg;
         //used for the rotation of the sprite to make it face the player +/- 90 based on player pos
@@ -34,12 +34,6 @@ public class ZombieSpitScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timer += Time.deltaTime;
-
-        if(timer >= 4)
-        {
-            Destroy(gameObject);
-        }
 
         if (Vector3.Distance(transform.position, player.transform.position) < 1.2f)
         {

@@ -1,19 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject zombieObject;
-    [SerializeField]
-    private GameObject hunterObject;
-    [SerializeField]
-    private GameObject tankObject;
-    [SerializeField]
-    private GameObject smokerObject;
-    [SerializeField]
-    private GameObject boomerObject;
+    //[SerializeField]
+    //private GameObject hunterObject;
+    //[SerializeField]
+    //private GameObject tankObject;
+    //[SerializeField]
+    //private GameObject smokerObject;
+    //[SerializeField]
+    //private GameObject boomerObject;
     [SerializeField]
     private GameObject spitterObject;
 
@@ -21,42 +22,59 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField]
     private float zombieInterval = 3.5f;
-    [SerializeField]
-    private float hunterInterval = 6f;
-    [SerializeField]
-    private float tankInterval = 15f;
-    [SerializeField]
-    private float smokerInterval = 10f;
-    [SerializeField]
-    private float boomerInterval = 7f;
+    //[SerializeField]
+    //private float hunterInterval = 6f;
+    //[SerializeField]
+    //private float tankInterval = 15f;
+    //[SerializeField]
+    //private float smokerInterval = 10f;
+    //[SerializeField]
+    //private float boomerInterval = 7f;
     [SerializeField]
     private float spitterInterval = 8f;
 
+    private float distance;
+    private GameObject player;
+    public Tilemap walkableTilemap;
     public float xSize;
     public float ySize;
+    private bool withinArea = false;
+    private bool coroutineUsed = false;
     public int stage = 0;
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(spawnEnemy(zombieInterval, zombieObject));
-        StartCoroutine(spawnEnemy(hunterInterval, hunterObject));
-        StartCoroutine(spawnEnemy(tankInterval, tankObject));
-        StartCoroutine(spawnEnemy(smokerInterval, smokerObject));
-        StartCoroutine(spawnEnemy(boomerInterval, boomerObject));
-        StartCoroutine(spawnEnemy(spitterInterval, spitterObject));
+        player = GameObject.FindGameObjectWithTag("Player");
+    }
+
+    private void Update()
+    {
+        withinArea = PlayerInArea();
+        if (withinArea && !coroutineUsed)
+        {
+            StartCoroutine(spawnEnemy(zombieInterval, zombieObject));
+            //StartCoroutine(spawnEnemy(hunterInterval, hunterObject));
+            //StartCoroutine(spawnEnemy(tankInterval, tankObject));
+            //StartCoroutine(spawnEnemy(smokerInterval, smokerObject));
+            //StartCoroutine(spawnEnemy(boomerInterval, boomerObject));
+            StartCoroutine(spawnEnemy(spitterInterval, spitterObject));
+            coroutineUsed = true;
+        }
+        else if (!withinArea)
+        {
+            StopAllCoroutines();
+        }
     }
 
     private IEnumerator spawnEnemy(float interval, GameObject enemy)
     {
-        while (stage < 1) // Keep spawning enemies indefinitely
-        {
-            yield return new WaitForSeconds(interval);
+        yield return new WaitForSeconds(interval);
 
-            Vector3 spawnPosition = FindValidSpawnPosition();
-            if (spawnPosition != Vector3.zero)
-            {
-                Instantiate(enemy, spawnPosition, Quaternion.identity);
-            }
+        Vector3 spawnPosition = FindValidSpawnPosition();
+        if (spawnPosition != Vector3.zero)
+        {
+            Instantiate(enemy, spawnPosition, Quaternion.identity);
+            coroutineUsed = false;
         }
     }
 
@@ -71,11 +89,7 @@ public class EnemySpawner : MonoBehaviour
         {
             spawnPosition = new Vector3(Random.Range(gameObject.transform.position.x - xSize/2, gameObject.transform.position.x + xSize / 2), Random.Range(gameObject.transform.position.y - ySize / 2, gameObject.transform.position.y + ySize / 2), 0);
 
-            // Cast a ray upwards to check if the spawn position is clear on the desired layer
-            RaycastHit2D hit = Physics2D.Raycast(spawnPosition, Vector2.zero, 0f, mapLayer);
-            Debug.Log(hit.collider);
-
-            if (hit.collider == null)
+            if (IsPositionWalkable(spawnPosition))
             {
                 return spawnPosition;
             }
@@ -92,4 +106,33 @@ public class EnemySpawner : MonoBehaviour
         // Draw the wireframe cube (rectangle in 2D) at the specified position and size
         Gizmos.DrawWireCube(gameObject.transform.position, new Vector3(xSize,ySize,0));
     }
+
+    private bool PlayerInArea()
+    {
+        distance = Vector3.Distance(player.transform.position, gameObject.transform.position);
+
+        return distance <= xSize / 2 && distance <= ySize / 2;
+    }
+
+    public bool IsPositionWalkable(Vector3 position)
+    {
+        // Convert the world position to a cell position in the tilemap
+        Vector3Int cellPosition = walkableTilemap.WorldToCell(position);
+
+        // Get the tile at the cell position
+        TileBase tile = walkableTilemap.GetTile(cellPosition);
+
+        // Check if the tile is not null (i.e., there's a tile there)
+        if (tile != null)
+        {
+            // This position is walkable because there's a tile in the "walkable" layer.
+            return true;
+        }
+        else
+        {
+            // This position is not walkable because there's no tile in the "walkable" layer.
+            return false;
+        }
+    }
+
 }
