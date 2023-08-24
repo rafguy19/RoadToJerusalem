@@ -34,7 +34,9 @@ public class PlayerController : MonoBehaviour
     public bool knockBacked;
     private float knockBackStunTimer;
     public float knockBackStunDuration = 0.25f;
+    public int arrowSelected;
 
+    public bool pickedUpPressed;
 
     //checking of weapon type
     private WeaponSystem playerCurrentWeapon;
@@ -42,6 +44,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        pickedUpPressed = false;
         knockBackStunTimer = knockBackStunDuration;
         knockBacked =false;
         stats.Reset();
@@ -135,6 +138,11 @@ public class PlayerController : MonoBehaviour
                             break;
                     }
                 }
+            }
+            if(Input.GetKeyDown(KeyCode.F))
+            {
+                Debug.Log("Pickup");
+                pickedUpPressed = true;
             }
 
         }

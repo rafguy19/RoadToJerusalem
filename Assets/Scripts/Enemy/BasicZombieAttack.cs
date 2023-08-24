@@ -15,6 +15,8 @@ public class BasicZombieAttack : MonoBehaviour
     public int enemyattackDmg;
 
     private BasicZombieMovement zombieMovement;
+
+    public ParticleSystem blood;
     private void Start()
     {
         enemyCurrentHealth = enemyMaxHealth;
@@ -28,6 +30,7 @@ public class BasicZombieAttack : MonoBehaviour
 
     public void ReceiveDamage(int playerDamage)
     {
+        blood.Play();
         enemyCurrentHealth -= playerDamage;
     }
 
