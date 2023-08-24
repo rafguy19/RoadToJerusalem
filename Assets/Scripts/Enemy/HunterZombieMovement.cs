@@ -76,7 +76,7 @@ public class HunterZombieMovement : MonoBehaviour
     }
     void Start()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource = gameObject.GetComponent<AudioSource>();
         jumped = false;
         spotted = false;
         growled = false;
@@ -233,7 +233,7 @@ public class HunterZombieMovement : MonoBehaviour
             ChangeState(State.POUNCE);
         }
     }
-
+    
     private void Pounce()
     {
         animator.SetBool("landed", false);
@@ -270,7 +270,7 @@ public class HunterZombieMovement : MonoBehaviour
             {
                 if (player.CompareTag("Player"))
                 {
-                    CinemachineShake.Instance.ShakeCamera(10, .1f);
+                    CinemachineShake.Instance.ShakeCamera(10, 1);
                     audioSource.PlayOneShot(hunterHit);
                     Debug.Log("HIT");
                     ChangeState(State.ATTACK);
@@ -298,7 +298,7 @@ public class HunterZombieMovement : MonoBehaviour
     }
     private void Attack()
     {
-        CinemachineShake.Instance.ShakeCamera(1, .1f);
+
         collided = false;
         Debug.Log("ATTACKING");
         rb.velocity = Vector2.zero;

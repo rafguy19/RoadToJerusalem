@@ -39,6 +39,7 @@ public class HunterZombieAttack : MonoBehaviour
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(enemyattackPoint.position, enemyattackRange, playerLayers);
         foreach (Collider2D player in hitPlayer)
         {
+            CinemachineShake.Instance.ShakeCamera(1, .1f);
             player.GetComponent<PlayerHealth>().TakeDamage(enemyattackDmg);
         }
         zombieMovement.isAttacking= false;
