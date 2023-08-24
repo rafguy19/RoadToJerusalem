@@ -32,10 +32,16 @@ public class BoomerMovement : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip boomerDelaySound;
+    public AudioClip boomerGrunt1;
+    public AudioClip boomerGrunt2;
     bool delaySoundPlayed = false;
+
+    bool gurnting;
+    float gurntingDelay = 3;
     // Start is called before the first frame update
     void Start()
     {
+        gurnting = false;
         audioSource = GetComponent<AudioSource>();
         target = GetComponent<BoomerAI>().target;
         basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
@@ -46,17 +52,39 @@ public class BoomerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //gruning sound
+        if(gurnting == true)
+        {
+            gurntingDelay -= Time.deltaTime;
+            if(gurntingDelay <= 0)
+            {
+                int randomGrunt = Random.Range(1, 3);
+                switch (randomGrunt)
+                {
+                    case 1:
+                        audioSource.PlayOneShot(boomerGrunt1);
+                        break;
+                    case 2:
+                        audioSource.PlayOneShot(boomerGrunt2);
+                        break;
+                }
+                gurntingDelay = Random.Range(1,4);
+            }
+        }
         switch (currentState)
         {
             case State.PATROL:
+                gurnting = true;
                 animator.SetBool("isWalking", true);
                 Patrol();
                 break;
             case State.CHASE:
+                gurnting = true;
                 animator.SetBool("isWalking", true);
                 Chase();
                 break;
             case State.EXPLODE:
+                gurnting = false;
                 animator.SetBool("isWalking", false);
                 if(delaySoundPlayed == false)
                 {

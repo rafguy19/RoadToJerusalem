@@ -66828,6 +66828,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8837905245024627760, guid: ee7041b1a9968fe49a3ed2924c630ee4, type: 3}
+      propertyPath: boomerGrunt1
+      value: 
+      objectReference: {fileID: 8300000, guid: 178f40b4ced1ee24db65dc15e774b04c, type: 3}
+    - target: {fileID: 8837905245024627760, guid: ee7041b1a9968fe49a3ed2924c630ee4, type: 3}
+      propertyPath: boomerGrunt2
+      value: 
+      objectReference: {fileID: 8300000, guid: e5add758d910c55479d75cb762f34e80, type: 3}
+    - target: {fileID: 8837905245024627760, guid: ee7041b1a9968fe49a3ed2924c630ee4, type: 3}
       propertyPath: boomerDelaySound
       value: 
       objectReference: {fileID: 8300000, guid: 86f148835a25eab43baea6c8f028e045, type: 3}
@@ -67502,7 +67510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2422570955642907734, guid: 3299bee7c766a864ea5b13c1ffaba279, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2422570955714260139, guid: 3299bee7c766a864ea5b13c1ffaba279, type: 3}
       propertyPath: m_LocalPosition.x
@@ -67644,7 +67652,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.8
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -67664,7 +67672,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.88521576
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -124665,6 +124673,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7285343805422103973, guid: 347a40b5245760e40a282c9238803e57, type: 3}
+      propertyPath: healthBar
+      value: 
+      objectReference: {fileID: 873016295}
     m_RemovedComponents:
     - {fileID: 1376460237, guid: 347a40b5245760e40a282c9238803e57, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 347a40b5245760e40a282c9238803e57, type: 3}
@@ -124680,7 +124692,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365166129}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2097d520ca9696b498ddfabb3e03a21c, type: 3}
   m_Name: 

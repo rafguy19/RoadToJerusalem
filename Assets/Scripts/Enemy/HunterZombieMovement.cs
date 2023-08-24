@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
+using System.Threading;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -46,6 +47,11 @@ public class HunterZombieMovement : MonoBehaviour
     Vector3 direction;
     private bool jumped;
 
+    //for chasing
+    private bool spotted;
+    private bool growled;
+    float spottedDelay=3;
+
     Animator animator;
 
     //audio
@@ -72,6 +78,8 @@ public class HunterZombieMovement : MonoBehaviour
     {
         audioSource = gameObject.AddComponent<AudioSource>();
         jumped = false;
+        spotted = false;
+        growled = false;
         animator = GetComponent<Animator>();
         collided = false;
         QTE.SetActive(false);
@@ -152,6 +160,7 @@ public class HunterZombieMovement : MonoBehaviour
             }
             else
             {
+                audioSource.PlayOneShot(hunterWalk);
                 ChangeState(State.PATROL);
             }
 
@@ -178,17 +187,41 @@ public class HunterZombieMovement : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, target.transform.position) > detectionRange)
         {
-
+           
             ChangeState(State.PATROL);
         }
-
+        // to do hunter spotted growl
+        if(Vector3.Distance(transform.position, target.transform.position)<=detectionRange&& Vector3.Distance(transform.position, target.transform.position)>pounceDist)
+        {
+            // to make it so that only one audio clip is played for spotted growl
+            spotted = true;
+            if (spotted == true && growled == false)
+            {
+                audioSource.PlayOneShot(hunterSpot);
+                spotted = false;
+                growled = true;
+                spottedDelay = 4;
+            }
+            else if(growled == true)
+            {
+                spottedDelay -= Time.deltaTime;
+               if(spottedDelay<=0)
+               {
+                    spotted = true;
+                    growled = false;
+               }
+                
+            }
+           
+        }
         if (Vector3.Distance(transform.position, target.transform.position) <= pounceDist)
         {
-
+            
             playerCurrentPos = target.transform.position;
             direction = playerCurrentPos - transform.position;
             direction.Normalize();
-
+            //to stop the spotted growl
+            audioSource.Stop();
             if(direction.x < 0)
             {
                 gameObject.transform.localScale = new Vector3(-1f, 1f, 1f);
