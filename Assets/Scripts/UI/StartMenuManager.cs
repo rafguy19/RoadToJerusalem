@@ -56,6 +56,7 @@ public class StartMenuManager : MonoBehaviour
             nameOfWeapon.text = "Wooden Bow";
             descOfWeapon.text = "A ranged weapon. The damage and speed of arrows will vary on how much charge you add. It is limited based on the arrows you have.";
         }
+        GameManager.instance.starterWeaponID = weaponselector;
     }
 
     public void Quit()
