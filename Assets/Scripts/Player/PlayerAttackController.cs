@@ -47,6 +47,7 @@ public class PlayerAttackController : MonoBehaviour
     private void Start()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        Debug.Log(playerController);
         pullPlay = false;
         canFire = true;
         arrowWheelController = GameObject.FindGameObjectWithTag("ArrowWheel").GetComponent<ArrowWheelController>();
@@ -97,7 +98,7 @@ public class PlayerAttackController : MonoBehaviour
                                 arrowAmt += inventoryData.GetItemAt(x).quantity;
                                 if (arrowRemoved == false)
                                 {
-                                    playerController.atkDmg = 15;
+                                    playerController.UpdateDamage(15);
                                     arrowRemoved = true;
                                 }
                             }
@@ -109,7 +110,7 @@ public class PlayerAttackController : MonoBehaviour
                                 arrowAmt += inventoryData.GetItemAt(x).quantity;
                                 if (arrowRemoved == false)
                                 {
-                                    playerController.atkDmg = 15;
+                                    playerController.UpdateDamage(15);
                                     arrowRemoved = true;
                                 }
                             }
@@ -121,7 +122,7 @@ public class PlayerAttackController : MonoBehaviour
                                 arrowAmt += inventoryData.GetItemAt(x).quantity;
                                 if (arrowRemoved == false)
                                 {
-                                    playerController.atkDmg = 20;
+                                    playerController.UpdateDamage(20);
                                     arrowRemoved = true;
                                 }
                             }
@@ -133,7 +134,7 @@ public class PlayerAttackController : MonoBehaviour
                                 arrowAmt += inventoryData.GetItemAt(x).quantity;
                                 if (arrowRemoved == false)
                                 {
-                                    playerController.atkDmg = 40;
+                                    playerController.UpdateDamage(40);
                                     arrowRemoved = true;
                                 }
                             }
@@ -211,8 +212,7 @@ public class PlayerAttackController : MonoBehaviour
     {
         arrowSpeed = bowCharge * 1.5f;
 
-        playerController.atkDmg = Mathf.FloorToInt(bowCharge) / Mathf.FloorToInt(MaxBowCharge) * playerController.atkDmg;
-
+        playerController.UpdateDamage(Mathf.FloorToInt(bowCharge) / Mathf.FloorToInt(MaxBowCharge) * playerController.atkDmg);
         Instantiate(bullet, gameObject.transform.position, Quaternion.identity);
 
         //remove one selected arrow

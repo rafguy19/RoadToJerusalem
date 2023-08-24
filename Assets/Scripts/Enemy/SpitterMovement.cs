@@ -50,6 +50,7 @@ public class SpitterMovement : MonoBehaviour
         }
         else if (currentState == State.SPIT)
         {
+            rb.velocity = Vector2.zero;
             Spit();
         }
         if(basicZombieAttack.enemyCurrentHealth <= 0 && dead == false)
@@ -80,7 +81,7 @@ public class SpitterMovement : MonoBehaviour
         {
             ar.SetBool("Moving", false);
             ar.SetTrigger("Attack");
-            GetComponent<SpitterAI>().enabled = false;
+            GetComponent<SpitterAI>().enabled = true;
         }
         currentState = next;
     }
@@ -114,11 +115,11 @@ public class SpitterMovement : MonoBehaviour
 
     private void Spit()
     {
-        if (Vector3.Distance(transform.position, target.transform.position) > 12.5f)
+        if (Vector3.Distance(transform.position, target.transform.position) > 10f)
         {
             ChangeState(State.CHASE);
         }
-        else if (Vector3.Distance(transform.position, target.transform.position) > 10.0f)
+        else if (Vector3.Distance(transform.position, target.transform.position) > 12.5f)
         {
             ChangeState(State.PATROL);
         }
