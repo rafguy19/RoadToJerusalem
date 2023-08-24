@@ -148,7 +148,7 @@ public class HunterZombieMovement : MonoBehaviour
     private void Idle()
     {
         collided = false;
-        Debug.Log("AFK");
+        //Debug.Log("AFK");
         rb.velocity = Vector2.zero;
         idleTime += Time.deltaTime;
 
@@ -300,7 +300,7 @@ public class HunterZombieMovement : MonoBehaviour
     {
 
         collided = false;
-        Debug.Log("ATTACKING");
+        //Debug.Log("ATTACKING");
         rb.velocity = Vector2.zero;
         playerController.rb.velocity = Vector2.zero;
         playerController.Jumped = true;

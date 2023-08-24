@@ -44,8 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 361e8ed1824971846b99a1e1ac569945, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  RainDrops: {fileID: 8290356490198503899, guid: c4534096d720b154ba8e8a0af6f20c60, type: 3}
-  Torch: {fileID: 5822173918757534, guid: d59c7e1b4bcd7ac4d96f98e4b705eb3a, type: 3}
-  RainSplash: {fileID: 4112620979385832616, guid: d22ce8ccf81a15240b46d72056b3c1cc, type: 3}
-  Fog: {fileID: 8366554230206653162, guid: 39a68d9348387a349af326295523a8c4, type: 3}
-  Day: {fileID: 5980193085249369199, guid: 3327998f464d8514d8e4c32b4c4cdf5c, type: 3}
+  RainDrops: {fileID: 0}
+  Torch: {fileID: 0}
+  RainSplash: {fileID: 0}
+  Fog: {fileID: 0}
+  Day: {fileID: 0}
