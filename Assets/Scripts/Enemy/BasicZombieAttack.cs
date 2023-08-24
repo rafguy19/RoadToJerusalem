@@ -25,10 +25,7 @@ public class BasicZombieAttack : MonoBehaviour
 
     private void Update()
     {
-        if (enemyCurrentHealth <= 0)
-        {
-            Destroy(entireZombie, 0.6f);
-        }
+
     }
 
     public void ReceiveDamage(int playerDamage)
@@ -48,7 +45,7 @@ public class BasicZombieAttack : MonoBehaviour
         {
             player.GetComponent<PlayerHealth>().TakeDamage(enemyattackDmg);
         }
-        zombieMovement.isAttacking = false;
+        //zombieMovement.isAttacking = false;
     }
 
     private void OnDrawGizmosSelected()
