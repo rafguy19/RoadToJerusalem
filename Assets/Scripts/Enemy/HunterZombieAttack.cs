@@ -2,43 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HunterZombieAttack : MonoBehaviour
+public class HunterZombieAttack : BasicZombieAttack
 {
-    public int enemyMaxHealth = 20;
-    public int enemyCurrentHealth;
-    public GameObject entireZombie;
-
-    public Transform enemyattackPoint;
-    public float enemyattackRange;
-
-    public LayerMask playerLayers;
-    public int enemyattackDmg;
-
     private HunterZombieMovement zombieMovement;
+
+    Animator animator;
     private void Start()
     {
+        animator = GetComponent<Animator>();
         enemyCurrentHealth = enemyMaxHealth;
         zombieMovement = gameObject.GetComponent<HunterZombieMovement>();
     }
 
-    private void Update()
-    {
-        if (enemyCurrentHealth <= 0)
-        {
-            Destroy(entireZombie);
-        }
-    }
 
-    public void ReceiveDamage(int playerDamage)
+    public void deleteZombie()
     {
-        enemyCurrentHealth -= playerDamage;
+        Destroy(entireZombie);
     }
-
-    public void DealDamage()
+    new public void DealDamage()
     {
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(enemyattackPoint.position, enemyattackRange, playerLayers);
         foreach (Collider2D player in hitPlayer)
         {
+            CinemachineShake.Instance.ShakeCamera(1, .1f);
             player.GetComponent<PlayerHealth>().TakeDamage(enemyattackDmg);
         }
         zombieMovement.isAttacking= false;

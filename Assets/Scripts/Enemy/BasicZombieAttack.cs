@@ -15,6 +15,8 @@ public class BasicZombieAttack : MonoBehaviour
     public int enemyattackDmg;
 
     private BasicZombieMovement zombieMovement;
+
+    public ParticleSystem blood;
     private void Start()
     {
         enemyCurrentHealth = enemyMaxHealth;
@@ -23,15 +25,17 @@ public class BasicZombieAttack : MonoBehaviour
 
     private void Update()
     {
-        if (enemyCurrentHealth <= 0)
-        {
-            Destroy(entireZombie, 0.6f);
-        }
+
     }
 
     public void ReceiveDamage(int playerDamage)
     {
+        blood.Play();
         enemyCurrentHealth -= playerDamage;
+        if (enemyCurrentHealth <= 0)
+        {
+            animator.SetTrigger("dead");
+        }
     }
 
     public void DealDamage()
@@ -41,7 +45,7 @@ public class BasicZombieAttack : MonoBehaviour
         {
             player.GetComponent<PlayerHealth>().TakeDamage(enemyattackDmg);
         }
-        zombieMovement.isAttacking = false;
+        //zombieMovement.isAttacking = false;
     }
 
     private void OnDrawGizmosSelected()
