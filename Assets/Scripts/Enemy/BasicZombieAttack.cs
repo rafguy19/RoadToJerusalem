@@ -7,7 +7,7 @@ public class BasicZombieAttack : MonoBehaviour
     public int enemyMaxHealth = 20;
     public int enemyCurrentHealth;
     public GameObject entireZombie;
-
+    private Animator animator;
     public Transform enemyattackPoint;
     public float enemyattackRange;
 
@@ -32,10 +32,10 @@ public class BasicZombieAttack : MonoBehaviour
     {
         blood.Play();
         enemyCurrentHealth -= playerDamage;
-        if (enemyCurrentHealth <= 0)
-        {
-            animator.SetTrigger("dead");
-        }
+        //if (enemyCurrentHealth <= 0)
+        //{
+        //    animator.SetTrigger("dead");
+        //}
     }
 
     public void DealDamage()
