@@ -13,12 +13,15 @@ public class PlayerMeleeController : MonoBehaviour
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+
     }
     // Update is called once per frame
     void Update()
     {
         if (isAttack)
         {
+           
+
             sr.enabled = true;
             var step = speed * Time.deltaTime;
             if (!isOut)//on the way out

@@ -118,7 +118,6 @@ MonoBehaviour:
   <Quantity>k__BackingField: 1
   FoodLoot: []
   WeaponLoot:
-  - {fileID: 11400000, guid: b52d863f9fc20bc46874815084e482d1, type: 2}
   - {fileID: 11400000, guid: 6842e1b2155b6e147a7041ea7ed2b5dc, type: 2}
   - {fileID: 11400000, guid: 8f94be8cf0d96a24caf58d5458bcf684, type: 2}
   - {fileID: 11400000, guid: f0a8671bfb84c3141a680b4a0cf4cc51, type: 2}
