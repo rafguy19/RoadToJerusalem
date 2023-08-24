@@ -2,18 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoomerAttack : MonoBehaviour
+public class BoomerAttack : BasicZombieAttack
 {
-    public int enemyMaxHealth = 20;
-    public int enemyCurrentHealth;
-    public GameObject entireZombie;
+  
 
 
     public Transform explosionRadius;
     public float explosionRange;
 
-    public LayerMask playerLayers;
-    public int enemyattackDmg;
     public float explosionForce = 1;
     private BoomerMovement zombieMovement;
 
@@ -36,12 +32,6 @@ public class BoomerAttack : MonoBehaviour
             Destroy(entireZombie);
         }
     }
-
-    public void ReceiveDamage(int playerDamage)
-    {
-        enemyCurrentHealth -= playerDamage;
-    }
-
 
     public void ExplosionKnockBack()
     {
