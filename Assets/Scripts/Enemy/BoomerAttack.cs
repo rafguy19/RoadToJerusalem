@@ -13,23 +13,22 @@ public class BoomerAttack : BasicZombieAttack
     public float explosionForce = 1;
     private BoomerMovement zombieMovement;
 
-    private AudioSource audioSource;
     public AudioClip explosionSound;
 
     private Collider2D collider;
     private void Start()
     {
         collider = GetComponent<Collider2D>();
-        audioSource = GetComponentInParent<AudioSource>();
         enemyCurrentHealth = enemyMaxHealth;
         zombieMovement = gameObject.GetComponentInParent<BoomerMovement>();
     }
 
     private void Update()
     {
-        if (enemyCurrentHealth <= 0)
+        if (enemyCurrentHealth <= 0 && isDead == false)
         {
-            Destroy(entireZombie);
+            zombieMovement.Explode();
+            isDead = true;
         }
     }
 
