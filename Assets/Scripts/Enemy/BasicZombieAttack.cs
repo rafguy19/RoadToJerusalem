@@ -32,10 +32,6 @@ public class BasicZombieAttack : MonoBehaviour
     {
         blood.Play();
         enemyCurrentHealth -= playerDamage;
-        if (enemyCurrentHealth <= 0)
-        {
-            animator.SetTrigger("dead");
-        }
     }
 
     public void DealDamage()

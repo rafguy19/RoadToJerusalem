@@ -178,6 +178,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spitter
       objectReference: {fileID: 0}
+    - target: {fileID: 4013915195849796306, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6262531783367131325, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
       propertyPath: target
       value: 
@@ -66991,6 +66995,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boomer
       objectReference: {fileID: 0}
+    - target: {fileID: 6853292524781953082, guid: ee7041b1a9968fe49a3ed2924c630ee4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6853292524781953223, guid: ee7041b1a9968fe49a3ed2924c630ee4, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -68196,6 +68204,60 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1351258846}
   m_CullTransparentMesh: 1
+--- !u!1 &1366550978
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1366550980}
+  - component: {fileID: 1366550979}
+  m_Layer: 0
+  m_Name: gamemamnger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1366550979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366550978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ce02fa4abf26d8469a96d0a1d19b0b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  starterWeaponID: 0
+  staterReceived: 0
+  scene: 1
+  starterWeapon:
+  - quantity: 0
+    item: {fileID: 11400000, guid: b64c3ea349c6519469d5119a1d01b2f4, type: 2}
+    itemState: []
+  - quantity: 0
+    item: {fileID: 11400000, guid: a5531fc60bb483442907d7914c5b1480, type: 2}
+    itemState: []
+--- !u!4 &1366550980
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366550978}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8.833551, y: -0.9903823, z: -0.20033626}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1369783135
 GameObject:
   m_ObjectHideFlags: 0
@@ -124799,6 +124861,10 @@ PrefabInstance:
     - target: {fileID: 8926547015673652341, guid: 61dd9d05fd47c6748a8eaf1aba452dcd, type: 3}
       propertyPath: m_Name
       value: Tank
+      objectReference: {fileID: 0}
+    - target: {fileID: 8926547015673652341, guid: 61dd9d05fd47c6748a8eaf1aba452dcd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8926547015673652360, guid: 61dd9d05fd47c6748a8eaf1aba452dcd, type: 3}
       propertyPath: m_RootOrder
