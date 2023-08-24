@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
     public bool knockBacked;
     private float knockBackStunTimer;
     public float knockBackStunDuration = 0.25f;
+    public int arrowSelected;
 
 
     //checking of weapon type
