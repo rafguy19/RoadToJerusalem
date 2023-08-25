@@ -9,8 +9,7 @@ public class ZombiePoolScript : MonoBehaviour
     private Rigidbody2D rb;
     private float timer = 5f;
     private PlayerHealth playerHealth;
-    private SpitterAttack spitterAttack;
-    public BasicZombieMovement zombieMovement;
+    private BasicZombieAttack basicZombieAttack;
     private ZombieSpit zombieSpit;
     private float tickInterval = 1.5f;
     private bool isDotActive = false;
@@ -22,8 +21,7 @@ public class ZombiePoolScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
         spitter = GameObject.FindGameObjectWithTag("Spitter");
-        spitterAttack = spitter.GetComponentInChildren<SpitterAttack>();
-        zombieMovement = spitter.GetComponent<BasicZombieMovement>();
+        basicZombieAttack = spitter.GetComponentInChildren<BasicZombieAttack>();
         zombieSpit = spitter.GetComponent<ZombieSpit>();
         Destroy(gameObject, 5);
 
@@ -45,7 +43,7 @@ public class ZombiePoolScript : MonoBehaviour
 
         if (elapsedTime < timer)
         {
-            playerHealth.TakeDamage(spitterAttack.enemyattackDmg);
+            playerHealth.TakeDamage(basicZombieAttack.enemyattackDmg);
             elapsedTime += tickInterval;
             yield return new WaitForSeconds(tickInterval);
         }
