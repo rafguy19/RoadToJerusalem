@@ -273,11 +273,11 @@ MonoBehaviour:
   bowPowerSlider: {fileID: 0}
   inventoryData: {fileID: 11400000, guid: 5776a03df2f900e409b990b81675d099, type: 2}
   playerMeleeController: {fileID: 4819906585751540135}
-  audioSource: {fileID: 0}
-  outOfAmmoClip: {fileID: 8300000, guid: d026686184ecaf340b38ea2f69bda1da, type: 3}
-  pullBow: {fileID: 8300000, guid: c10cf3e3304cc474791ad780ef918515, type: 3}
-  shootBow: {fileID: 8300000, guid: f258f21481b18c441a245b0d96962c4b, type: 3}
-  swingMelee: {fileID: 0}
+  audioSource: {fileID: 1769251839}
+  outOfAmmoClip: {fileID: 8300000, guid: ac5b6da08a4428140a5ef987961474e0, type: 3}
+  pullBow: {fileID: 8300000, guid: f5b7eff47d4702343903f1ed36bb2b8b, type: 3}
+  shootBow: {fileID: 8300000, guid: e9aa2b90889dc6a42a44031cbf0fbfa8, type: 3}
+  swingMelee: {fileID: 8300000, guid: 5f2b3645a69a46d4094a4c067569a5c9, type: 3}
 --- !u!61 &4819906586105975893
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -122,6 +122,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8f94be8cf0d96a24caf58d5458bcf684, type: 2}
   - {fileID: 11400000, guid: f0a8671bfb84c3141a680b4a0cf4cc51, type: 2}
   - {fileID: 11400000, guid: 9d4e44ab94c4b144b818fdb89d5a7d62, type: 2}
+  - {fileID: 11400000, guid: d8f3e0c5bb4aa1c48a960e52a1ddc4b1, type: 2}
+  - {fileID: 11400000, guid: af4df8805f36f5a4c8fe83d280542103, type: 2}
+  - {fileID: 11400000, guid: 1ce4aca5c58f8fb4d9de535369624e29, type: 2}
+  - {fileID: 11400000, guid: 79cf85ae9ffcef44491069ceec63037b, type: 2}
+  - {fileID: 11400000, guid: e511e7c310a35f14ba8f3d9068c6eb38, type: 2}
   lootType: 1
   audioSource: {fileID: 0}
   duration: 0.3
