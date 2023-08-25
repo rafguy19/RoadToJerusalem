@@ -52,11 +52,24 @@ MonoBehaviour:
   mapLayer:
     serializedVersion: 2
     m_Bits: 512
+<<<<<<< Updated upstream
   zombieInterval: 2
   hunterInterval: 3
   tankInterval: 6
   boomerInterval: 5
   spitterInterval: 4
+=======
+<<<<<<< Updated upstream
+  zombieInterval: 0.1
+  spitterInterval: 8
+=======
+  zombieInterval: 3
+  hunterInterval: 8
+  tankInterval: 14
+  boomerInterval: 9
+  spitterInterval: 6
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   walkableTilemap: {fileID: 0}
   xSize: 53.38
   ySize: 39.13

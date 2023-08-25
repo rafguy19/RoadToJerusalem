@@ -33,7 +33,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float spitterInterval = 8f;
 
-    private float distance;
     private GameObject player;
     public Tilemap walkableTilemap;
     public float xSize;
@@ -51,19 +50,41 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         withinArea = PlayerInArea();
+<<<<<<< Updated upstream
         if (withinArea && !coroutineUsed && zombieCount < 25)
+=======
+<<<<<<< Updated upstream
+        if (withinArea && !coroutineUsed)
+>>>>>>> Stashed changes
         {
             StartCoroutine(spawnEnemy());
             coroutineUsed = true;
         }
+<<<<<<< Updated upstream
         else if (!withinArea || zombieCount >= 25)
+=======
+        else if (!withinArea)
+=======
+        if (withinArea && zombieCount < 35 && !coroutineUsed)
+        {
+            StartCoroutine(StartSpawnEnemies(1));
+            coroutineUsed = true;
+        }
+        else if (!withinArea || zombieCount >= 35)
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
         {
             StopAllCoroutines();
         }
         Debug.Log(zombieCount);
     }
 
+<<<<<<< Updated upstream
     private IEnumerator spawnEnemy()
+=======
+<<<<<<< Updated upstream
+    private IEnumerator spawnEnemy(float interval, GameObject enemy)
+>>>>>>> Stashed changes
     {
         Vector3 spawnPosition = FindValidSpawnPosition();
         if (spawnPosition != Vector3.zero)
@@ -84,6 +105,31 @@ public class EnemySpawner : MonoBehaviour
             yield return new WaitForSeconds(spitterInterval);
             zombieCount++;
             coroutineUsed = false;
+=======
+    private IEnumerator StartSpawnEnemies(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        StartCoroutine(SpawnEnemy(zombieInterval, zombieObject));
+        StartCoroutine(SpawnEnemy(hunterInterval, hunterObject));
+        StartCoroutine(SpawnEnemy(tankInterval, tankObject));
+        StartCoroutine(SpawnEnemy(boomerInterval, boomerObject));
+        StartCoroutine(SpawnEnemy(spitterInterval, spitterObject));
+    }
+
+    private IEnumerator SpawnEnemy(float interval, GameObject enemyPrefab)
+    {
+        while (withinArea && zombieCount < 35)
+        {
+            Vector3 spawnPosition = FindValidSpawnPosition();
+            if (spawnPosition != Vector3.zero)
+            {
+                Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                zombieCount++;
+            }
+
+            yield return new WaitForSeconds(interval);
+>>>>>>> Stashed changes
         }
     }
 
