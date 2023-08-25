@@ -91,7 +91,7 @@ Transform:
   m_GameObject: {fileID: 8926547015673652341}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.36, y: 5.38, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8926547016158381145}
@@ -162,6 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7ed074e691d84e48b83e841065f34e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteFlip: 1
   target: {fileID: 0}
   nextWaypointDistance: 1
   zombieGFX: {fileID: 8926547016158381145}
@@ -186,11 +187,9 @@ MonoBehaviour:
   waypoints: []
   targetIndex: 0
   isAttacking: 0
-  isBlocking: 0
-  isColliding: 0
+  prevHealth: 0
   animator: {fileID: 856864828}
   target: {fileID: 0}
-  damageReductionDuration: 0
 --- !u!1 &8926547016158381126
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,7 +219,7 @@ Transform:
   m_GameObject: {fileID: 8926547016158381126}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8926547016353133109}

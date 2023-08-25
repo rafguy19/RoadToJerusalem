@@ -73539,7 +73539,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2422570955642907734, guid: 3299bee7c766a864ea5b13c1ffaba279, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3299bee7c766a864ea5b13c1ffaba279, type: 3}
@@ -73627,7 +73627,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4939057678374668678, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4939057678374668792, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: m_RootOrder
@@ -134543,6 +134543,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Base
       objectReference: {fileID: 0}
+    - target: {fileID: 9136158532391940603, guid: 3b92e90fe8ed7e2489717344342f76ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b92e90fe8ed7e2489717344342f76ca, type: 3}
 --- !u!1 &2079930445 stripped
@@ -134748,7 +134752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8926547015673652341, guid: 61dd9d05fd47c6748a8eaf1aba452dcd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8926547015673652360, guid: 61dd9d05fd47c6748a8eaf1aba452dcd, type: 3}
       propertyPath: m_RootOrder
@@ -134877,6 +134881,10 @@ PrefabInstance:
       propertyPath: currentEquip
       value: 
       objectReference: {fileID: 1034914706}
+    - target: {fileID: 4819906586245839686, guid: 347a40b5245760e40a282c9238803e57, type: 3}
+      propertyPath: atkDmg
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 4819906586245839686, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: slider
       value: 
