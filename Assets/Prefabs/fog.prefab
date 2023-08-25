@@ -41,7 +41,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8366554230206653162}
   m_Enabled: 1
-  m_Asset: {fileID: 0}
+  m_Asset: {fileID: 8926484042661614526, guid: c6642a7b090ef264e97069748038a7b6, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0
@@ -69,7 +69,7 @@ VisualEffect:
       - m_Value: {x: 1, y: -0.3, z: 0}
         m_Name: WindSpeedMax
         m_Overridden: 1
-      - m_Value: {x: -2.847333, y: 1.9251997, z: 0.02824324}
+      - m_Value: {x: 0, y: 0, z: 0}
         m_Name: PlayerPosition
         m_Overridden: 1
     m_Vector4f:
