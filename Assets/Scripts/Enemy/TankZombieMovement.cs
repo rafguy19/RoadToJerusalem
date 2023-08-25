@@ -31,7 +31,7 @@ public class TankZombieMovement : MonoBehaviour
     public Transform target;
     private float damageMultiplier = 0.4f;
     private bool dying = false;
-    public float knockBack = 500.0f;
+    public float hitForce = 500.0f;
 
     private void Start()
     {
@@ -92,8 +92,6 @@ public class TankZombieMovement : MonoBehaviour
         {
             ChangeState(State.DEATH);
         }
-
-        Debug.Log(Vector3.Distance(transform.position, target.transform.position));
     }
 
     private void ChangeState(State next)
@@ -167,17 +165,9 @@ public class TankZombieMovement : MonoBehaviour
         if (attackTimerCountdown <= 0)
         {
             animator.SetTrigger("Attack");
-
-            Vector2 knockbackDirection = ((Vector2)target.transform.position - (Vector2)transform.position).normalized;
-            
-            if (playerRb != null)
-            {
-                playerRb.AddForce(knockbackDirection * knockBack, ForceMode2D.Impulse);
-            }
-
+            KnockBack();
             attackTimerCountdown = attackTimer;
-
-            isAttacking = true; 
+            isAttacking = true;
         }
 
         if (Vector3.Distance(transform.position, target.transform.position) > 2.6f && isAttacking == false)
@@ -208,14 +198,6 @@ public class TankZombieMovement : MonoBehaviour
             prevHealth = basicZombieAttack.enemyCurrentHealth;
             ChangeState(State.CHASE);
         }
-
-        //else if (Vector3.Distance(transform.position, target.transform.position) <= attackDist)
-        //{
-        //    animator.SetBool("Attack", true);
-        //    prevHealth = basicZombieAttack.enemyCurrentHealth;
-        //    attackTimerCountdown = attackTimer;
-        //    ChangeState(State.ATTACK);
-        //}
     }
 
     private void Die()
@@ -226,6 +208,16 @@ public class TankZombieMovement : MonoBehaviour
             animator.SetTrigger("Death");
         }
         StartCoroutine(DeleteBody());
+    }
+
+    public void KnockBack()
+    {
+        Vector3 direction = target.transform.position - transform.position;
+        direction.Normalize();
+        Vector2 knockback = new Vector2(direction.x, direction.y) * hitForce;
+        playerController.knockBacked = true;
+        playerRb.AddForce(knockback, ForceMode2D.Impulse);
+
     }
 
     IEnumerator DeleteBody()

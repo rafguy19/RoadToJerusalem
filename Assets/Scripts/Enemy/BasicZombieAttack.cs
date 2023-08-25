@@ -66,7 +66,6 @@ public class BasicZombieAttack : MonoBehaviour
         blood.Play();
         audioSource.PlayOneShot(bloodHitSound);
         enemyCurrentHealth -= playerDamage;
-
     }
 
     public void DealDamage()
