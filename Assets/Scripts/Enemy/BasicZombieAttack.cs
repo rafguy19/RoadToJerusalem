@@ -35,6 +35,7 @@ public class BasicZombieAttack : MonoBehaviour
 
     private void Update()
     {
+
         if (enemyCurrentHealth <= 0 && isDead == false)
         {
             animator.SetTrigger("dead");
@@ -52,6 +53,10 @@ public class BasicZombieAttack : MonoBehaviour
     public void deleteZombie()
     {
         Destroy(entireZombie);
+
+        if (enemyCurrentHealth <= 0)
+            Destroy(entireZombie);
+
     }
     public void ReceiveDamage(int playerDamage)
     {

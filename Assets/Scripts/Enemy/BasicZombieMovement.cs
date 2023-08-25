@@ -22,6 +22,7 @@ public class BasicZombieMovement : MonoBehaviour
     public bool isAttacking = false;
     public float attackTimer;
     private float attackTimerCountdown;
+    private float detectPlayer = 15.0f;
 
     public Animator animator;
     private Transform target;
@@ -85,22 +86,25 @@ public class BasicZombieMovement : MonoBehaviour
 
     private void Patrol()
     {
-        if (Vector3.Distance(waypoints[targetIndex].transform.position, transform.position) <= 0.5f)
+        if (waypoints.Count != 0)
         {
-            targetIndex++;
-            targetIndex %= waypoints.Count;
+            if (Vector3.Distance(waypoints[targetIndex].transform.position, transform.position) <= 0.5f)
+            {
+                targetIndex++;
+                targetIndex %= waypoints.Count;
+            }
         }
 
-        if (Vector3.Distance(transform.position, target.transform.position) <= 7.0f)
+        if (Vector3.Distance(transform.position, target.transform.position) <= detectPlayer)
         {
-    
+
             ChangeState(State.CHASE);
         }
     }
 
     private void Chase()
     {
-        if (Vector3.Distance(transform.position, target.transform.position) > 7.0f)
+        if (Vector3.Distance(transform.position, target.transform.position) > detectPlayer)
         {
 
             ChangeState(State.PATROL);
@@ -116,7 +120,6 @@ public class BasicZombieMovement : MonoBehaviour
     private void Attack()
     {
         attackTimerCountdown -= Time.deltaTime;
-        //Debug.Log(attackTimerCountdown);
         if (attackTimerCountdown <= 0)
         {
             animator.SetTrigger("attack");
@@ -127,7 +130,7 @@ public class BasicZombieMovement : MonoBehaviour
         {
             ChangeState(State.CHASE);
         }
-        else if (Vector3.Distance(transform.position, target.transform.position) > 7.0f && isAttacking == false)
+        else if (Vector3.Distance(transform.position, target.transform.position) > detectPlayer && isAttacking == false)
         {
             ChangeState(State.PATROL);
         }
