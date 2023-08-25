@@ -18,7 +18,7 @@ public class SpitterMovement : MonoBehaviour
     private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
-    private SpitterAttack spitterAttack;
+    private BasicZombieAttack basicZombieAttack;
     private GameObject spitter;
     private bool isAttacking = false;
     private float attackTimer;
@@ -33,7 +33,7 @@ public class SpitterMovement : MonoBehaviour
     void Start()
     {
         attackTimer = 1;
-        spitterAttack = GetComponentInChildren<SpitterAttack>();
+        basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
         spitter = GameObject.FindGameObjectWithTag("Spitter");
         zombieSpit = GetComponent<ZombieSpit>();
         rb = GetComponentInParent<Rigidbody2D>();
@@ -57,7 +57,7 @@ public class SpitterMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
             Spit();
         }
-        if(spitterAttack.enemyCurrentHealth <= 0 && dead == false)
+        if(basicZombieAttack.enemyCurrentHealth <= 0 && dead == false)
         {
             dead = true;
             Death();
