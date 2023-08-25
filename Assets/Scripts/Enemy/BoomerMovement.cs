@@ -173,7 +173,7 @@ public class BoomerMovement : MonoBehaviour
         }
     }
 
-    private void Explode()
+    public void Explode()
     {
  
         animator.SetTrigger("Exploding");
