@@ -51,16 +51,12 @@ public class BasicZombieAI : MonoBehaviour
 
     void UpdatePath()
     {
-        if (basicZombieMove.waypoints.Count != 0)
+        if (basicZombieMove.currentState == BasicZombieMovement.State.PATROL)
         {
-            if (basicZombieMove.currentState == BasicZombieMovement.State.PATROL)
-            {
-                if (seeker.IsDone())
-                    seeker.StartPath(rb.position, basicZombieMove.waypoints[basicZombieMove.targetIndex].transform.position, OnPathComplete);
-            }
+            if (seeker.IsDone())
+                seeker.StartPath(rb.position, basicZombieMove.waypoints[basicZombieMove.targetIndex].transform.position, OnPathComplete);
         }
-
-        if (basicZombieMove.currentState == BasicZombieMovement.State.CHASE)
+        else if (basicZombieMove.currentState == BasicZombieMovement.State.CHASE)
         {
             if (seeker.IsDone())
                 seeker.StartPath(rb.position, target.transform.position, OnPathComplete);

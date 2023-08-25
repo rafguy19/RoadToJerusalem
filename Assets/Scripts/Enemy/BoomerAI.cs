@@ -53,15 +53,18 @@ public class BoomerAI : MonoBehaviour
 
     void UpdatePath()
     {
-        //if (boomerMove.currentState == BoomerMovement.State.PATROL)
-        //{
-        //    if(boomerMove.waypoints.Count != 0)
-        //    {
-        //        if (seeker.IsDone())
-        //            seeker.StartPath(rb.position, boomerMove.waypoints[boomerMove.targetIndex].transform.position, OnPathComplete);
-        //    }
-        //}
-        if (boomerMove.currentState == BoomerMovement.State.CHASE)
+        if (boomerMove.currentState == BoomerMovement.State.PATROL)
+        {
+            if(boomerMove.waypoints.Count != 0)
+            {
+                if (seeker.IsDone())
+                    seeker.StartPath(rb.position, boomerMove.waypoints[boomerMove.targetIndex].transform.position, OnPathComplete);
+            }
+
+
+
+        }
+        else if (boomerMove.currentState == BoomerMovement.State.CHASE)
         {
             if (seeker.IsDone())
                 seeker.StartPath(rb.position, target.transform.position, OnPathComplete);

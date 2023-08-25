@@ -10,11 +10,6 @@ TagManager:
   - Spitter
   - Pool
   - Spit
-  - FoodChest_1
-  - WeapChest_1
-  - Hunter
-  - Boomer
-  - Tank
   layers:
   - Default
   - TransparentFX

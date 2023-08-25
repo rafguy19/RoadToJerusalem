@@ -128,6 +128,7 @@ public class HunterZombieMovement : MonoBehaviour
             Collider2D collider = GetComponent<Collider2D>();
             collider.enabled = false;
         }
+        //Debug.Log(attackTimerCountdown);
     }
 
     private void ChangeState(State next)
@@ -175,15 +176,12 @@ public class HunterZombieMovement : MonoBehaviour
 
     private void Patrol()
     {
-        if (waypoints.Count != 0)
+        if (Vector3.Distance(waypoints[targetIndex].transform.position, transform.position) <= 1)
         {
-            if (Vector3.Distance(waypoints[targetIndex].transform.position, transform.position) <= 1)
-            {
-                targetIndex++;
-                targetIndex %= waypoints.Count;
-            }
+            targetIndex++;
+            targetIndex %= waypoints.Count;
+            ChangeState(State.IDLE);
         }
-
 
         if (Vector3.Distance(transform.position, target.transform.position) <= detectionRange)
         {

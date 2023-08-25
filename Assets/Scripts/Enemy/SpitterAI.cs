@@ -50,16 +50,12 @@ public class SpitterAI : MonoBehaviour
 
     void UpdatePath()
     {
-        //if (spitterMove.waypoints.Count != 0)
-        //{
-        //    if (spitterMove.currentState == SpitterMovement.State.PATROL)
-        //    {
-        //        if (seeker.IsDone())
-        //            seeker.StartPath(rb.position, spitterMove.waypoints[spitterMove.targetIndex].transform.position, OnPathComplete);
-        //    }
-        //}
-
-        if (spitterMove.currentState == SpitterMovement.State.CHASE)
+        if (spitterMove.currentState == SpitterMovement.State.PATROL)
+        {
+            if (seeker.IsDone())
+                seeker.StartPath(rb.position, spitterMove.waypoints[spitterMove.targetIndex].transform.position, OnPathComplete);
+        }
+        else if (spitterMove.currentState == SpitterMovement.State.CHASE)
         {
             if (seeker.IsDone())
                 seeker.StartPath(rb.position, target.transform.position, OnPathComplete);
@@ -105,11 +101,11 @@ public class SpitterAI : MonoBehaviour
 
         if (force.x >= 0.01f)
         {
-            zombieGFX.localScale = new Vector3(xSpriteScale, 0.5f, 0.5f);
+            zombieGFX.localScale = new Vector3(-xSpriteScale, 0.5f, 0.5f);
         }
         else if (force.x <= -0.01f)
         {
-            zombieGFX.localScale = new Vector3(-xSpriteScale, 0.5f, 0.5f);
+            zombieGFX.localScale = new Vector3(xSpriteScale, 0.5f, 0.5f);
         }
     }
 }

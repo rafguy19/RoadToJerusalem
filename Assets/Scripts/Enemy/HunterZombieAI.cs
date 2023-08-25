@@ -32,13 +32,10 @@ public class HunterZombieAI : MonoBehaviour
 
     void UpdatePath()
     {
-        if (hunterZombieMovement.waypoints.Count != 0)
+        if (hunterZombieMovement.currentState == HunterZombieMovement.State.PATROL)
         {
-            if (hunterZombieMovement.currentState == HunterZombieMovement.State.PATROL)
-            {
-                if (seeker.IsDone())
-                    seeker.StartPath(rb.position, hunterZombieMovement.waypoints[hunterZombieMovement.targetIndex].transform.position, OnPathComplete);
-            }
+            if (seeker.IsDone())
+                seeker.StartPath(rb.position, hunterZombieMovement.waypoints[hunterZombieMovement.targetIndex].transform.position, OnPathComplete);
         }
         else if (hunterZombieMovement.currentState == HunterZombieMovement.State.CHASE)
         {

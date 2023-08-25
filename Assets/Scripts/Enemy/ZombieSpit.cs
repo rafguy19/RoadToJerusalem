@@ -7,7 +7,7 @@ public class ZombieSpit : MonoBehaviour
     public GameObject Spit;
     public Transform SpitPos;
     public GameObject poisonPool;
-    public bool enterSpit = false;
+
     private float timer;
     private GameObject player;
 
@@ -23,22 +23,13 @@ public class ZombieSpit : MonoBehaviour
 
         if (distance < 6)
         {
-            if (!enterSpit)
+            timer += Time.deltaTime;
+
+            if (timer > 4)
             {
+                timer = 0;
                 Shoot();
-                enterSpit = true;
             }
-            else
-            {
-                timer += Time.deltaTime;
-
-                if (timer > 4)
-                {
-                    timer = 0;
-                    Shoot();
-                }
-            }
-
         }
     }
 

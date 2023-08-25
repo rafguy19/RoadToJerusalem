@@ -276,7 +276,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-  waypoints: []
+  waypoints:
+  - {fileID: 3953575533038532460}
+  - {fileID: 8050688578235503767}
   targetIndex: 0
   isAttacking: 0
   attackTimer: 2
@@ -405,7 +407,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.14385939, y: -0.31}
+  m_Offset: {x: 0.14385939, y: -0.20407966}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -416,7 +418,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.52, y: 1.03}
+  m_Size: {x: 0.6695404, y: 1.2985075}
   m_EdgeRadius: 0
 --- !u!114 &4264619100549335805
 MonoBehaviour:
@@ -434,7 +436,7 @@ MonoBehaviour:
   enemyCurrentHealth: 0
   entireZombie: {fileID: 9136158532391940603}
   enemyattackPoint: {fileID: 147409379}
-  enemyattackRange: 1
+  enemyattackRange: 0.47
   playerLayers:
     serializedVersion: 2
     m_Bits: 8

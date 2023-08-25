@@ -129,7 +129,6 @@ Transform:
   - {fileID: 4013915196330855166}
   - {fileID: 4176208388878157445}
   - {fileID: 7729743156783775504}
-  - {fileID: 2145685002340177278}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -197,7 +196,6 @@ MonoBehaviour:
   Spit: {fileID: 7072913766467637802, guid: 946555946f3470142ab99890e108748a, type: 3}
   SpitPos: {fileID: 110812147}
   poisonPool: {fileID: 7072913766467637802, guid: 720effdc4d5de5f44aa1e3b71657fca4, type: 3}
-  enterSpit: 0
 --- !u!114 &6262531783367131325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,18 +225,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 0
-<<<<<<< Updated upstream
   waypoints:
-<<<<<<< Updated upstream
   - {fileID: 9197337100832517189}
   - {fileID: 2794386564913745854}
-=======
-  - {fileID: 0}
-  - {fileID: 0}
-=======
-  waypoints: []
->>>>>>> Stashed changes
->>>>>>> Stashed changes
   targetIndex: 0
   target: {fileID: 0}
 --- !u!1 &4013915196330855137
@@ -253,7 +242,7 @@ GameObject:
   - component: {fileID: 4013915196330855165}
   - component: {fileID: 5295790458246194985}
   - component: {fileID: 5295790458246194984}
-  - component: {fileID: 1162599199}
+  - component: {fileID: 8237247713723126228}
   m_Layer: 0
   m_Name: Spitter
   m_TagString: Spitter
@@ -269,17 +258,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4013915196330855137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< Updated upstream
   m_LocalPosition: {x: 0, y: 0, z: 0}
-=======
-<<<<<<< Updated upstream
-  m_LocalPosition: {x: 2.0891, y: -0.8608999, z: 0}
->>>>>>> Stashed changes
   m_LocalScale: {x: 1, y: 1, z: 1}
-=======
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
->>>>>>> Stashed changes
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 110812147}
@@ -373,7 +353,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.25, y: -0.31}
+  m_Offset: {x: 0.07867283, y: -0.07370615}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -384,9 +364,9 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.19, y: 1.77}
+  m_Size: {x: 2.215395, y: 2.4532433}
   m_EdgeRadius: 0
---- !u!114 &1162599199
+--- !u!114 &8237247713723126228
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -395,22 +375,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 4013915196330855137}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1b0955a6995231479c6a6d17f49822c, type: 3}
+  m_Script: {fileID: 11500000, guid: 32d7ec5397a515a4ba998c9da4afbe61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemyMaxHealth: 100
   enemyCurrentHealth: 0
   entireZombie: {fileID: 4013915195849796306}
+  enemyattackPoint: {fileID: 0}
+  enemyattackRange: 0
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 8
   enemyattackDmg: 4
-<<<<<<< Updated upstream
   enemySpawner: {fileID: 0}
   blood: {fileID: 0}
-=======
-<<<<<<< Updated upstream
-=======
-  blood: {fileID: 5170328336644342597}
->>>>>>> Stashed changes
->>>>>>> Stashed changes
 --- !u!1 &9197337100832517189
 GameObject:
   m_ObjectHideFlags: 0
@@ -442,70 +420,3 @@ Transform:
   m_Father: {fileID: 4013915195849796143}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &899417304
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 4013915195849796143}
-    m_Modifications:
-    - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.06000042
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.03000021
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.08
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4529291716102427235, guid: df9247488040087459e8a0c479e631dc, type: 3}
-      propertyPath: m_Name
-      value: BloodHit
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: df9247488040087459e8a0c479e631dc, type: 3}
---- !u!4 &2145685002340177278 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
-  m_PrefabInstance: {fileID: 899417304}
-  m_PrefabAsset: {fileID: 0}
---- !u!198 &5170328336644342597 stripped
-ParticleSystem:
-  m_CorrespondingSourceObject: {fileID: 5170328337357113245, guid: df9247488040087459e8a0c479e631dc, type: 3}
-  m_PrefabInstance: {fileID: 899417304}
-  m_PrefabAsset: {fileID: 0}

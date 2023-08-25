@@ -30,14 +30,11 @@ public class TankZombieAI : MonoBehaviour
 
     void UpdatePath()
     {
-        if (tankZombieMovement.waypoints.Count != 0)
+        if (tankZombieMovement.currentState == TankZombieMovement.State.PATROL)
         {
-            if (tankZombieMovement.currentState == TankZombieMovement.State.PATROL)
-            {
-                if (seeker.IsDone())
-                    seeker.StartPath(rb.position, tankZombieMovement.waypoints[tankZombieMovement.targetIndex].transform.position, OnPathComplete);
-            }
-        }     
+            if (seeker.IsDone())
+                seeker.StartPath(rb.position, tankZombieMovement.waypoints[tankZombieMovement.targetIndex].transform.position, OnPathComplete);
+        }
         else if (tankZombieMovement.currentState == TankZombieMovement.State.CHASE)
         {
             if (seeker.IsDone())
