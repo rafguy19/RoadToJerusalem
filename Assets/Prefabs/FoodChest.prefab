@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25dae1d7033ebda4ea3289bd491288c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ChestOpening: {fileID: 8300000, guid: 80564b20708f55e4b85263806fd328d9, type: 3}
   lootDrop: {fileID: 6164217468650537850, guid: d5eb6d7f0a7f80f4a9bbe905cf51d5ed, type: 3}
 --- !u!82 &5800835631984573673
 AudioSource:
