@@ -93,32 +93,40 @@ public class HunterZombieMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (currentState == State.IDLE)
+        if(hunterZombieAttack.isDead==false)
         {
-            animator.SetBool("isWalking", false);
-            Idle();
-        }
-        else if (currentState == State.PATROL)
-        {
-            animator.SetBool("isWalking", true);
-            Patrol();
-        }
-        else if (currentState == State.CHASE)
-        {
-            animator.SetBool("isWalking", true);
-            qt_Event.GetComponent<Image>().fillAmount = qt_Event.fillAmount;
-            qt_Event.fillAmount = 0;
-            Chase();
-        }
-        else if (currentState == State.POUNCE)
-        {
-          
-            Pounce();
-        }
-        else if (currentState == State.ATTACK) 
-        {
+            if (currentState == State.IDLE)
+            {
+                animator.SetBool("isWalking", false);
+                Idle();
+            }
+            else if (currentState == State.PATROL)
+            {
+                animator.SetBool("isWalking", true);
+                Patrol();
+            }
+            else if (currentState == State.CHASE)
+            {
+                animator.SetBool("isWalking", true);
+                qt_Event.GetComponent<Image>().fillAmount = qt_Event.fillAmount;
+                qt_Event.fillAmount = 0;
+                Chase();
+            }
+            else if (currentState == State.POUNCE)
+            {
 
-            Attack();
+                Pounce();
+            }
+            else if (currentState == State.ATTACK)
+            {
+
+                Attack();
+            }
+        }
+       else
+        {
+            Collider2D collider = GetComponent<Collider2D>();
+            collider.enabled = false;
         }
     }
 
@@ -147,7 +155,6 @@ public class HunterZombieMovement : MonoBehaviour
     private void Idle()
     {
         collided = false;
-        Debug.Log("AFK");
         rb.velocity = Vector2.zero;
         idleTime += Time.deltaTime;
 
@@ -247,7 +254,6 @@ public class HunterZombieMovement : MonoBehaviour
             jumped = true;
         }
 
-        Debug.Log(playerCurrentPos);
         float distance = Vector3.Distance(transform.position, playerCurrentPos);
 
         // Check if the object has not reached the target.
@@ -274,7 +280,6 @@ public class HunterZombieMovement : MonoBehaviour
                 {
                     CinemachineShake.Instance.ShakeCamera(10, 1);
                     audioSource.PlayOneShot(hunterHit);
-                    Debug.Log("HIT");
                     ChangeState(State.ATTACK);
                     break; // Exit the loop once we find a player
                 }
@@ -302,7 +307,6 @@ public class HunterZombieMovement : MonoBehaviour
     {
 
         collided = false;
-        Debug.Log("ATTACKING");
         rb.velocity = Vector2.zero;
         playerController.rb.velocity = Vector2.zero;
         playerController.Jumped = true;
