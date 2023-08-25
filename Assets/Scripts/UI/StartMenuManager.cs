@@ -11,6 +11,10 @@ public class StartMenuManager : MonoBehaviour
     [SerializeField]
     private GameObject page2;
     [SerializeField]
+    private GameObject page3;
+    [SerializeField]
+    private GameObject page4;
+    [SerializeField]
     private Sprite Bow;
     [SerializeField]
     private Sprite WoodenSword;
@@ -22,22 +26,64 @@ public class StartMenuManager : MonoBehaviour
     private TextMeshProUGUI nameOfWeapon;
     [SerializeField]
     private TextMeshProUGUI descOfWeapon;
+    [SerializeField]
+    private GameObject basiccontrols;
+    [SerializeField]
+    private GameObject systems;
+    [SerializeField]
+    private TextMeshProUGUI controlHeader;
     // Start is called before the first frame update
     void Start()
     {
         sprite = spriteGameobject.GetComponent<Image>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void controlPage()
     {
-        
+        if (basiccontrols.activeSelf) // go to systems page
+        {
+            controlHeader.text = "Systems";
+            basiccontrols.SetActive(false);
+            systems.SetActive(true);
+        }
+        else // go to controls page
+        {
+            controlHeader.text = "Basic Controls";
+            basiccontrols.SetActive(true);
+            systems.SetActive(false);
+        }
     }
 
     public void LoadPage2()
     {
-        page1.SetActive(false);
+        HideAllPages();
         page2.SetActive(true);
+    }
+
+    public void LoadPage1()
+    {
+        HideAllPages();
+        page1.SetActive(true);
+    }
+
+    public void LoadPage3()
+    {
+        HideAllPages();
+        page3.SetActive(true);
+    }
+
+    public void LoadPage4()
+    {
+        HideAllPages();
+        page4.SetActive(true);
+    }
+
+    private void HideAllPages()
+    {
+        page1.SetActive(false);
+        page2.SetActive(false);
+        page3.SetActive(false);
+        page4.SetActive(false);
     }
 
     public void NextWeapon()
