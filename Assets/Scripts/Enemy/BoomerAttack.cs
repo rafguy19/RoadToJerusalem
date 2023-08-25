@@ -17,7 +17,7 @@ public class BoomerAttack : MonoBehaviour
     public float explosionForce = 1;
     private BoomerMovement zombieMovement;
 
-    private AudioSource audioSource;
+   
     public AudioClip explosionSound;
     new AudioSource audioSource;
     new private Collider2D collider;
