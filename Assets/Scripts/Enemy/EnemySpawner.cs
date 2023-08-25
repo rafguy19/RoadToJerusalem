@@ -33,7 +33,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float spitterInterval = 8f;
 
-    private float distance;
     private GameObject player;
     public Tilemap walkableTilemap;
     public float xSize;
@@ -51,17 +50,23 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         withinArea = PlayerInArea();
+
+
         if (withinArea && zombieCount < 35 && !coroutineUsed)
         {
             StartCoroutine(StartSpawnEnemies(1));
             coroutineUsed = true;
         }
         else if (!withinArea || zombieCount >= 35)
+
         {
             StopAllCoroutines();
         }
+        Debug.Log(zombieCount);
     }
 
+
+    
     private IEnumerator StartSpawnEnemies(float delay)
     {
         yield return new WaitForSeconds(delay);

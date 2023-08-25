@@ -18,7 +18,8 @@ public class SpitterMovement : MonoBehaviour
     private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
-    private BasicZombieAttack basicZombieAttack;
+    private SpitterAttack spitterAttack;
+    private GameObject spitter;
     private bool isAttacking = false;
     private float attackTimer;
     private float attackTimerCountdown;
@@ -26,12 +27,15 @@ public class SpitterMovement : MonoBehaviour
     private Animator ar;
     private bool dead;
     public Transform target;
+    private ZombieSpit zombieSpit;
 
     // Start is called before the first frame update
     void Start()
     {
         attackTimer = 1;
-        basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
+        spitterAttack = GetComponentInChildren<SpitterAttack>();
+        spitter = GameObject.FindGameObjectWithTag("Spitter");
+        zombieSpit = GetComponent<ZombieSpit>();
         rb = GetComponentInParent<Rigidbody2D>();
         ar = GetComponentInChildren<Animator>();
         ChangeState(currentState);
@@ -53,7 +57,7 @@ public class SpitterMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
             Spit();
         }
-        if(basicZombieAttack.enemyCurrentHealth <= 0 && dead == false)
+        if(spitterAttack.enemyCurrentHealth <= 0 && dead == false)
         {
             dead = true;
             Death();
@@ -81,17 +85,20 @@ public class SpitterMovement : MonoBehaviour
         {
             ar.SetBool("Moving", false);
             ar.SetTrigger("Attack");
-            GetComponent<SpitterAI>().enabled = true;
+            GetComponent<SpitterAI>().enabled = false;
         }
         currentState = next;
     }
 
     private void Patrol()
     {
-        if (Vector3.Distance(waypoints[targetIndex].transform.position, transform.position) <= 0.5f)
+        if (waypoints.Count != 0)
         {
-            targetIndex++;
-            targetIndex %= waypoints.Count;
+            if (Vector3.Distance(waypoints[targetIndex].transform.position, transform.position) <= 0.5f)
+            {
+                targetIndex++;
+                targetIndex %= waypoints.Count;
+            }
         }
 
         if (Vector3.Distance(transform.position, target.transform.position) <= 15.0f)
@@ -109,6 +116,7 @@ public class SpitterMovement : MonoBehaviour
         }
         else if (Vector3.Distance(transform.position, target.transform.position) <= 6.0f)
         {
+            zombieSpit.enterSpit = false;
             ChangeState(State.SPIT);
         }
     }

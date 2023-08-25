@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicZombieAttack : MonoBehaviour
+public class TankAttack : MonoBehaviour
 {
     public int enemyMaxHealth = 20;
     public int enemyCurrentHealth;
@@ -14,56 +14,22 @@ public class BasicZombieAttack : MonoBehaviour
     public LayerMask playerLayers;
     public int enemyattackDmg;
 
-    private BasicZombieMovement zombieMovement;
-
     public ParticleSystem blood;
-
-    private Animator animator;
-
-    public bool isDead = false;
-
-    protected AudioSource audioSource;
-    public AudioClip bloodHitSound;
-    protected float deathTimer = 3;
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        animator = GetComponent<Animator>();
         enemyCurrentHealth = enemyMaxHealth;
-        zombieMovement = gameObject.GetComponentInParent<BasicZombieMovement>();
     }
 
     private void Update()
     {
-
-        if (enemyCurrentHealth <= 0 && isDead == false)
-        {
-            animator.SetTrigger("dead");
-            isDead = true;
-        }
-        if (isDead == true)
-        {
-            deathTimer -= Time.deltaTime;
-            if (deathTimer <= 0)
-            {
-                deleteZombie();
-            }
-        }
-    }
-    public void deleteZombie()
-    {
-        Destroy(entireZombie);
-
         if (enemyCurrentHealth <= 0)
             Destroy(entireZombie);
-
     }
+
     public void ReceiveDamage(int playerDamage)
     {
         blood.Play();
-        audioSource.PlayOneShot(bloodHitSound);
         enemyCurrentHealth -= playerDamage;
-
     }
 
     public void DealDamage()
@@ -73,7 +39,6 @@ public class BasicZombieAttack : MonoBehaviour
         {
             player.GetComponent<PlayerHealth>().TakeDamage(enemyattackDmg);
         }
-        zombieMovement.isAttacking = false;
     }
 
     private void OnDrawGizmosSelected()
