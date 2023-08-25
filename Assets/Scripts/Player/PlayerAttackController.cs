@@ -223,10 +223,8 @@ public class PlayerAttackController : MonoBehaviour
 
     void meleeAttack()
     {
-
         if (Input.GetMouseButtonDown(0) && canHit)
         {
-            Debug.Log("Attack");
             audioSource.PlayOneShot(swingMelee);
             playerMeleeController.Melee();
         }

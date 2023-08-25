@@ -25,8 +25,10 @@ public class BasicZombieAttack : MonoBehaviour
     protected AudioSource audioSource;
     public AudioClip bloodHitSound;
     protected float deathTimer = 3;
+    private Collider2D zombieCollider;
     private void Start()
     {
+        zombieCollider = GetComponent<Collider2D>();
         audioSource = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         enemyCurrentHealth = enemyMaxHealth;
@@ -38,6 +40,7 @@ public class BasicZombieAttack : MonoBehaviour
 
         if (enemyCurrentHealth <= 0 && isDead == false)
         {
+            zombieCollider.enabled= false;
             animator.SetTrigger("dead");
             isDead = true;
         }

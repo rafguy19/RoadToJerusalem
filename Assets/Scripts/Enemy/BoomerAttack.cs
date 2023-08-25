@@ -14,10 +14,11 @@ public class BoomerAttack : BasicZombieAttack
     private BoomerMovement zombieMovement;
 
     public AudioClip explosionSound;
-
-    private Collider2D collider;
+    new AudioSource audioSource;
+    new private Collider2D collider;
     private void Start()
     {
+        audioSource = GetComponentInParent<AudioSource>();
         collider = GetComponent<Collider2D>();
         enemyCurrentHealth = enemyMaxHealth;
         zombieMovement = gameObject.GetComponentInParent<BoomerMovement>();

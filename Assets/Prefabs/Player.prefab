@@ -46,8 +46,8 @@ CapsuleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.5, y: 1}
+  m_Offset: {x: 0, y: 0.3}
+  m_Size: {x: 0.5, y: 1.5}
   m_Direction: 0
 --- !u!114 &8751993018409379272
 MonoBehaviour:
@@ -251,6 +251,8 @@ MonoBehaviour:
   atkDmg: 0
   knockBacked: 0
   knockBackStunDuration: 0.25
+  arrowSelected: 0
+  pickedUpPressed: 0
 --- !u!114 &4819906586624744404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,10 +273,11 @@ MonoBehaviour:
   bowPowerSlider: {fileID: 0}
   inventoryData: {fileID: 11400000, guid: 5776a03df2f900e409b990b81675d099, type: 2}
   playerMeleeController: {fileID: 4819906585751540135}
-  outOfArrow: {fileID: 1769251839}
+  audioSource: {fileID: 0}
   outOfAmmoClip: {fileID: 8300000, guid: d026686184ecaf340b38ea2f69bda1da, type: 3}
   pullBow: {fileID: 8300000, guid: c10cf3e3304cc474791ad780ef918515, type: 3}
   shootBow: {fileID: 8300000, guid: f258f21481b18c441a245b0d96962c4b, type: 3}
+  swingMelee: {fileID: 0}
 --- !u!61 &4819906586105975893
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -499,7 +502,7 @@ VisualEffect:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2880335738060918361}
   m_Enabled: 0
-  m_Asset: {fileID: 8926484042661614526, guid: e274d655534001145a7670221482e8c0, type: 3}
+  m_Asset: {fileID: 0}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
   m_StartSeed: 0

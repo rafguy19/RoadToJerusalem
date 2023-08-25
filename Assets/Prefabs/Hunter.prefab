@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 1097778113}
   - component: {fileID: 1291086458}
   - component: {fileID: 4131119373339431744}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HunterZombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -299,8 +299,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   enemyattackDmg: 5
-  enemySpawner: {fileID: 0}
   blood: {fileID: 5170328337056743512}
+  isDead: 0
+  bloodHitSound: {fileID: 0}
 --- !u!95 &1291086458
 Animator:
   serializedVersion: 5
