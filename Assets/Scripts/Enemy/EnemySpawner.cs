@@ -42,9 +42,16 @@ public class EnemySpawner : MonoBehaviour
     public int zombieCount = 0;
     public int maxZombies;
     public int stage = 0;
+
+    private bool specialSpawned;
     // Start is called before the first frame update
     void Start()
     {
+        //randomise special sound
+        hunterInterval = Random.Range(5, 20);
+        boomerInterval = Random.Range(5, 20);
+        spitterInterval = Random.Range(5, 20);
+        specialSpawned = false;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -63,7 +70,6 @@ public class EnemySpawner : MonoBehaviour
         {
             StopAllCoroutines();
         }
-        Debug.Log(zombieCount);
     }
 
 
@@ -72,25 +78,37 @@ public class EnemySpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        StartCoroutine(SpawnEnemy(zombieInterval, zombieObject));
-        StartCoroutine(SpawnEnemy(hunterInterval, hunterObject));
-        StartCoroutine(SpawnEnemy(tankInterval, tankObject));
-        StartCoroutine(SpawnEnemy(boomerInterval, boomerObject));
-        StartCoroutine(SpawnEnemy(spitterInterval, spitterObject));
+        StartCoroutine(SpawnEnemy(zombieInterval, zombieObject,false));
+        if(specialSpawned == false)
+        {
+            StartCoroutine(SpawnEnemy(hunterInterval, hunterObject,true));
+            StartCoroutine(SpawnEnemy(boomerInterval, boomerObject,true));
+            StartCoroutine(SpawnEnemy(spitterInterval, spitterObject,true));
+        }
+
+
+        StartCoroutine(SpawnEnemy(tankInterval, tankObject,false));
     }
 
-    private IEnumerator SpawnEnemy(float interval, GameObject enemyPrefab)
+    private IEnumerator SpawnEnemy(float interval, GameObject enemyPrefab,bool isSpecial)
     {
         while (withinArea && zombieCount < maxZombies)
         {
+
+            yield return new WaitForSeconds(interval);
+
             Vector3 spawnPosition = FindValidSpawnPosition();
             if (spawnPosition != Vector3.zero)
             {
                 Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
                 zombieCount++;
+
+                if(isSpecial== true)
+                {
+                    specialSpawned = true;
+                }
             }
 
-            yield return new WaitForSeconds(interval);
         }
     }
 
