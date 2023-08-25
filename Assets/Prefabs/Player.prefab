@@ -118,6 +118,7 @@ GameObject:
   - component: {fileID: 1308960133}
   - component: {fileID: 7285343805422103973}
   - component: {fileID: 7285343805422103988}
+  - component: {fileID: 3342210686955018053}
   m_Layer: 3
   m_Name: PlayerSprite
   m_TagString: Player
@@ -180,7 +181,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 200
+  m_SortingOrder: 0
   m_Sprite: {fileID: 1517271097, guid: aef7cf2fbc8f44a408976a66c10f3920, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -273,9 +274,9 @@ MonoBehaviour:
   inventoryData: {fileID: 11400000, guid: 5776a03df2f900e409b990b81675d099, type: 2}
   playerMeleeController: {fileID: 4819906585751540135}
   audioSource: {fileID: 1769251839}
-  outOfAmmoClip: {fileID: 8300000, guid: d026686184ecaf340b38ea2f69bda1da, type: 3}
-  pullBow: {fileID: 8300000, guid: c10cf3e3304cc474791ad780ef918515, type: 3}
-  shootBow: {fileID: 8300000, guid: f258f21481b18c441a245b0d96962c4b, type: 3}
+  outOfAmmoClip: {fileID: 8300000, guid: ac5b6da08a4428140a5ef987961474e0, type: 3}
+  pullBow: {fileID: 8300000, guid: f5b7eff47d4702343903f1ed36bb2b8b, type: 3}
+  shootBow: {fileID: 8300000, guid: e9aa2b90889dc6a42a44031cbf0fbfa8, type: 3}
   swingMelee: {fileID: 8300000, guid: 5f2b3645a69a46d4094a4c067569a5c9, type: 3}
 --- !u!61 &4819906586105975893
 BoxCollider2D:
@@ -570,6 +571,21 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2880335738060918361}
   m_Enabled: 1
+--- !u!114 &3342210686955018053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2880335738060918361}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2097d520ca9696b498ddfabb3e03a21c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 0}
 --- !u!1 &4819906585297308341
 GameObject:
   m_ObjectHideFlags: 0
