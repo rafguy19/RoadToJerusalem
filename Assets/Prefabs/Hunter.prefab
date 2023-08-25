@@ -301,7 +301,7 @@ MonoBehaviour:
   enemyattackDmg: 5
   blood: {fileID: 5170328337056743512}
   isDead: 0
-  bloodHitSound: {fileID: 0}
+  bloodHitSound: {fileID: 8300000, guid: 812f6398d8d05e1439d6de3df5e5e8bc, type: 3}
 --- !u!95 &1291086458
 Animator:
   serializedVersion: 5
@@ -452,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2422570955642907720
 Transform:
   m_ObjectHideFlags: 0

@@ -2,22 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TankAttack : MonoBehaviour
+public class TankAttack : BasicZombieAttack
 {
-    public int enemyMaxHealth = 20;
-    public int enemyCurrentHealth;
-    public GameObject entireZombie;
-
-    public Transform enemyattackPoint;
-    public float enemyattackRange;
-
-    public LayerMask playerLayers;
-    public int enemyattackDmg;
-
-    public ParticleSystem blood;
+    private TankZombieMovement tankMovement;
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         enemyCurrentHealth = enemyMaxHealth;
+        tankMovement = gameObject.GetComponentInParent<TankZombieMovement>();
     }
 
     private void Update()
@@ -26,19 +18,14 @@ public class TankAttack : MonoBehaviour
             Destroy(entireZombie);
     }
 
-    public void ReceiveDamage(int playerDamage)
-    {
-        blood.Play();
-        enemyCurrentHealth -= playerDamage;
-    }
-
-    public void DealDamage()
+    new public void DealDamage()
     {
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(enemyattackPoint.position, enemyattackRange, playerLayers);
         foreach (Collider2D player in hitPlayer)
         {
             player.GetComponent<PlayerHealth>().TakeDamage(enemyattackDmg);
         }
+        tankMovement.isAttacking = false;
     }
 
     private void OnDrawGizmosSelected()

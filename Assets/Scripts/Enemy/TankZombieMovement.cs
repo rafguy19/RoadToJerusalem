@@ -21,7 +21,7 @@ public class TankZombieMovement : MonoBehaviour
     public int targetIndex;
     private Rigidbody2D rb;
     private BasicZombieAttack basicZombieAttack;
-    private BasicZombieMovement ZombieMovement;
+    public bool isAttacking;
     private float attackTimer;
     private float attackTimerCountdown;
     private PlayerController playerController;
@@ -37,7 +37,6 @@ public class TankZombieMovement : MonoBehaviour
         attackTimer = 1;
         basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        ZombieMovement = GameObject.FindGameObjectWithTag("Enemy").GetComponentInParent<BasicZombieMovement>();
         rb = GetComponentInParent<Rigidbody2D>();
     }
 
@@ -159,14 +158,14 @@ public class TankZombieMovement : MonoBehaviour
         {
             animator.SetTrigger("Attack");
             attackTimerCountdown = attackTimer;
-            ZombieMovement.isAttacking = true;
+            isAttacking = true;
         }
 
-        if (Vector3.Distance(transform.position, target.transform.position) > attackDist && ZombieMovement.isAttacking == false)
+        if (Vector3.Distance(transform.position, target.transform.position) > attackDist && isAttacking == false)
         {
             ChangeState(State.CHASE);
         }
-        else if (Vector3.Distance(transform.position, target.transform.position) > 7.0f && ZombieMovement.isAttacking == false)
+        else if (Vector3.Distance(transform.position, target.transform.position) > 7.0f && isAttacking == false)
         {
             ChangeState(State.PATROL);
         }
