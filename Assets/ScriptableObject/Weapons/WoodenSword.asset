@@ -26,5 +26,5 @@ MonoBehaviour:
   <weaponType>k__BackingField: 1
   modifierData:
   - statModifier: {fileID: 11400000, guid: c815b19ba42ec384fb62aa307494ce84, type: 2}
-    value: 10
+    value: 20
   <actionSFX>k__BackingField: {fileID: 0}

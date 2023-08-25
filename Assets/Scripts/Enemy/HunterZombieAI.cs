@@ -16,14 +16,12 @@ public class HunterZombieAI : MonoBehaviour
     Path path;
     int currentWaypoint = 0;
     bool reachedEndOfPath = false;
-    bool moveTowardsPath;
     Seeker seeker;
     Rigidbody2D rb;
 
     // Start is called before the first frame update
     void Start()
     {
-        moveTowardsPath = false;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         hunterZombieMovement = GetComponent<HunterZombieMovement>();
@@ -56,7 +54,6 @@ public class HunterZombieAI : MonoBehaviour
             currentWaypoint = 0;
         }
     }
-
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -73,11 +70,7 @@ public class HunterZombieAI : MonoBehaviour
             reachedEndOfPath = false;
         }
 
-        if(hunterZombieMovement.currentState == HunterZombieMovement.State.POUNCE || hunterZombieMovement.currentState == HunterZombieMovement.State.ATTACK)
-        {
-            return;
-        }
-        else
+        if(hunterZombieMovement.currentState != HunterZombieMovement.State.POUNCE || hunterZombieMovement.currentState != HunterZombieMovement.State.ATTACK)
         {
             Vector2 direction = ((Vector2)path.vectorPath[currentWaypoint] - rb.position).normalized;
             Vector2 force = direction * EnemySpeed * Time.deltaTime;
@@ -100,5 +93,6 @@ public class HunterZombieAI : MonoBehaviour
                 zombieGFX.localScale = new Vector3(-1f, 1f, 1f);
             }
         }
+        
     }
 }

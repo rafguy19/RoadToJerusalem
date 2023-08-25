@@ -48,7 +48,7 @@ public class BoomerAI : MonoBehaviour
         System.Random random = new System.Random();
         EnemySpeed = random.Next(200, 401);
         InvokeRepeating("UpdatePath", 0f, .5f);
-        //Debug.Log(EnemySpeed);
+        Debug.Log(EnemySpeed);
     }
 
     void UpdatePath()

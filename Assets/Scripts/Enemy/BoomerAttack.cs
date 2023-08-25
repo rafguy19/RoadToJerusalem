@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BoomerAttack : BasicZombieAttack
+public class BoomerAttack : MonoBehaviour
 {
-  
+    public int enemyMaxHealth = 20;
+    public int enemyCurrentHealth;
+    public GameObject entireZombie;
 
 
     public Transform explosionRadius;
     public float explosionRange;
 
+    public LayerMask playerLayers;
+    public int enemyattackDmg;
     public float explosionForce = 1;
     private BoomerMovement zombieMovement;
 
+   
     public AudioClip explosionSound;
     new AudioSource audioSource;
     new private Collider2D collider;
@@ -20,18 +25,24 @@ public class BoomerAttack : BasicZombieAttack
     {
         audioSource = GetComponentInParent<AudioSource>();
         collider = GetComponent<Collider2D>();
+        audioSource = GetComponentInParent<AudioSource>();
         enemyCurrentHealth = enemyMaxHealth;
         zombieMovement = gameObject.GetComponentInParent<BoomerMovement>();
     }
 
     private void Update()
     {
-        if (enemyCurrentHealth <= 0 && isDead == false)
+        if (enemyCurrentHealth <= 0)
         {
-            zombieMovement.Explode();
-            isDead = true;
+            Destroy(entireZombie);
         }
     }
+
+    public void ReceiveDamage(int playerDamage)
+    {
+        enemyCurrentHealth -= playerDamage;
+    }
+
 
     public void ExplosionKnockBack()
     {
