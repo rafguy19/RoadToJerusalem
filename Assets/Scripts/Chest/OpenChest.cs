@@ -5,14 +5,16 @@ public class OpenChest : MonoBehaviour
    
    
     private Animator ar;
-
+    private AudioSource chest;
+    public AudioClip ChestOpening;
     public GameObject lootDrop;
-
+    
     bool chestOpened;
     // Start is called before the first frame update
     void Start()
     {
         ar = GetComponent<Animator>();
+        chest = GetComponent<AudioSource>();
         chestOpened = false;
     }
    
@@ -29,6 +31,7 @@ public class OpenChest : MonoBehaviour
     IEnumerator ChestOpenCoroutine()
     {
         chestOpened = true;
+        chest.PlayOneShot(ChestOpening);
         ar.Play("ChestOpen");
         ar.Play("NatureChestOpen");
 
