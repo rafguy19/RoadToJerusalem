@@ -18,10 +18,9 @@ public class MeleeCollision : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Spitter"))
         {
-            Debug.Log("HIT SOMETHING");
             collision.gameObject.GetComponent<BasicZombieAttack>().ReceiveDamage(playerController.atkDmg);
+        }
 
-        }   
 
     }
 }

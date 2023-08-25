@@ -72,13 +72,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8926547015673652360}
   - component: {fileID: 8926547015673652361}
-  - component: {fileID: 8926547015673652342}
   - component: {fileID: 8926547015673652340}
   - component: {fileID: 372480388999746362}
   - component: {fileID: 372480388999746363}
   m_Layer: 0
   m_Name: Tank
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -130,32 +129,6 @@ MonoBehaviour:
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask:
     value: -1
---- !u!61 &8926547015673652342
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8926547015673652341}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.53, y: 0.52}
-  m_EdgeRadius: 0
 --- !u!50 &8926547015673652340
 Rigidbody2D:
   serializedVersion: 4
@@ -212,6 +185,7 @@ MonoBehaviour:
   currentState: 0
   waypoints: []
   targetIndex: 0
+  isAttacking: 0
   isBlocking: 0
   isColliding: 0
   animator: {fileID: 856864828}
@@ -227,11 +201,12 @@ GameObject:
   m_Component:
   - component: {fileID: 8926547016158381145}
   - component: {fileID: 8926547016158381146}
-  - component: {fileID: 1102043966}
   - component: {fileID: 856864828}
+  - component: {fileID: 850956555}
+  - component: {fileID: 850956556}
   m_Layer: 0
   m_Name: TankZombie
-  m_TagString: Enemy
+  m_TagString: Tank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -304,30 +279,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1102043966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8926547016158381126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32d7ec5397a515a4ba998c9da4afbe61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyMaxHealth: 300
-  enemyCurrentHealth: 0
-  entireZombie: {fileID: 8926547015673652341}
-  enemyattackPoint: {fileID: 8926547016353133109}
-  enemyattackRange: 3.5
-  playerLayers:
-    serializedVersion: 2
-    m_Bits: 8
-  enemyattackDmg: 20
-  blood: {fileID: 5170328338320851761}
-  isDead: 0
-  bloodHitSound: {fileID: 8300000, guid: 812f6398d8d05e1439d6de3df5e5e8bc, type: 3}
 --- !u!95 &856864828
 Animator:
   serializedVersion: 5
@@ -349,6 +300,56 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &850956555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8926547016158381126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40db808d65f7f05428784169724b1665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyMaxHealth: 300
+  enemyCurrentHealth: 0
+  entireZombie: {fileID: 8926547015673652341}
+  enemyattackPoint: {fileID: 8926547016353133109}
+  enemyattackRange: 3.5
+  playerLayers:
+    serializedVersion: 2
+    m_Bits: 8
+  enemyattackDmg: 20
+  blood: {fileID: 5170328338320851761}
+  isDead: 0
+  bloodHitSound: {fileID: 8300000, guid: 812f6398d8d05e1439d6de3df5e5e8bc, type: 3}
+--- !u!61 &850956556
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8926547016158381126}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.03}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.64, y: 0.64}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.33, y: 0.46}
+  m_EdgeRadius: 0
 --- !u!1 &8926547016353133106
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,16 +393,28 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.06000042
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.03000021
+      value: 0.065
       objectReference: {fileID: 0}
     - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.08
+      value: -1.01
       objectReference: {fileID: 0}
     - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -430,6 +443,38 @@ PrefabInstance:
     - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536240145031222171, guid: df9247488040087459e8a0c479e631dc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536240145031222171, guid: df9247488040087459e8a0c479e631dc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536240145031222171, guid: df9247488040087459e8a0c479e631dc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536240145031222171, guid: df9247488040087459e8a0c479e631dc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536240145031222171, guid: df9247488040087459e8a0c479e631dc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536240145031222171, guid: df9247488040087459e8a0c479e631dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3536240145031222171, guid: df9247488040087459e8a0c479e631dc, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4529291716102427235, guid: df9247488040087459e8a0c479e631dc, type: 3}
       propertyPath: m_Name
