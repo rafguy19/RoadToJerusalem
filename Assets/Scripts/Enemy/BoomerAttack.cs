@@ -54,8 +54,6 @@ public class BoomerAttack : BasicZombieAttack
             player.GetComponent<PlayerController>().knockBacked = true;
             player.GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
 
-
-
         }
         CinemachineShake.Instance.ShakeCamera(10, .5f);
         audioSource.PlayOneShot(explosionSound);

@@ -51,39 +51,40 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         withinArea = PlayerInArea();
-        if (withinArea && !coroutineUsed && zombieCount < 25)
+        if (withinArea && zombieCount < 35 && !coroutineUsed)
         {
-            StartCoroutine(spawnEnemy());
+            StartCoroutine(StartSpawnEnemies(1));
             coroutineUsed = true;
         }
-        else if (!withinArea || zombieCount >= 25)
+        else if (!withinArea || zombieCount >= 35)
         {
             StopAllCoroutines();
         }
-        Debug.Log(zombieCount);
     }
 
-    private IEnumerator spawnEnemy()
+    private IEnumerator StartSpawnEnemies(float delay)
     {
-        Vector3 spawnPosition = FindValidSpawnPosition();
-        if (spawnPosition != Vector3.zero)
+        yield return new WaitForSeconds(delay);
+
+        StartCoroutine(SpawnEnemy(zombieInterval, zombieObject));
+        StartCoroutine(SpawnEnemy(hunterInterval, hunterObject));
+        StartCoroutine(SpawnEnemy(tankInterval, tankObject));
+        StartCoroutine(SpawnEnemy(boomerInterval, boomerObject));
+        StartCoroutine(SpawnEnemy(spitterInterval, spitterObject));
+    }
+
+    private IEnumerator SpawnEnemy(float interval, GameObject enemyPrefab)
+    {
+        while (withinArea && zombieCount < 35)
         {
-            Instantiate(zombieObject, spawnPosition, Quaternion.identity);
-            yield return new WaitForSeconds(zombieInterval);
-            zombieCount++;
-            Instantiate(hunterObject, spawnPosition, Quaternion.identity);
-            yield return new WaitForSeconds(hunterInterval);
-            zombieCount++;
-            Instantiate(tankObject, spawnPosition, Quaternion.identity);
-            yield return new WaitForSeconds(tankInterval);
-            zombieCount++;
-            Instantiate(boomerObject, spawnPosition, Quaternion.identity);
-            yield return new WaitForSeconds(boomerInterval);
-            zombieCount++;
-            Instantiate(spitterObject, spawnPosition, Quaternion.identity);
-            yield return new WaitForSeconds(spitterInterval);
-            zombieCount++;
-            coroutineUsed = false;
+            Vector3 spawnPosition = FindValidSpawnPosition();
+            if (spawnPosition != Vector3.zero)
+            {
+                Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                zombieCount++;
+            }
+
+            yield return new WaitForSeconds(interval);
         }
     }
 

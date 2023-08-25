@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4013915195849796306, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6262531783367131325, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
       propertyPath: target
@@ -65614,7 +65614,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6853292524781953082, guid: ee7041b1a9968fe49a3ed2924c630ee4, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6853292524781953223, guid: ee7041b1a9968fe49a3ed2924c630ee4, type: 3}
       propertyPath: m_RootOrder
@@ -68514,7 +68514,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2422570955642907734, guid: 3299bee7c766a864ea5b13c1ffaba279, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3299bee7c766a864ea5b13c1ffaba279, type: 3}
@@ -68602,7 +68602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4939057678374668678, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4939057678374668792, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: m_RootOrder
@@ -68661,6 +68661,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1380377132}
     - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
+      propertyPath: tankInterval
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: zombieObject
       value: 
       objectReference: {fileID: 774283853}
@@ -68668,6 +68672,22 @@ PrefabInstance:
       propertyPath: spitterObject
       value: 
       objectReference: {fileID: 22511660}
+    - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
+      propertyPath: boomerInterval
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
+      propertyPath: hunterInterval
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
+      propertyPath: zombieInterval
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
+      propertyPath: spitterInterval
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: walkableTilemap
       value: 
@@ -125312,7 +125332,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8926547015673652341, guid: 61dd9d05fd47c6748a8eaf1aba452dcd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8926547015673652360, guid: 61dd9d05fd47c6748a8eaf1aba452dcd, type: 3}
       propertyPath: m_RootOrder
