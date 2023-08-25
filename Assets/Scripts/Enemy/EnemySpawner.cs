@@ -33,13 +33,13 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private float spitterInterval = 8f;
 
-    private float distance;
     private GameObject player;
     public Tilemap walkableTilemap;
     public float xSize;
     public float ySize;
     private bool withinArea = false;
     private bool coroutineUsed = false;
+    public int zombieCount = 0;
     public int stage = 0;
     // Start is called before the first frame update
     void Start()
@@ -50,31 +50,46 @@ public class EnemySpawner : MonoBehaviour
     private void Update()
     {
         withinArea = PlayerInArea();
-        if (withinArea && !coroutineUsed)
+
+
+        if (withinArea && zombieCount < 35 && !coroutineUsed)
         {
-            StartCoroutine(spawnEnemy(zombieInterval, zombieObject));
-            StartCoroutine(spawnEnemy(hunterInterval, hunterObject));
-            StartCoroutine(spawnEnemy(tankInterval, tankObject));
-            //StartCoroutine(spawnEnemy(smokerInterval, smokerObject));
-            StartCoroutine(spawnEnemy(boomerInterval, boomerObject));
-            StartCoroutine(spawnEnemy(spitterInterval, spitterObject));
+            StartCoroutine(StartSpawnEnemies(1));
             coroutineUsed = true;
         }
-        else if (!withinArea)
+        else if (!withinArea || zombieCount >= 35)
+
         {
             StopAllCoroutines();
         }
+        Debug.Log(zombieCount);
     }
 
-    private IEnumerator spawnEnemy(float interval, GameObject enemy)
-    {
-        yield return new WaitForSeconds(interval);
 
-        Vector3 spawnPosition = FindValidSpawnPosition();
-        if (spawnPosition != Vector3.zero)
+    
+    private IEnumerator StartSpawnEnemies(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        StartCoroutine(SpawnEnemy(zombieInterval, zombieObject));
+        StartCoroutine(SpawnEnemy(hunterInterval, hunterObject));
+        StartCoroutine(SpawnEnemy(tankInterval, tankObject));
+        StartCoroutine(SpawnEnemy(boomerInterval, boomerObject));
+        StartCoroutine(SpawnEnemy(spitterInterval, spitterObject));
+    }
+
+    private IEnumerator SpawnEnemy(float interval, GameObject enemyPrefab)
+    {
+        while (withinArea && zombieCount < 35)
         {
-            Instantiate(enemy, spawnPosition, Quaternion.identity);
-            coroutineUsed = false;
+            Vector3 spawnPosition = FindValidSpawnPosition();
+            if (spawnPosition != Vector3.zero)
+            {
+                Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                zombieCount++;
+            }
+
+            yield return new WaitForSeconds(interval);
         }
     }
 
@@ -109,9 +124,11 @@ public class EnemySpawner : MonoBehaviour
 
     private bool PlayerInArea()
     {
-        distance = Vector3.Distance(player.transform.position, gameObject.transform.position);
+        Vector3 areaCenter = gameObject.transform.position;
+        float distanceX = Mathf.Abs(player.transform.position.x - areaCenter.x);
+        float distanceY = Mathf.Abs(player.transform.position.y - areaCenter.y);
 
-        return distance <= xSize / 2 && distance <= ySize / 2;
+        return distanceX <= xSize / 2 && distanceY <= ySize / 2;
     }
 
     public bool IsPositionWalkable(Vector3 position)

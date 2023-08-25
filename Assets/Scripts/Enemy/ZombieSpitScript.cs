@@ -10,7 +10,7 @@ public class ZombieSpitScript : MonoBehaviour
     public float force;
     private float timer;
     private PlayerHealth playerHealth;
-    private BasicZombieAttack basicZombieAttack;
+    //private BasicZombieAttack basicZombieAttack;
     private ZombieSpit zombieSpit;
 
     // Start is called before the first frame update
@@ -20,15 +20,11 @@ public class ZombieSpitScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerHealth = player.GetComponent<PlayerHealth>();
         spitter = GameObject.FindGameObjectWithTag("Spitter");
-        basicZombieAttack = spitter.GetComponentInChildren<BasicZombieAttack>();
+        //basicZombieAttack = spitter.GetComponentInChildren<BasicZombieAttack>();
         Vector3 Direction = player.transform.position - transform.position;
         rb.velocity = new Vector2(Direction.x, Direction.y).normalized * force;
         zombieSpit = spitter.GetComponent<ZombieSpit>();
         Destroy(gameObject, 4);
-        //uncomment whne there is sprite for spit
-        //float rot = Mathf.Atan2(-Direction.y, -Direction.x) * Mathf.Rad2Deg;
-        //used for the rotation of the sprite to make it face the player +/- 90 based on player pos
-        //transform.rotation = Quaternion.Euler(0, 0, rot + 90);
     }
 
     // Update is called once per frame

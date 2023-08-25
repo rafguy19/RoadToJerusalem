@@ -3,7 +3,11 @@ guid: 32d7ec5397a515a4ba998c9da4afbe61
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - entireZombie: {instanceID: 0}
+  - enemyattackPoint: {instanceID: 0}
+  - blood: {instanceID: 0}
+  - bloodHitSound: {fileID: 8300000, guid: 812f6398d8d05e1439d6de3df5e5e8bc, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

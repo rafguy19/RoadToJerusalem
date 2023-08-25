@@ -19,10 +19,11 @@ public class BoomerAttack : MonoBehaviour
 
     private AudioSource audioSource;
     public AudioClip explosionSound;
-
-    private Collider2D collider;
+    new AudioSource audioSource;
+    new private Collider2D collider;
     private void Start()
     {
+        audioSource = GetComponentInParent<AudioSource>();
         collider = GetComponent<Collider2D>();
         audioSource = GetComponentInParent<AudioSource>();
         enemyCurrentHealth = enemyMaxHealth;
@@ -64,8 +65,6 @@ public class BoomerAttack : MonoBehaviour
 
             player.GetComponent<PlayerController>().knockBacked = true;
             player.GetComponent<Rigidbody2D>().AddForce(knockback, ForceMode2D.Impulse);
-
-
 
         }
         CinemachineShake.Instance.ShakeCamera(10, .5f);

@@ -80,7 +80,7 @@ GameObject:
   - component: {fileID: 1097778113}
   - component: {fileID: 1291086458}
   - component: {fileID: 4131119373339431744}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HunterZombie
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -299,7 +299,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   enemyattackDmg: 5
-  blood: {fileID: 0}
+  blood: {fileID: 5170328337056743512}
+  isDead: 0
+  bloodHitSound: {fileID: 8300000, guid: 812f6398d8d05e1439d6de3df5e5e8bc, type: 3}
 --- !u!95 &1291086458
 Animator:
   serializedVersion: 5
@@ -650,5 +652,10 @@ PrefabInstance:
 --- !u!4 &2145685002533951075 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
+  m_PrefabInstance: {fileID: 774490053}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5170328337056743512 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5170328337357113245, guid: df9247488040087459e8a0c479e631dc, type: 3}
   m_PrefabInstance: {fileID: 774490053}
   m_PrefabAsset: {fileID: 0}

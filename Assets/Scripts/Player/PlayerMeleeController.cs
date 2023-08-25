@@ -10,9 +10,11 @@ public class PlayerMeleeController : MonoBehaviour
     public bool isAttack;
     float speed = 4;
     private SpriteRenderer sr;
+    private Collider2D hitCollider;
     private void Start()
     {
         sr = GetComponent<SpriteRenderer>();
+        hitCollider = GetComponentInChildren<Collider2D>();
 
     }
     // Update is called once per frame
@@ -20,8 +22,7 @@ public class PlayerMeleeController : MonoBehaviour
     {
         if (isAttack)
         {
-           
-
+            hitCollider.enabled = true;
             sr.enabled = true;
             var step = speed * Time.deltaTime;
             if (!isOut)//on the way out
@@ -46,6 +47,7 @@ public class PlayerMeleeController : MonoBehaviour
         else
         {
             sr.enabled = false;
+            hitCollider.enabled= false;
         }
     }
 

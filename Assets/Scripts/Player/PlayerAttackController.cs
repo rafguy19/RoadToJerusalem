@@ -39,11 +39,12 @@ public class PlayerAttackController : MonoBehaviour
     int arrowLoctionInInv = 0;
 
     //audio
-    public AudioSource outOfArrow;
+    public AudioSource audioSource;
     public AudioClip outOfAmmoClip;
     bool pullPlay;
     public AudioClip pullBow;
     public AudioClip shootBow;
+    public AudioClip swingMelee;
     private void Start()
     {
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
@@ -155,7 +156,7 @@ public class PlayerAttackController : MonoBehaviour
                 if(Input.GetMouseButtonDown(0))
                 {
                     //when out of arrow
-                    outOfArrow.PlayOneShot(outOfAmmoClip);
+                    audioSource.PlayOneShot(outOfAmmoClip);
                     Debug.Log("NO arrows");
                 }
 
@@ -165,7 +166,7 @@ public class PlayerAttackController : MonoBehaviour
         else if (Input.GetMouseButtonUp(0) && canFire && bowCharge > MaxBowCharge/2)
         {
             pullPlay = false;
-            outOfArrow.PlayOneShot(shootBow);
+            audioSource.PlayOneShot(shootBow);
             CinemachineShake.Instance.ShakeCamera(3, .1f);
             inventoryData.RemoveItem(arrowLoctionInInv, 1);
             Debug.Log(inventoryData.GetItemAt(arrowLoctionInInv).quantity);
@@ -192,7 +193,7 @@ public class PlayerAttackController : MonoBehaviour
         if (pullPlay == false)
         {
             Debug.Log("play");
-            outOfArrow.PlayOneShot(pullBow);
+            audioSource.PlayOneShot(pullBow);
             pullPlay = true;
         }
         bowCharge += BowPower * Time.deltaTime;
@@ -222,11 +223,9 @@ public class PlayerAttackController : MonoBehaviour
 
     void meleeAttack()
     {
-
         if (Input.GetMouseButtonDown(0) && canHit)
         {
-            Debug.Log("Attack");
-
+            audioSource.PlayOneShot(swingMelee);
             playerMeleeController.Melee();
         }
     }
@@ -327,7 +326,7 @@ public class PlayerAttackController : MonoBehaviour
                 //remove one selected arrow
                 pullPlay = false;
                 bowCharge = 0;
-                outOfArrow.PlayOneShot(shootBow);
+                audioSource.PlayOneShot(shootBow);
                 CinemachineShake.Instance.ShakeCamera(3, .1f);
                 inventoryData.RemoveItem(arrowLoctionInInv, 1);
                 Debug.Log(inventoryData.GetItemAt(arrowLoctionInInv).quantity);
@@ -338,7 +337,7 @@ public class PlayerAttackController : MonoBehaviour
             if (Input.GetMouseButtonDown(0))
             {
                 //when out of arrow
-                outOfArrow.PlayOneShot(outOfAmmoClip);
+                audioSource.PlayOneShot(outOfAmmoClip);
                 Debug.Log("NO arrows");
             }
 
@@ -350,7 +349,7 @@ public class PlayerAttackController : MonoBehaviour
         if (pullPlay == false)
         {
             Debug.Log("play");
-            outOfArrow.PlayOneShot(pullBow);
+            audioSource.PlayOneShot(pullBow);
             pullPlay = true;
         }
         bowCharge += BowPower * Time.deltaTime;

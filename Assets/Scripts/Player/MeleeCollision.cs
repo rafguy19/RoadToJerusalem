@@ -15,14 +15,12 @@ public class MeleeCollision : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(playerMeleeController.isAttack == true)
-        {
-            if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Spitter"))
-            {
-                collision.gameObject.GetComponent<BasicZombieAttack>().ReceiveDamage(playerController.atkDmg);
 
-            }
+        if (collision.gameObject.CompareTag("Enemy") || collision.gameObject.CompareTag("Spitter"))
+        {
+            collision.gameObject.GetComponent<BasicZombieAttack>().ReceiveDamage(playerController.atkDmg);
         }
+
 
     }
 }

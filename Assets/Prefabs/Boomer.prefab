@@ -214,12 +214,17 @@ MonoBehaviour:
   enemyMaxHealth: 20
   enemyCurrentHealth: 0
   entireZombie: {fileID: 6853292524781953082}
-  explosionRadius: {fileID: 5965706698119692604}
-  explosionRange: 4
+  enemyattackPoint: {fileID: 0}
+  enemyattackRange: 0
   playerLayers:
     serializedVersion: 2
     m_Bits: 8
   enemyattackDmg: 50
+  blood: {fileID: 0}
+  isDead: 0
+  bloodHitSound: {fileID: 0}
+  explosionRadius: {fileID: 5965706698119692604}
+  explosionRange: 4
   explosionForce: 10
   explosionSound: {fileID: 8300000, guid: e326c66a3c5b4c949906a51b6c630772, type: 3}
 --- !u!1 &6853292524387694205
@@ -400,9 +405,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 9.92
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 2
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -410,23 +415,41 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
+      time: 0.051916122
+      value: 0.99521637
+      inSlope: -5.616025
+      outSlope: -5.616025
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0.24690041
+    - serializedVersion: 3
+      time: 0.26755983
+      value: 0.5239258
+      inSlope: -0.6366086
+      outSlope: -0.6366086
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.60841435
+      outWeight: 0.38330832
+    - serializedVersion: 3
+      time: 0.7200409
+      value: 0.26435852
+      inSlope: -0.713781
+      outSlope: -0.713781
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33481342
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.15005991
+      outSlope: -0.15005991
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -435,7 +458,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

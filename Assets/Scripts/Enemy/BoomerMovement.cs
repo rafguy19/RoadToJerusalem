@@ -6,7 +6,8 @@ public class BoomerMovement : MonoBehaviour
 {
     public enum State
     {
-        PATROL,
+        IDLE,
+        //PATROL,
         CHASE,
         EXPLODE,
         DEATH,
@@ -73,11 +74,16 @@ public class BoomerMovement : MonoBehaviour
         }
         switch (currentState)
         {
-            case State.PATROL:
+            case State.IDLE:
                 gurnting = true;
-                animator.SetBool("isWalking", true);
-                Patrol();
+                animator.SetBool("isWalking", false);
+                Idle();
                 break;
+            //case State.PATROL:
+            //    gurnting = true;
+            //    animator.SetBool("isWalking", true);
+            //    Patrol();
+            //    break;
             case State.CHASE:
                 gurnting = true;
                 animator.SetBool("isWalking", true);
@@ -109,11 +115,11 @@ public class BoomerMovement : MonoBehaviour
     private void ChangeState(State next)
     {
 
-        if (next == State.PATROL)
-        {
-            GetComponent<BoomerAI>().enabled = true;
-        }
-        else if (next == State.CHASE)
+        //if (next == State.PATROL)
+        //{
+        //    GetComponent<BoomerAI>().enabled = true;
+        //}
+        if (next == State.CHASE)
         {
             GetComponent<BoomerAI>().enabled = true;
         }
@@ -124,18 +130,9 @@ public class BoomerMovement : MonoBehaviour
         currentState = next;
     }
 
-    private void Patrol()
-    {
-       
-        if(waypoints.Count != 0)
-        {
-            if (Vector3.Distance(waypoints[targetIndex].transform.position, transform.position) <= 0.5f)
-            {
-                targetIndex++;
-                targetIndex %= waypoints.Count;
-            }
-        }
 
+    private void Idle()
+    {
 
 
         if (Vector3.Distance(transform.position, target.transform.position) <= detectionRange)
@@ -145,12 +142,33 @@ public class BoomerMovement : MonoBehaviour
         }
     }
 
+    //private void Patrol()
+    //{
+       
+    //    if(waypoints.Count != 0)
+    //    {
+    //        if (Vector3.Distance(waypoints[targetIndex].transform.position, transform.position) <= 0.5f)
+    //        {
+    //            targetIndex++;
+    //            targetIndex %= waypoints.Count;
+    //        }
+    //    }
+
+
+
+    //    if (Vector3.Distance(transform.position, target.transform.position) <= detectionRange)
+    //    {
+
+    //        ChangeState(State.CHASE);
+    //    }
+    //}
+
     private void Chase()
     {
         if (Vector3.Distance(transform.position, target.transform.position) <= attackRange)
         {
 
-                currentState= State.EXPLODE;
+            currentState= State.EXPLODE;
      
         }
     }

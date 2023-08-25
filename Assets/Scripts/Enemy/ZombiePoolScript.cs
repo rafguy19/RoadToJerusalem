@@ -38,6 +38,7 @@ public class ZombiePoolScript : MonoBehaviour
     IEnumerator DOT()
     {
         isDotActive = true; // Mark the coroutine as active
+        
         float elapsedTime = 0f;
 
         if (elapsedTime < timer)

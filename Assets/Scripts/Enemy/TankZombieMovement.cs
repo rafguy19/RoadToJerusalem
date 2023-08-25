@@ -21,22 +21,31 @@ public class TankZombieMovement : MonoBehaviour
     public int targetIndex;
     private Rigidbody2D rb;
     private BasicZombieAttack basicZombieAttack;
-    private bool isAttacking = false;
+    public bool isAttacking;
     private float attackTimer;
     private float attackTimerCountdown;
+    private PlayerController playerController;
+    public bool isBlocking = false;
+    public bool isColliding = false;
     private int prevHealth;
     public Animator animator;
     public Transform target;
     private bool dying = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
         attackTimer = 1;
         basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
-        prevHealth = basicZombieAttack.enemyCurrentHealth;
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponentInParent<Rigidbody2D>();
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        prevHealth = basicZombieAttack.enemyCurrentHealth;
         ChangeState(currentState);
+
     }
 
     // Update is called once per frame
@@ -65,12 +74,6 @@ public class TankZombieMovement : MonoBehaviour
         {
             Die();
         }
-
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            animator.SetTrigger("GetHit");
-            basicZombieAttack.ReceiveDamage(10);
-        }
     }
 
     private void ChangeState(State next)
@@ -97,11 +100,15 @@ public class TankZombieMovement : MonoBehaviour
 
     private void Patrol()
     {
-        if (Vector3.Distance(waypoints[targetIndex].transform.position, transform.position) <= 0.5f)
+        if (waypoints.Count != 0)
         {
-            targetIndex++;
-            targetIndex %= waypoints.Count;
+            if (Vector3.Distance(waypoints[targetIndex].transform.position, transform.position) <= 0.5f)
+            {
+                targetIndex++;
+                targetIndex %= waypoints.Count;
+            }
         }
+
 
         if (Vector3.Distance(transform.position, target.transform.position) <= 7.0f)
         {
@@ -129,8 +136,7 @@ public class TankZombieMovement : MonoBehaviour
 
         if (Vector3.Distance(transform.position, target.transform.position) <= attackDist)
         {
-            attackTimerCountdown = attackTimer;
-
+            attackTimerCountdown = 0;
             ChangeState(State.ATTACK);
         }
         else if (prevHealth != basicZombieAttack.enemyCurrentHealth)
@@ -147,28 +153,19 @@ public class TankZombieMovement : MonoBehaviour
 
     private void Attack()
     {
-        if (!isAttacking)
+        attackTimerCountdown -= Time.deltaTime;
+        if (attackTimerCountdown <= 0)
         {
-            // Initiate the attack
             animator.SetTrigger("Attack");
-            basicZombieAttack.DealDamage();
+            attackTimerCountdown = attackTimer;
             isAttacking = true;
-            attackTimerCountdown = attackTimer; // Start the cooldown timer
         }
 
-        if (isAttacking)
-        {
-            attackTimerCountdown -= Time.deltaTime;
-            if (attackTimerCountdown <= 0)
-            {
-                isAttacking = false; // Reset the attacking flag
-            }
-        }
-        if (Vector3.Distance(transform.position, target.transform.position) > attackDist)
+        if (Vector3.Distance(transform.position, target.transform.position) > attackDist && isAttacking == false)
         {
             ChangeState(State.CHASE);
         }
-        else if (Vector3.Distance(transform.position, target.transform.position) > 7.0f)
+        else if (Vector3.Distance(transform.position, target.transform.position) > 7.0f && isAttacking == false)
         {
             ChangeState(State.PATROL);
         }
@@ -186,7 +183,7 @@ public class TankZombieMovement : MonoBehaviour
 
     private bool isDamageReduced;
     private float damageReductionDurationTimer = 3.0f;
-    private float damageReductionDuration;
+    public float damageReductionDuration;
     private float damageReductionDelay;
     private float damageReductionDelayTimer = 6.0f;
     private float damageMultiplier = 0.4f;
@@ -195,12 +192,14 @@ public class TankZombieMovement : MonoBehaviour
     {
         if(prevHealth != basicZombieAttack.enemyCurrentHealth && damageReductionDuration > 0f)
         {
+            animator.SetTrigger("GetHit");
             damageReductionDuration -= Time.deltaTime;
             isDamageReduced = true;
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (isBlocking && isColliding)
             {
-                int reducedDamage = (int)(10 * damageMultiplier);
+                int reducedDamage = (int)(playerController.atkDmg * damageMultiplier);
                 basicZombieAttack.ReceiveDamage(reducedDamage);
+                isColliding = false;
             }
         }
         else if (Vector3.Distance(transform.position, target.transform.position) > attackDist)
@@ -220,6 +219,7 @@ public class TankZombieMovement : MonoBehaviour
         if (damageReductionDuration <= 0f)
         {
             isDamageReduced = false;
+            isBlocking = false;
             damageReductionDelay -= Time.deltaTime;
             if(damageReductionDelay <= 0f)
             {
@@ -234,8 +234,6 @@ public class TankZombieMovement : MonoBehaviour
             ChangeState(State.DEATH);
         }
     }
-
-
 
     private void Die()
     {
