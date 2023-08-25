@@ -5,7 +5,7 @@ using UnityEngine;
 public class TankAttack : BasicZombieAttack
 {
     private TankZombieMovement tankMovement;
-    private void Start()
+    private void Awake()
     {
         audioSource = GetComponent<AudioSource>();
         enemyCurrentHealth = enemyMaxHealth;
@@ -14,8 +14,7 @@ public class TankAttack : BasicZombieAttack
 
     private void Update()
     {
-        if (enemyCurrentHealth <= 0)
-            Destroy(entireZombie);
+        
     }
 
     new public void DealDamage()

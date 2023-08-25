@@ -5,6 +5,15 @@ using Pathfinding;
 
 public class TankZombieAI : MonoBehaviour
 {
+    public enum FLIP
+    {
+        LEFT,
+        RIGHT,
+    }
+
+    public FLIP spriteFlip;
+    float xSpriteScale;
+
     public Transform target;
     public float nextWaypointDistance = 3f;
     public Transform zombieGFX;
@@ -22,6 +31,14 @@ public class TankZombieAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (spriteFlip == FLIP.LEFT)
+        {
+            xSpriteScale = 2.5f;
+        }
+        else
+        {
+            xSpriteScale = -2.5f;
+        }
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         tankZombieMovement = GetComponent<TankZombieMovement>();
@@ -89,11 +106,11 @@ public class TankZombieAI : MonoBehaviour
 
         if (force.x >= 0.01f)
         {
-            zombieGFX.localScale = new Vector3(1f, 1f, 1f);
+            zombieGFX.localScale = new Vector3(-xSpriteScale, 2.5f, 2.5f);
         }
         else if (force.x <= -0.01f)
         {
-            zombieGFX.localScale = new Vector3(-1f, 1f, 1f);
+            zombieGFX.localScale = new Vector3(xSpriteScale, 2.5f, 2.5f);
         }
     }
 
