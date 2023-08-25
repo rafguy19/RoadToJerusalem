@@ -40,6 +40,7 @@ public class EnemySpawner : MonoBehaviour
     private bool withinArea = false;
     private bool coroutineUsed = false;
     public int zombieCount = 0;
+    public int maxZombies;
     public int stage = 0;
     // Start is called before the first frame update
     void Start()
@@ -52,12 +53,12 @@ public class EnemySpawner : MonoBehaviour
         withinArea = PlayerInArea();
 
 
-        if (withinArea && zombieCount < 35 && !coroutineUsed)
+        if (withinArea && zombieCount < maxZombies && !coroutineUsed)
         {
             StartCoroutine(StartSpawnEnemies(1));
             coroutineUsed = true;
         }
-        else if (!withinArea || zombieCount >= 35)
+        else if (!withinArea || zombieCount >= maxZombies)
 
         {
             StopAllCoroutines();
@@ -80,7 +81,7 @@ public class EnemySpawner : MonoBehaviour
 
     private IEnumerator SpawnEnemy(float interval, GameObject enemyPrefab)
     {
-        while (withinArea && zombieCount < 35)
+        while (withinArea && zombieCount < maxZombies)
         {
             Vector3 spawnPosition = FindValidSpawnPosition();
             if (spawnPosition != Vector3.zero)
