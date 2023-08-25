@@ -22,16 +22,14 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField]
     private float zombieInterval = 3.5f;
-    [SerializeField]
-    private float hunterInterval = 6f;
-    [SerializeField]
-    private float tankInterval = 15f;
+    private float hunterInterval;
+
+    private float tankInterval = 16;
     //[SerializeField]
     //private float smokerInterval = 10f;
-    [SerializeField]
-    private float boomerInterval = 7f;
-    [SerializeField]
-    private float spitterInterval = 8f;
+
+    private float boomerInterval;
+    private float spitterInterval;
 
     private GameObject player;
     public Tilemap walkableTilemap;
@@ -44,6 +42,9 @@ public class EnemySpawner : MonoBehaviour
     public int stage = 0;
 
     private bool specialSpawned;
+    bool specialSpawning;
+
+    bool normalSpawned;
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +53,8 @@ public class EnemySpawner : MonoBehaviour
         boomerInterval = Random.Range(5, 20);
         spitterInterval = Random.Range(5, 20);
         specialSpawned = false;
+        specialSpawning = false;
+        normalSpawned = false;
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -60,12 +63,22 @@ public class EnemySpawner : MonoBehaviour
         withinArea = PlayerInArea();
 
 
-        if (withinArea && zombieCount < maxZombies && !coroutineUsed)
+        if (withinArea)
         {
-            StartCoroutine(StartSpawnEnemies(1));
-            coroutineUsed = true;
+            if (zombieCount < maxZombies && normalSpawned == false)
+            {
+                StartCoroutine(SpawnEnemy(zombieInterval, zombieObject));
+            }
+
+            if (specialSpawning == false)
+            {
+                StartCoroutine(SpawnSpecial(hunterInterval, hunterObject));
+                StartCoroutine(SpawnSpecial(boomerInterval, boomerObject));
+                StartCoroutine(SpawnSpecial(spitterInterval, spitterObject));
+                specialSpawning = true;
+            }
         }
-        else if (!withinArea || zombieCount >= maxZombies)
+        else if (!withinArea)
 
         {
             StopAllCoroutines();
@@ -78,40 +91,39 @@ public class EnemySpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
 
-        StartCoroutine(SpawnEnemy(zombieInterval, zombieObject,false));
-        if(specialSpawned == false)
-        {
-            StartCoroutine(SpawnEnemy(hunterInterval, hunterObject,true));
-            StartCoroutine(SpawnEnemy(boomerInterval, boomerObject,true));
-            StartCoroutine(SpawnEnemy(spitterInterval, spitterObject,true));
-        }
 
 
-        StartCoroutine(SpawnEnemy(tankInterval, tankObject,false));
+
+       // StartCoroutine(SpawnEnemy(tankInterval, tankObject));
     }
 
-    private IEnumerator SpawnEnemy(float interval, GameObject enemyPrefab,bool isSpecial)
+    private IEnumerator SpawnEnemy(float interval, GameObject enemyPrefab)
     {
-        while (withinArea && zombieCount < maxZombies)
+        normalSpawned = true;
+        yield return new WaitForSeconds(interval);
+
+        Vector3 spawnPosition = FindValidSpawnPosition();
+        if (spawnPosition != Vector3.zero)
         {
-
-            yield return new WaitForSeconds(interval);
-
-            Vector3 spawnPosition = FindValidSpawnPosition();
-            if (spawnPosition != Vector3.zero)
-            {
-                Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-                zombieCount++;
-
-                if(isSpecial== true)
-                {
-                    specialSpawned = true;
-                }
-            }
+            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            normalSpawned = false;
+            zombieCount++;
 
         }
     }
+    private IEnumerator SpawnSpecial(float interval, GameObject enemyPrefab)
+    {
+        yield return new WaitForSeconds(interval);
 
+        Vector3 spawnPosition = FindValidSpawnPosition();
+        if (spawnPosition != Vector3.zero && specialSpawned == false)
+        {
+            
+            Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+
+            specialSpawned = true;
+        }
+    }
     private Vector3 FindValidSpawnPosition()
     {
         Vector3 spawnPosition;
