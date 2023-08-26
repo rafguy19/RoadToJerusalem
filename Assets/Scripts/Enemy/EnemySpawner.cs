@@ -54,7 +54,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (withinArea && zombieCount < 35 && !coroutineUsed)
         {
-            StartCoroutine(StartSpawnEnemies(1));
+            StartCoroutine(StartSpawnEnemies(1));   
             coroutineUsed = true;
         }
         else if (!withinArea || zombieCount >= 35)
