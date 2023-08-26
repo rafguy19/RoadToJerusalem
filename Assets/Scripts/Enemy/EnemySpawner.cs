@@ -18,8 +18,7 @@ public class EnemySpawner : MonoBehaviour
 
     public LayerMask mapLayer;
 
-    [SerializeField]
-    private float zombieInterval = 3.5f;
+    private float zombieInterval;
     private float hunterInterval;
 
     private float tankInterval;
@@ -31,15 +30,14 @@ public class EnemySpawner : MonoBehaviour
     public float xSize;
     public float ySize;
     private bool withinArea = false;
-    public int zombieCount = 0;
     private bool specialSpawned;
     bool specialSpawning;
-    public float maxZombies;
 
     bool normalSpawned;
     // Start is called before the first frame update
     void Start()
     {
+        zombieInterval = 0;
         boomerInterval = Random.Range(5, 20);
         spitterInterval = Random.Range(5, 20);
         hunterInterval = Random.Range(5, 20);
@@ -57,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
 
         if (withinArea)
         {
-            if (zombieCount < maxZombies && normalSpawned == false)
+            if (normalSpawned == false)
             {
                 StartCoroutine(SpawnEnemy(zombieInterval, zombieObject));
             }
@@ -99,8 +97,9 @@ public class EnemySpawner : MonoBehaviour
         if (spawnPosition != Vector3.zero)
         {
             Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+            zombieInterval = Random.Range(1, 5);
             normalSpawned = false;
-            zombieCount++;
+
         }
     }
 
