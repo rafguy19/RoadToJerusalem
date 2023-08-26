@@ -20,7 +20,6 @@ public class TankZombieMovement : MonoBehaviour
     private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
-    private Rigidbody2D playerRb;
     private TankAttack basicZombieAttack;
     public bool isAttacking;
     private float attackTimer;
@@ -31,14 +30,12 @@ public class TankZombieMovement : MonoBehaviour
     public Transform target;
     private float damageMultiplier = 0.4f;
     private bool dying = false;
-    public float hitForce = 500.0f;
 
     private void Start()
     {
         attackTimer = 1;
         basicZombieAttack = GetComponentInChildren<TankAttack>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-        playerRb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         rb = GetComponentInParent<Rigidbody2D>();
         prevHealth = basicZombieAttack.enemyCurrentHealth;
         ChangeState(currentState);
@@ -128,7 +125,7 @@ public class TankZombieMovement : MonoBehaviour
         }
 
 
-        if (Vector3.Distance(transform.position, target.transform.position) <= 7.0f)
+        if (Vector3.Distance(transform.position, target.transform.position) <= 20.0f)
         {
             ChangeState(State.CHASE);
         }
@@ -147,7 +144,7 @@ public class TankZombieMovement : MonoBehaviour
             ChangeState(State.PATROL);
         }
 
-        if (Vector3.Distance(transform.position, target.transform.position) <= 2.6f)
+        if (Vector3.Distance(transform.position, target.transform.position) <= 3f)
         {
             attackTimerCountdown = 0;
             ChangeState(State.ATTACK);
@@ -165,20 +162,14 @@ public class TankZombieMovement : MonoBehaviour
         if (attackTimerCountdown <= 0)
         {
             animator.SetTrigger("Attack");
-            KnockBack();
             attackTimerCountdown = attackTimer;
             isAttacking = true;
         }
 
-        if (Vector3.Distance(transform.position, target.transform.position) > 2.6f && isAttacking == false)
+        if (Vector3.Distance(transform.position, target.transform.position) > 3 && isAttacking == false)
         {
             ChangeState(State.CHASE);
         }
-        else if (Vector3.Distance(transform.position, target.transform.position) > 7.0f && isAttacking == false)
-        {
-            ChangeState(State.PATROL);
-        }
-
         if (basicZombieAttack.enemyCurrentHealth <= 0)
         {
             ChangeState(State.DEATH);
@@ -210,15 +201,7 @@ public class TankZombieMovement : MonoBehaviour
         StartCoroutine(DeleteBody());
     }
 
-    public void KnockBack()
-    {
-        Vector3 direction = target.transform.position - transform.position;
-        direction.Normalize();
-        Vector2 knockback = new Vector2(direction.x, direction.y) * hitForce;
-        playerController.knockBacked = true;
-        playerRb.AddForce(knockback, ForceMode2D.Impulse);
-
-    }
+    
 
     IEnumerator DeleteBody()
     {

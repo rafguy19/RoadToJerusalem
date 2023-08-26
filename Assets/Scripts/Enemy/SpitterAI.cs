@@ -34,11 +34,11 @@ public class SpitterAI : MonoBehaviour
     {
         if (spriteFlip == FLIP.LEFT)
         {
-            xSpriteScale = 0.5f;
+            xSpriteScale = 1;
         }
         else
         {
-            xSpriteScale = -0.5f;
+            xSpriteScale = 1;
         }
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
@@ -105,11 +105,11 @@ public class SpitterAI : MonoBehaviour
 
         if (force.x >= 0.01f)
         {
-            zombieGFX.localScale = new Vector3(xSpriteScale, 0.5f, 0.5f);
+            zombieGFX.localScale = new Vector3(-xSpriteScale, 1, 1);
         }
         else if (force.x <= -0.01f)
         {
-            zombieGFX.localScale = new Vector3(-xSpriteScale, 0.5f, 0.5f);
+            zombieGFX.localScale = new Vector3(xSpriteScale, 1, 1);
         }
     }
 }
