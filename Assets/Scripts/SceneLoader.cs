@@ -37,11 +37,25 @@ public class SceneLoader : MonoBehaviour
         AsyncOperation op = SceneManager.LoadSceneAsync(sceneName,LoadSceneMode.Additive);
 
         Transform player;
+        Transform playerSprite;
         player = GameObject.FindGameObjectWithTag("PlayerParent").transform;
-        player.position = new Vector3(-195 ,66, 0);
+        playerSprite = GameObject.FindGameObjectWithTag("Player").transform;
+
+        if (GameManager.instance.scene == 2)
+        {
+            player.position = new Vector3(-194 ,61, 0);
+        }
+        else if (GameManager.instance.scene == 3)
+        {
+            player.position = new Vector3(550.7f, -252, 0);
+        }
+        else if (GameManager.instance.scene == 4)
+        {
+            player.position = new Vector3(-180, -254, 0);
+        }
 
         if (transition != null)
-            transition.SetTrigger("end");
+        transition.SetTrigger("end");
 
         while (op.isDone == false)
         {
