@@ -229,7 +229,7 @@ MonoBehaviour:
   currentState: 0
   waypoints: []
   targetIndex: 0
-  target: {fileID: 0}
+  target: {fileID: 4013915196330855166}
 --- !u!1 &4013915196330855137
 GameObject:
   m_ObjectHideFlags: 0
@@ -388,7 +388,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   enemyattackDmg: 4
-  blood: {fileID: 0}
+  blood: {fileID: 5170328337836678630}
   isDead: 0
   bloodHitSound: {fileID: 8300000, guid: 812f6398d8d05e1439d6de3df5e5e8bc, type: 3}
 --- !u!82 &1482309251
@@ -578,5 +578,10 @@ PrefabInstance:
 --- !u!4 &2145685003297098717 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2145685002027962790, guid: df9247488040087459e8a0c479e631dc, type: 3}
+  m_PrefabInstance: {fileID: 2091555451}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &5170328337836678630 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5170328337357113245, guid: df9247488040087459e8a0c479e631dc, type: 3}
   m_PrefabInstance: {fileID: 2091555451}
   m_PrefabAsset: {fileID: 0}
