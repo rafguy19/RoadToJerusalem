@@ -38,15 +38,7 @@ public class SceneLoader : MonoBehaviour
 
         Transform player;
         player = GameObject.FindGameObjectWithTag("PlayerParent").transform;
-
-        switch(GameManager.instance.scene)
-        {
-            case 1:
-                player.position = new Vector3(-195, 66, 0);
-                break;
-        }
-
-       
+        player.position = new Vector3(-195 ,66, 0);
 
         if (transition != null)
             transition.SetTrigger("end");
