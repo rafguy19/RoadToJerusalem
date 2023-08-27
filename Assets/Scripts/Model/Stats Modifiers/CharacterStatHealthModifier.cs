@@ -8,11 +8,11 @@ public class CharacterStatHealthModifier : CharacterStatModifier
     //health bar system
     public override void AffectCharacter(GameObject character, float val)
     {
-        CharacterController player = character.GetComponent<CharacterController>();
+        PlayerHealth player = character.GetComponent<PlayerHealth>();
 
         if (player != null)
         {
-            player.healthSystem.Heal((int)val);
+            player.Heal((int)val);
                 
         }    
     }
