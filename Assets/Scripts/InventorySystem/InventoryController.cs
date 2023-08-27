@@ -10,8 +10,7 @@ public class InventoryController : MonoBehaviour
     [SerializeField]
     private Ui_Inventory_Page inventoryUI;
 
-    [SerializeField]
-    private Inventory inventoryData;
+    public Inventory inventoryData;
 
     public List<InventoryItem> initialItems = new List<InventoryItem>();
 
@@ -37,8 +36,9 @@ public class InventoryController : MonoBehaviour
         weapon_broken
     }
     private int errorState = (int)possibleErrors.none;
-    private void Start()
+    private void Awake()
     {
+        inventoryData = InventoryManager.Instance.inventoryData;
         if (GameManager.instance.staterReceived == false)
         {
             initialItems.Add(GameManager.instance.starterWeapon[GameManager.instance.starterWeaponID]);

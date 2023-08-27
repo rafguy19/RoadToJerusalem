@@ -11,7 +11,6 @@ public class WeaponSystem : MonoBehaviour
     [SerializeField]
     private EquipableItem weapon;
 
-    [SerializeField]
     private Inventory inventoryData;
 
     [SerializeField]
@@ -26,6 +25,11 @@ public class WeaponSystem : MonoBehaviour
     private TMP_Text weaponStats;
     [SerializeField]
     private SpriteRenderer weaponSprite;
+
+    private void Start()
+    {
+        inventoryData = GetComponent<InventoryController>().inventoryData;
+    }
     private void Update()
     {
         updateCurrentWeapon();
