@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
     private Animator animator;
+    private SceneLoader sceneLoader;
 
 
     private void Start()
@@ -15,11 +16,16 @@ public class PlayerHealth : MonoBehaviour
         animator = GetComponent<Animator>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
+        sceneLoader = GameObject.FindGameObjectWithTag("SceneLoader").GetComponent<SceneLoader>();
     }
 
     private void Update()
     {
         healthBar.SetHealth(currentHealth);
+        if(currentHealth <= 0)
+        {
+            sceneLoader.LoadScene("LoseScreen");
+        }
     }
     public void TakeDamage(int damage)
     {
