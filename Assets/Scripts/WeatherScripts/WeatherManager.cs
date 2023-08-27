@@ -27,16 +27,17 @@ public class WeatherManager : MonoBehaviour
         Day.SetActive(false);
         Moon.SetActive(false);
         IsRaining = false;
+        //create a function to check if weather switch case has run once already
+
+        WeatherGenerationUpdate();
     }
     // Update is called once per frame
     void Update()
     {
-        //create a function to check if weather switch case has run once already
-
-        WeatherGenerationUpdate();
         if (IsRaining == true)
         {
             rain.Play();
+            IsRaining = false;
         }
         if (Input.GetKeyDown("p"))
         {
@@ -45,6 +46,7 @@ public class WeatherManager : MonoBehaviour
             {
                 x = 0;
             }
+            WeatherGenerationUpdate();
         }
     }
     void WeatherGenerationUpdate()
