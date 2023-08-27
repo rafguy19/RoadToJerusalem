@@ -67839,11 +67839,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320363137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: -138.44, y: -318.51, z: -10.028243}
-=======
   m_LocalPosition: {x: -137.8, y: -318.4, z: -10.028243}
->>>>>>> 5f198c9 (fixed player pos for stage 4)
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -68141,11 +68137,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392076053}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-<<<<<<< HEAD
-  m_LocalPosition: {x: -138.44, y: -318.51, z: -10.028243}
-=======
   m_LocalPosition: {x: -137.8, y: -318.4, z: -10.028243}
->>>>>>> 5f198c9 (fixed player pos for stage 4)
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -76319,7 +76311,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: {fileID: 772971999}
-  BGM: {fileID: 1733339277}
 --- !u!114 &1369783139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137718,7 +137709,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733339277}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bc32ff6b79820db4187a60879ee8b6aa, type: 3}
@@ -139208,19 +139199,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4989695488359723362, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: m_LocalPosition.x
-<<<<<<< HEAD
-      value: -138.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 4989695488359723362, guid: 347a40b5245760e40a282c9238803e57, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -318.51
-=======
       value: -137.8
       objectReference: {fileID: 0}
     - target: {fileID: 4989695488359723362, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: m_LocalPosition.y
       value: -318.4
->>>>>>> 5f198c9 (fixed player pos for stage 4)
       objectReference: {fileID: 0}
     - target: {fileID: 4989695488359723362, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: m_LocalPosition.z
