@@ -43,15 +43,18 @@ public class SceneLoader : MonoBehaviour
 
         if (GameManager.instance.scene == 2)
         {
-            player.position = new Vector3(-194 ,61, 0);
+            playerSprite.localPosition = new Vector3(0, 0, 0);
+            player.localPosition = new Vector3(-194 ,61, 0);
         }
         else if (GameManager.instance.scene == 3)
         {
-            player.position = new Vector3(550.7f, -252, 0);
+            playerSprite.localPosition = new Vector3(0, 0, 0);
+            player.localPosition = new Vector3(537, -251, 0);
         }
         else if (GameManager.instance.scene == 4)
         {
-            player.position = new Vector3(-180, -254, 0);
+            playerSprite.localPosition = new Vector3(0, 0, 0);
+            player.localPosition = new Vector3(-180, -254, 0);
         }
 
         if (transition != null)
