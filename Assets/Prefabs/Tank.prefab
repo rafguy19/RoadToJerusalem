@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 8926547015673652340}
   - component: {fileID: 372480388999746362}
   - component: {fileID: 372480388999746363}
+  - component: {fileID: 1868210869}
   m_Layer: 0
   m_Name: Tank
   m_TagString: Untagged
@@ -169,7 +170,7 @@ MonoBehaviour:
   blockage:
     serializedVersion: 2
     m_Bits: 0
-  EnemySpeed: 300
+  EnemySpeed: 150
   sideForce: 0
 --- !u!114 &372480388999746363
 MonoBehaviour:
@@ -190,6 +191,104 @@ MonoBehaviour:
   prevHealth: 0
   animator: {fileID: 856864828}
   target: {fileID: 0}
+  tankGrunt1: {fileID: 8300000, guid: 08fe05ffc593498478f24bc0415bba21, type: 3}
+  tankGrunt2: {fileID: 8300000, guid: 304f12d1893cebb4fb2ca0d38971c97c, type: 3}
+--- !u!82 &1868210869
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8926547015673652341}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &8926547016158381126
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +301,6 @@ GameObject:
   - component: {fileID: 8926547016158381146}
   - component: {fileID: 856864828}
   - component: {fileID: 850956556}
-  - component: {fileID: 812685458}
   - component: {fileID: 812685459}
   m_Layer: 0
   m_Name: TankZombie
@@ -326,120 +424,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.33, y: 0.4}
   m_EdgeRadius: 0
---- !u!82 &812685458
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8926547016158381126}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 40
-  Pan2D: 0
-  rolloffMode: 2
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0.051916122
-      value: 0.99521637
-      inSlope: -5.616025
-      outSlope: -5.616025
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.24690041
-    - serializedVersion: 3
-      time: 0.26755983
-      value: 0.5239258
-      inSlope: -0.6366086
-      outSlope: -0.6366086
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.60841435
-      outWeight: 0.38330832
-    - serializedVersion: 3
-      time: 0.7200409
-      value: 0.26435852
-      inSlope: -0.713781
-      outSlope: -0.713781
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0.33481342
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: -0.15005991
-      outSlope: -0.15005991
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!114 &812685459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,6 +449,7 @@ MonoBehaviour:
   isDead: 0
   bloodHitSound: {fileID: 8300000, guid: 812f6398d8d05e1439d6de3df5e5e8bc, type: 3}
   hitForce: 10
+  TankHit: {fileID: 8300000, guid: 91d5956bafacbdc4fb6a06a6c3fbe7a7, type: 3}
 --- !u!1 &8926547016353133106
 GameObject:
   m_ObjectHideFlags: 0
