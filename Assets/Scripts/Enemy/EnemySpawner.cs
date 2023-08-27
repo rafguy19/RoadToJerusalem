@@ -10,8 +10,6 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField]
     private GameObject hunterObject;
     [SerializeField]
-    private GameObject tankObject;
-    [SerializeField]
     private GameObject boomerObject;
     [SerializeField]
     private GameObject spitterObject;
@@ -20,8 +18,6 @@ public class EnemySpawner : MonoBehaviour
 
     private float zombieInterval;
     private float hunterInterval;
-
-    private float tankInterval;
     private float boomerInterval;
     private float spitterInterval;
 
@@ -41,7 +37,6 @@ public class EnemySpawner : MonoBehaviour
         boomerInterval = Random.Range(5, 20);
         spitterInterval = Random.Range(5, 20);
         hunterInterval = Random.Range(5, 20);
-        tankInterval = Random.Range(5, 20);
         specialSpawned = false;
         specialSpawning = false;
         normalSpawned = false;
@@ -63,7 +58,6 @@ public class EnemySpawner : MonoBehaviour
             if (specialSpawning == false)
             {
                 StartCoroutine(SpawnSpecial(hunterInterval, hunterObject));
-                StartCoroutine(SpawnSpecial(tankInterval, tankObject));
                 StartCoroutine(SpawnSpecial(boomerInterval, boomerObject));
                 StartCoroutine(SpawnSpecial(spitterInterval, spitterObject));
                 specialSpawning = true;

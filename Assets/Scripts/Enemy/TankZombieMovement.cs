@@ -80,7 +80,7 @@ public class TankZombieMovement : MonoBehaviour
                         audioSource.PlayOneShot(tankGrunt2);
                         break;
                 }
-                gurntingDelay = Random.Range(1, 4);
+                gurntingDelay = Random.Range(15, 25);
             }
         }
 
