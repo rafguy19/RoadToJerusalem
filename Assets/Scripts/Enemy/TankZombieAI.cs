@@ -115,13 +115,4 @@ public class TankZombieAI : MonoBehaviour
             zombieGFX.localScale = new Vector3(xSpriteScale, 2.5f, 2.5f);
         }
     }
-
-    private void OnCollisionEnter2D(Collision2D other)
-    {
-        if ((blockage.value & (1 << other.gameObject.layer)) != 0)
-        {
-            Vector2 sideForceDirection = new Vector2(-other.contacts[0].normal.y, other.contacts[0].normal.x).normalized;
-            rb.AddForce(sideForceDirection * sideForce, ForceMode2D.Force);
-        }
-    }
 }
