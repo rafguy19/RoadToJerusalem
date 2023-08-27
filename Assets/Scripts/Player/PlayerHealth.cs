@@ -8,6 +8,8 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     public HealthBar healthBar;
     private Animator animator;
+
+
     private void Start()
     {
         animator = GetComponent<Animator>();
