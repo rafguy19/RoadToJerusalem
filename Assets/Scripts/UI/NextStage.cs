@@ -7,7 +7,7 @@ public class NextStage : MonoBehaviour
     private string scenestring;
     public GameObject prompt;
     private bool pressed;
-
+    public GameObject BGM;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +34,7 @@ public class NextStage : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.E))
             {
+                BGM.SetActive(false);
                 switch (GameManager.instance.scene)
                 {
                     case 1:

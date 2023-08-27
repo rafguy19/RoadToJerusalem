@@ -76311,6 +76311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: {fileID: 772971999}
+  BGM: {fileID: 1733339277}
 --- !u!114 &1369783139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137709,7 +137710,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1733339277}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: bc32ff6b79820db4187a60879ee8b6aa, type: 3}
