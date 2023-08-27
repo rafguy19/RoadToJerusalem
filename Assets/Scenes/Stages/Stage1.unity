@@ -67839,7 +67839,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 320363137}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -138.44, y: -318.51, z: -10.028243}
+=======
+  m_LocalPosition: {x: -137.8, y: -318.4, z: -10.028243}
+>>>>>>> 5f198c9 (fixed player pos for stage 4)
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -68137,7 +68141,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392076053}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+<<<<<<< HEAD
   m_LocalPosition: {x: -138.44, y: -318.51, z: -10.028243}
+=======
+  m_LocalPosition: {x: -137.8, y: -318.4, z: -10.028243}
+>>>>>>> 5f198c9 (fixed player pos for stage 4)
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -76768,7 +76776,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5980193085249369199, guid: 3327998f464d8514d8e4c32b4c4cdf5c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3327998f464d8514d8e4c32b4c4cdf5c, type: 3}
@@ -137620,7 +137628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8992235243677022612, guid: 4dba375f21b67e8428a5526ad6f4a7c4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4dba375f21b67e8428a5526ad6f4a7c4, type: 3}
@@ -139200,11 +139208,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4989695488359723362, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: m_LocalPosition.x
+<<<<<<< HEAD
       value: -138.44
       objectReference: {fileID: 0}
     - target: {fileID: 4989695488359723362, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: m_LocalPosition.y
       value: -318.51
+=======
+      value: -137.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4989695488359723362, guid: 347a40b5245760e40a282c9238803e57, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -318.4
+>>>>>>> 5f198c9 (fixed player pos for stage 4)
       objectReference: {fileID: 0}
     - target: {fileID: 4989695488359723362, guid: 347a40b5245760e40a282c9238803e57, type: 3}
       propertyPath: m_LocalPosition.z

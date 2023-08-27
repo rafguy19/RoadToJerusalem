@@ -54,7 +54,7 @@ public class SceneLoader : MonoBehaviour
         else if (GameManager.instance.scene == 4)
         {
             playerSprite.localPosition = new Vector3(0, 0, 0);
-            player.localPosition = new Vector3(-180, -254, 0);
+            player.localPosition = new Vector3(-1, 24, 0);
         }
 
         if (transition != null)
