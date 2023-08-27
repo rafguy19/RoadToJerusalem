@@ -33,10 +33,11 @@ public class WeatherManager : MonoBehaviour
     {
         //create a function to check if weather switch case has run once already
 
-        WeatherGenerationUpdate();
+       
         if (IsRaining == true)
         {
             rain.Play();
+            IsRaining = false;
         }
         if (Input.GetKeyDown("p"))
         {
@@ -46,6 +47,7 @@ public class WeatherManager : MonoBehaviour
                 x = 0;
             }
         }
+        WeatherGenerationUpdate();
     }
     void WeatherGenerationUpdate()
     {
