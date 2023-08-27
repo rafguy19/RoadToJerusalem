@@ -9,7 +9,7 @@ public class PlayerHealth : MonoBehaviour
     public HealthBar healthBar;
     private Animator animator;
     private SceneLoader sceneLoader;
-
+    bool deathSceneLoaded = false;
 
     private void Start()
     {
@@ -22,9 +22,10 @@ public class PlayerHealth : MonoBehaviour
     private void Update()
     {
         healthBar.SetHealth(currentHealth);
-        if(currentHealth <= 0)
+        if(currentHealth <= 0 && deathSceneLoaded == false)
         {
             sceneLoader.LoadScene("LoseScreen");
+            deathSceneLoaded = true;
         }
     }
     public void TakeDamage(int damage)
