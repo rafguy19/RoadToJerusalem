@@ -75752,15 +75752,15 @@ PrefabInstance:
     - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: tankObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1868210863}
     - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: boomerObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1541758326}
     - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: hunterObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 581390611}
     - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: tankInterval
       value: 14
@@ -75768,11 +75768,11 @@ PrefabInstance:
     - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: zombieObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1636883318}
     - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: spitterObject
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1507469648}
     - target: {fileID: 4939057678374668793, guid: a0779ccef47532a45be33310e3551982, type: 3}
       propertyPath: boomerInterval
       value: 9
@@ -124696,9 +124696,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4013915195849796143, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4013915195849796306, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
       propertyPath: m_Name
       value: Spitter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013915196330855166, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013915196330855166, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4013915196330855166, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6262531783367131325, guid: 89c60b64f37c944489835f0eb1289d52, type: 3}
       propertyPath: target
