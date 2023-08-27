@@ -25,6 +25,7 @@ public class NextStage : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         prompt.SetActive(false);
+        pressed = false;
     }
 
     private void OnTriggerStay2D(Collider2D collision)
