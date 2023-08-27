@@ -27,6 +27,7 @@ public class WeatherManager : MonoBehaviour
         Day.SetActive(false);
         Moon.SetActive(false);
         IsRaining = false;
+        WeatherGenerationUpdate();
     }
     // Update is called once per frame
     void Update()
