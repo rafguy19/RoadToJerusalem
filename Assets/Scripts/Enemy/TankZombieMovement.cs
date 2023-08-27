@@ -16,7 +16,7 @@ public class TankZombieMovement : MonoBehaviour
     public State currentState;
     [SerializeField]
     public List<GameObject> waypoints = new List<GameObject>();
-    private float attackDist = 5.5f;
+    private float attackDist = 2f;
     private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
@@ -167,12 +167,12 @@ public class TankZombieMovement : MonoBehaviour
 
     private void Chase()
     {
-        if (Vector3.Distance(transform.position, target.transform.position) > 7.0f)
+        if (Vector3.Distance(transform.position, target.transform.position) > 15.0f)
         {
             ChangeState(State.PATROL);
         }
 
-        if (Vector3.Distance(transform.position, target.transform.position) <= 3f)
+        if (Vector3.Distance(transform.position, target.transform.position) <= attackDist)
         {
             attackTimerCountdown = 0;
             ChangeState(State.ATTACK);
@@ -193,8 +193,10 @@ public class TankZombieMovement : MonoBehaviour
             attackTimerCountdown = attackTimer;
             isAttacking = true;
         }
+        isAttacking = false;
 
-        if (Vector3.Distance(transform.position, target.transform.position) > 3 && isAttacking == false)
+
+        if (Vector3.Distance(transform.position, target.transform.position) > attackDist && isAttacking == false)
         {
             ChangeState(State.CHASE);
         }
