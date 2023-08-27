@@ -132,7 +132,6 @@ public class BoomerMovement : MonoBehaviour
     {
         if (Vector3.Distance(transform.position, target.transform.position) <= detectionRange)
         {
-
             ChangeState(State.CHASE);
         }
     }

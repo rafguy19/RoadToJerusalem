@@ -46,6 +46,7 @@ public class TankZombieMovement : MonoBehaviour
         rb = GetComponentInParent<Rigidbody2D>();
         prevHealth = basicZombieAttack.enemyCurrentHealth;
         ChangeState(currentState);
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     bool isDamaged()

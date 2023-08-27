@@ -32,6 +32,7 @@ public class SpitterAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         if (spriteFlip == FLIP.LEFT)
         {
             xSpriteScale = 1;
@@ -46,6 +47,7 @@ public class SpitterAI : MonoBehaviour
         System.Random random = new System.Random();
         EnemySpeed = 100;
         InvokeRepeating("UpdatePath", 0f, .5f);
+
     }
 
     void UpdatePath()

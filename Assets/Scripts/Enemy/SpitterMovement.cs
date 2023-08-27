@@ -39,6 +39,7 @@ public class SpitterMovement : MonoBehaviour
         rb = GetComponentInParent<Rigidbody2D>();
         ar = GetComponentInChildren<Animator>();
         ChangeState(currentState);
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame

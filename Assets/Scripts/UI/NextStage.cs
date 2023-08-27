@@ -7,10 +7,13 @@ public class NextStage : MonoBehaviour
     private string scenestring;
     public GameObject prompt;
     private bool pressed;
+
+
     // Start is called before the first frame update
     void Start()
     {
         pressed = false;
+
     }
 
 
@@ -36,6 +39,8 @@ public class NextStage : MonoBehaviour
                         GameManager.instance.scene += 1;
 
                         gameObject.GetComponent<SceneLoader>().LoadScene("Stage" + GameManager.instance.scene);
+
+
                         break;
                     case 2:
                         GameManager.instance.scene += 1;

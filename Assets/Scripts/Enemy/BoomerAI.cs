@@ -33,7 +33,8 @@ public class BoomerAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(spriteFlip == FLIP.LEFT)
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        if (spriteFlip == FLIP.LEFT)
         {
             xSpriteScale = 1;
         }
@@ -48,6 +49,7 @@ public class BoomerAI : MonoBehaviour
         System.Random random = new System.Random();
         EnemySpeed = random.Next(100, 201);
         InvokeRepeating("UpdatePath", 0f, .5f);
+
         //Debug.Log(EnemySpeed);
     }
 

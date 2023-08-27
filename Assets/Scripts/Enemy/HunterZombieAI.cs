@@ -23,11 +23,13 @@ public class HunterZombieAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         moveTowardsPath = false;
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         hunterZombieMovement = GetComponent<HunterZombieMovement>();
         InvokeRepeating("UpdatePath", 0f, .5f);
+
     }
 
     void UpdatePath()

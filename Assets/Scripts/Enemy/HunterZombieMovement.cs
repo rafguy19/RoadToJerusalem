@@ -88,6 +88,7 @@ public class HunterZombieMovement : MonoBehaviour
         hunterZombieAI = GetComponent<HunterZombieAI>();
         rb = GetComponent<Rigidbody2D>();
         ChangeState(currentState);
+        target = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
     // Update is called once per frame

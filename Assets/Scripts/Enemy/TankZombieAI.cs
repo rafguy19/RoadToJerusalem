@@ -31,6 +31,7 @@ public class TankZombieAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         if (spriteFlip == FLIP.LEFT)
         {
             xSpriteScale = 2.5f;
@@ -43,6 +44,7 @@ public class TankZombieAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         tankZombieMovement = GetComponent<TankZombieMovement>();
         InvokeRepeating("UpdatePath", 0f, .5f);
+
     }
 
     void UpdatePath()

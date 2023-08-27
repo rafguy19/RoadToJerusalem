@@ -32,7 +32,7 @@ public class BasicZombieMovement : MonoBehaviour
     void Start()
     {
         basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
-        target = GetComponent<BasicZombieAI>().target;
+        target = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponentInParent<Rigidbody2D>();
         ChangeState(currentState);
     }

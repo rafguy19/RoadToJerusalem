@@ -14,21 +14,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryItems:
   - quantity: 1
-    item: {fileID: 11400000, guid: b52d863f9fc20bc46874815084e482d1, type: 2}
-    itemState:
-    - itemParameter: {fileID: 11400000, guid: 483d1034571157e4dac526c81cdc023f, type: 2}
-      value: 100
-  - quantity: 1
-    item: {fileID: 11400000, guid: a5531fc60bb483442907d7914c5b1480, type: 2}
+    item: {fileID: 11400000, guid: b64c3ea349c6519469d5119a1d01b2f4, type: 2}
     itemState:
     - itemParameter: {fileID: 11400000, guid: 483d1034571157e4dac526c81cdc023f, type: 2}
       value: 20
     - itemParameter: {fileID: 11400000, guid: 6d07b7add8b91d1499cd077f8f3a178f, type: 2}
+      value: 0
+  - quantity: 1
+    item: {fileID: 11400000, guid: f0a8671bfb84c3141a680b4a0cf4cc51, type: 2}
+    itemState:
+    - itemParameter: {fileID: 11400000, guid: 483d1034571157e4dac526c81cdc023f, type: 2}
+      value: 100
+    - itemParameter: {fileID: 11400000, guid: 6d07b7add8b91d1499cd077f8f3a178f, type: 2}
       value: 1
-  - quantity: 0
-    item: {fileID: 0}
-    itemState: []
-  - quantity: 0
-    item: {fileID: 0}
-    itemState: []
-  <Size>k__BackingField: 4
+  - quantity: 1
+    item: {fileID: 11400000, guid: 8f94be8cf0d96a24caf58d5458bcf684, type: 2}
+    itemState:
+    - itemParameter: {fileID: 11400000, guid: 483d1034571157e4dac526c81cdc023f, type: 2}
+      value: 100
+    - itemParameter: {fileID: 11400000, guid: 6d07b7add8b91d1499cd077f8f3a178f, type: 2}
+      value: 1
+  - quantity: 1
+    item: {fileID: 11400000, guid: 9d4e44ab94c4b144b818fdb89d5a7d62, type: 2}
+    itemState:
+    - itemParameter: {fileID: 11400000, guid: 483d1034571157e4dac526c81cdc023f, type: 2}
+      value: 30
+    - itemParameter: {fileID: 11400000, guid: 6d07b7add8b91d1499cd077f8f3a178f, type: 2}
+      value: 2
+  <Size>k__BackingField: 30

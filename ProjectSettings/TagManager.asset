@@ -13,6 +13,7 @@ TagManager:
   - FoodChest_1
   - WeapChest_1
   - SceneLoader
+  - PlayerParent
   layers:
   - Default
   - TransparentFX

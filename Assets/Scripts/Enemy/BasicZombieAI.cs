@@ -33,7 +33,8 @@ public class BasicZombieAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(spriteFlip == FLIP.LEFT)
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+        if (spriteFlip == FLIP.LEFT)
         {
             xSpriteScale = 1;
         }
@@ -47,6 +48,7 @@ public class BasicZombieAI : MonoBehaviour
         System.Random random = new System.Random();
         EnemySpeed = random.Next(150, 301);
         InvokeRepeating("UpdatePath", 0f, .5f);
+
     }
 
     void UpdatePath()
