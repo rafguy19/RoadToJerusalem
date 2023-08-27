@@ -31,9 +31,16 @@ public class TankZombieMovement : MonoBehaviour
     private float damageMultiplier = 0.4f;
     private bool dying = false;
 
+
+    private AudioSource audioSource;
+    public AudioClip tankGrunt1;
+    public AudioClip tankGrunt2;
+
+    bool gurnting;
+    float gurntingDelay = 3;
     private void Start()
     {
-        attackTimer = 1;
+        audioSource = GetComponent<AudioSource>();
         basicZombieAttack = GetComponentInChildren<TankAttack>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         rb = GetComponentInParent<Rigidbody2D>();
@@ -56,7 +63,27 @@ public class TankZombieMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isDamaged())
+        //gruning sound
+        if (gurnting == true)
+        {
+            gurntingDelay -= Time.deltaTime;
+            if (gurntingDelay <= 0)
+            {
+                int randomGrunt = Random.Range(1, 3);
+                switch (randomGrunt)
+                {
+                    case 1:
+                        audioSource.PlayOneShot(tankGrunt1);
+                        break;
+                    case 2:
+                        audioSource.PlayOneShot(tankGrunt2);
+                        break;
+                }
+                gurntingDelay = Random.Range(1, 4);
+            }
+        }
+
+        if (isDamaged())
         {
             currentState = State.GUARD;
         }
@@ -68,6 +95,7 @@ public class TankZombieMovement : MonoBehaviour
         }
         else if (currentState == State.CHASE)
         {
+            gurnting = true;
             animator.SetBool("Attack", false);
             Chase();
         }
@@ -125,7 +153,7 @@ public class TankZombieMovement : MonoBehaviour
         }
 
 
-        if (Vector3.Distance(transform.position, target.transform.position) <= 20.0f)
+        if (Vector3.Distance(transform.position, target.transform.position) <= 15.0f)
         {
             ChangeState(State.CHASE);
         }

@@ -44,7 +44,7 @@ public class SpitterAI : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         spitterMove = GetComponent<SpitterMovement>();
         System.Random random = new System.Random();
-        EnemySpeed = 200;
+        EnemySpeed = 100;
         InvokeRepeating("UpdatePath", 0f, .5f);
     }
 
@@ -105,11 +105,11 @@ public class SpitterAI : MonoBehaviour
 
         if (force.x >= 0.01f)
         {
-            zombieGFX.localScale = new Vector3(-xSpriteScale, 1, 1);
+            zombieGFX.localScale = new Vector3(xSpriteScale, 1, 1);
         }
         else if (force.x <= -0.01f)
         {
-            zombieGFX.localScale = new Vector3(xSpriteScale, 1, 1);
+            zombieGFX.localScale = new Vector3(-xSpriteScale, 1, 1);
         }
     }
 }

@@ -15,26 +15,26 @@ public class SpitterMovement : MonoBehaviour
     [SerializeField]
     public List<GameObject> waypoints = new List<GameObject>();
     private float attackDist = 1.87f;
-    private SpriteRenderer sr;
     public int targetIndex;
     private Rigidbody2D rb;
     private BasicZombieAttack basicZombieAttack;
-    private GameObject spitter;
-    private bool isAttacking = false;
-    private float attackTimer;
-    private float attackTimerCountdown;
-    private int prevHealth;
     private Animator ar;
     private bool dead;
     public Transform target;
     private ZombieSpit zombieSpit;
 
+    private AudioSource audioSource;
+    public AudioClip spitterGrunt1;
+    public AudioClip spitterGrunt2;
+
+    bool gurnting;
+    float gurntingDelay = 3;
     // Start is called before the first frame update
     void Start()
     {
-        attackTimer = 1;
+        gurnting = false;
         basicZombieAttack = GetComponentInChildren<BasicZombieAttack>();
-        spitter = GameObject.FindGameObjectWithTag("Spitter");
+        audioSource = GetComponent<AudioSource>();
         zombieSpit = GetComponent<ZombieSpit>();
         rb = GetComponentInParent<Rigidbody2D>();
         ar = GetComponentInChildren<Animator>();
@@ -44,6 +44,26 @@ public class SpitterMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //gruning sound
+        if (gurnting == true)
+        {
+            gurntingDelay -= Time.deltaTime;
+            if (gurntingDelay <= 0)
+            {
+                int randomGrunt = Random.Range(1, 3);
+                switch (randomGrunt)
+                {
+                    case 1:
+                        audioSource.PlayOneShot(spitterGrunt1);
+                        break;
+                    case 2:
+                        audioSource.PlayOneShot(spitterGrunt2);
+                        break;
+                }
+                gurntingDelay = Random.Range(1, 4);
+            }
+        }
+
         if (currentState == State.PATROL)
         {
             Patrol();
@@ -78,6 +98,7 @@ public class SpitterMovement : MonoBehaviour
         }
         else if (next == State.CHASE)
         {
+            gurnting = true;
             ar.SetBool("Moving", true);
             GetComponent<SpitterAI>().enabled = true;
         }

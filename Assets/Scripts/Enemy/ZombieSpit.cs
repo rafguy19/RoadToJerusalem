@@ -11,8 +11,12 @@ public class ZombieSpit : MonoBehaviour
     private float timer;
     private GameObject player;
 
+    private AudioSource audioSource;
+    public AudioClip SpitShoot;
+
     private void Start()
     {
+        audioSource = GetComponentInChildren<AudioSource>();
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
@@ -44,6 +48,7 @@ public class ZombieSpit : MonoBehaviour
 
     private void Shoot()
     {
+        audioSource.PlayOneShot(SpitShoot);
         Instantiate(Spit, SpitPos.position, Quaternion.identity);
     }
 }

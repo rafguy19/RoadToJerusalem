@@ -9,13 +9,15 @@ public class TankAttack : BasicZombieAttack
     private PlayerHealth player;
     private TankZombieMovement tankMovement;
     public float hitForce = 500.0f;
+    public AudioClip TankHit;
+
 
     private void Awake()
     {
         playerRb = GameObject.FindGameObjectWithTag("Player").GetComponent<Rigidbody2D>();
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponentInParent<AudioSource>();
         enemyCurrentHealth = enemyMaxHealth;
         tankMovement = gameObject.GetComponentInParent<TankZombieMovement>();
     }
@@ -30,6 +32,7 @@ public class TankAttack : BasicZombieAttack
         Collider2D[] hitPlayer = Physics2D.OverlapCircleAll(enemyattackPoint.position, enemyattackRange, playerLayers);
         foreach (Collider2D player in hitPlayer)
         {
+            audioSource.PlayOneShot(TankHit);
             player.GetComponent<PlayerHealth>().TakeDamage(enemyattackDmg);
             KnockBack();
 
@@ -44,7 +47,6 @@ public class TankAttack : BasicZombieAttack
         Vector2 knockback = new Vector2(direction.x, direction.y) * hitForce;
         playerController.knockBacked = true;
         playerRb.AddForce(knockback, ForceMode2D.Impulse);
-
     }
 
     private void OnDrawGizmosSelected()

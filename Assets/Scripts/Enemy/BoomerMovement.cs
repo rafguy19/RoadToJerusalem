@@ -103,11 +103,8 @@ public class BoomerMovement : MonoBehaviour
                 {
                     Explode();
                 }
-
-
                 break;
             case State.DEATH:
-
                 break;
         }
     }
@@ -133,8 +130,6 @@ public class BoomerMovement : MonoBehaviour
 
     private void Idle()
     {
-
-
         if (Vector3.Distance(transform.position, target.transform.position) <= detectionRange)
         {
 

@@ -29,7 +29,7 @@ public class BasicZombieAttack : MonoBehaviour
     private void Start()
     {
         zombieCollider = GetComponent<Collider2D>();
-        audioSource = GetComponent<AudioSource>();
+        audioSource = GetComponentInParent<AudioSource>();
         animator = GetComponent<Animator>();
         enemyCurrentHealth = enemyMaxHealth;
         zombieMovement = gameObject.GetComponentInParent<BasicZombieMovement>();

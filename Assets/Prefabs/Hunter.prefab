@@ -220,7 +220,7 @@ MonoBehaviour:
   target: {fileID: 0}
   nextWaypointDistance: 1
   zombieGFX: {fileID: 2422570955381714581}
-  EnemySpeed: 100
+  EnemySpeed: 75
 --- !u!114 &932799919
 MonoBehaviour:
   m_ObjectHideFlags: 0
