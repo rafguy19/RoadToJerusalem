@@ -76311,6 +76311,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prompt: {fileID: 772971999}
+  BGM: {fileID: 1733339277}
 --- !u!114 &1369783139
 MonoBehaviour:
   m_ObjectHideFlags: 0
