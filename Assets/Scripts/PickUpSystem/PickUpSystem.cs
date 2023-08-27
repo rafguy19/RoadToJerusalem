@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 public class PickUpSystem : MonoBehaviour
 {
-    [SerializeField]
     private Inventory inventoryData;
 
-
+    private void Start()
+    {
+        inventoryData = GetComponent<InventoryController>().inventoryData;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //set to_collide to the item drop

@@ -24,7 +24,7 @@ public class BasicZombieAttack : MonoBehaviour
 
     protected AudioSource audioSource;
     public AudioClip bloodHitSound;
-    protected float deathTimer = 3;
+    protected float deathTimer = 1;
     private Collider2D zombieCollider;
     private void Start()
     {

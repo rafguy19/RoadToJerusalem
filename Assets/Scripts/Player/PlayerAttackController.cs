@@ -25,9 +25,7 @@ public class PlayerAttackController : MonoBehaviour
     Slider bowPowerSlider;
     private PlayerController playerController;
 
-
-    [SerializeField]
-    public Inventory inventoryData;
+    private Inventory inventoryData;
 
     //For normal melee
     [SerializeField]
@@ -47,6 +45,7 @@ public class PlayerAttackController : MonoBehaviour
     public AudioClip swingMelee;
     private void Start()
     {
+        inventoryData = GetComponent<InventoryController>().inventoryData;
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         Debug.Log(playerController);
         pullPlay = false;
